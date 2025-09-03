@@ -1,0 +1,19 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	var name string
+	var age int
+
+	fmt.Print("What is your name? ")
+	fmt.Scan(&name)
+	fmt.Println("hello " + name + "!")
+
+	fmt.Println("How old are you?")
+	fmt.Scan(&age)
+	fmt.Println("You are " + strconv.Itoa(age) + " years old")
+}
