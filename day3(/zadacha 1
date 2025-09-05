@@ -1,0 +1,35 @@
+package main
+
+import "fmt"
+
+type Student struct {
+	Name   string
+	Grades []int
+}
+
+func averageGrade(students []Student) float64 {
+	total := 0
+	count := 0
+
+	for _, student := range students {
+		for _, grade := range student.Grades {
+			total += grade
+			count++
+		}
+	}
+
+	if count == 0 {
+		return 0
+	}
+	return float64(total) / float64(count)
+}
+
+func main() {
+	students := []Student{
+		{"Alice", []int{85, 90, 78}},
+		{"Bob", []int{92, 88, 95}},
+		{"Charlie", []int{76, 82, 80}},
+	}
+
+	fmt.Printf("Средний балл: %.2f\n", averageGrade(students))
+}
