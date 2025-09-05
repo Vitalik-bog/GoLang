@@ -1,0 +1,34 @@
+package main
+
+import "fmt"
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func findOldest(people []Person) Person { // people []Person - параметр функции: срез (массив) структур Person
+	if len(people) == 0 {
+		return Person{}
+	}
+
+	oldest := people[0]
+	for _, person := range people { // _ - игнорирование индекса элемента (нам нужен только сам элемент)
+		if person.Age > oldest.Age {
+			oldest = person
+		}
+	}
+	return oldest
+}
+
+func main() {
+	people := []Person{
+		{"John", 25},
+		{"Sarah", 32},
+		{"Mike", 19},
+		{"Anna", 45},
+	}
+
+	oldest := findOldest(people)
+	fmt.Printf("Самый старший: %s (%d лет)\n", oldest.Name, oldest.Age)
+}
