@@ -1,0 +1,35 @@
+package main
+
+import "fmt"
+
+type User struct {
+    Name    string
+    Balance float64
+}
+
+func applyInterest(users []User, percent float64) []User {
+    result := make([]User, len(users))
+    
+    for i, user := range users {
+        result[i] = User{
+            Name:    user.Name,
+            Balance: user.Balance * (1 + percent/100),
+        }
+    }
+    return result
+}
+
+func main() {
+    users := []User{
+        {"Alice", 1000.00},
+        {"Bob", 2500.00},
+        {"Charlie", 500.00},
+    }
+    
+    updatedUsers := applyInterest(users, 10) // +10%
+    
+    fmt.Println("Балансы после начисления процентов:")
+    for _, user := range updatedUsers {
+        fmt.Printf("%s: $%.2f\n", user.Name, user.Balance)
+    }
+}
