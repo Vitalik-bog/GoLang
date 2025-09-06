@@ -1,0 +1,11 @@
+package main
+
+import "fmt"
+
+func main() {
+    nums := []int{1, 2, 3, 4, 5}
+
+    for index, element := range nums {
+        fmt.Printf("Index: %d Element: %d\n", index, element)
+    }
+}
