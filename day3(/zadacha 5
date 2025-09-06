@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+type Student struct {
+    Name  string
+    Score int
+}
+
+func findTopStudents(students []Student, minScore int) []Student {
+    var topStudents []Student
+    
+    for _, student := range students {
+        if student.Score >= minScore {
+            topStudents = append(topStudents, student)
+        }
+    }
+    return topStudents
+}
+
+func main() {
+    students := []Student{
+        {"John", 85},
+        {"Sarah", 92},
+        {"Mike", 78},
+        {"Anna", 95},
+        {"Tom", 88},
+    }
+    
+    topStudents := findTopStudents(students, 90)
+    
+    fmt.Println("Студенты с баллом 90+:")
+    for _, student := range topStudents {
+        fmt.Printf("- %s: %d\n", student.Name, student.Score)
+    }
+}
