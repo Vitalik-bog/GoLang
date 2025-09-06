@@ -1,0 +1,42 @@
+package main
+
+import "fmt"
+
+func main() {
+    var num1, num2 float64 // создание 2х переменных с типом плавающей точкой 64 бит
+    var operation string    // создание переменной для хранения математических операций
+
+    fmt.Print("первое число := ")
+    fmt.Scan(&num1)
+
+    fmt.Print("второе число := ")
+    fmt.Scan(&num2)
+
+    fmt.Print("Введите математическую операцию (+,-,*,/): ")
+    fmt.Scan(&operation)
+
+    switch operation {
+    case "+":
+        result := num1 + num2
+        fmt.Printf("Результат: %.3f + %.3f = %.3f\n", num1, num2, result)
+    
+    case "-":
+        result := num1 - num2
+        fmt.Printf("Результат: %.3f - %.3f = %.3f\n", num1, num2, result)
+
+    case "*":
+        result := num1 * num2
+        fmt.Printf("Результат: %.3f * %.3f = %.3f\n", num1, num2, result)
+
+    case "/":
+        if num2 == 0 {
+            fmt.Println("Ошибка: деление на ноль!")
+        } else {
+            result := num1 / num2
+            fmt.Printf("Результат: %.3f / %.3f = %.3f\n", num1, num2, result)
+        }
+    
+    default:
+        fmt.Println("Такой операции нет, используйте существующие: +, -, *, /")
+    }
+}
