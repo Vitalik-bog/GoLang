@@ -1,0 +1,34 @@
+package main
+
+import "fmt"
+
+type Product struct {
+    Name  string
+    Price float64
+}
+
+func filterByPrice(products []Product, maxPrice float64) []Product {
+    var result []Product
+    
+    for _, product := range products {
+        if product.Price <= maxPrice {
+            result = append(result, product)
+        }
+    }
+    return result
+}
+
+func main() {
+    products := []Product{
+        {"Laptop", 1200.50},
+        {"Mouse", 25.99},
+        {"Keyboard", 75.00},
+        {"Monitor", 300.00},
+    }
+    
+    affordable := filterByPrice(products, 100.00)
+    fmt.Println("Товары до 100$:")
+    for _, product := range affordable {
+        fmt.Printf("- %s: $%.2f\n", product.Name, product.Price)
+    }
+}
