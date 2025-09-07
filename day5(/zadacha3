@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+func main() {
+    day := 5
+    
+    switch day {
+    case 1:
+        fmt.Println("Январь")
+    case 2:
+        fmt.Println("Февраль")
+    case 3:
+        fmt.Println("Март")
+    case 4:
+        fmt.Println("Апрель")
+    case 5:
+        fmt.Println("Май")
+    case 6:
+        fmt.Println("Июнь")
+    case 7:
+        fmt.Println("Июль")
+    case 8:
+        fmt.Println("Август")
+    case 9:
+        fmt.Println(" сентябрь")
+    case 10:
+        fmt.Println("октябрь")
+    case 11:
+        fmt.Println("ноябрь.")
+    case 12:
+        fmt.Println("декабрь")
+    default:
+     fmt.Println("Месяцев всего 12 выберай с 1 по 12")
+    }
+}
