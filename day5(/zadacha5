@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+    color_svetofor := 2
+
+    switch color_svetofor {
+    case 1:
+        fmt.Println("Красный! Стой")
+    case 2:
+        fmt.Println("Желтый! Приготовься")
+    case 3:
+        fmt.Println("Зеленый! Иди")
+    default:
+        fmt.Println("Других цветов нет")
+    }
+}
