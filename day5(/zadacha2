@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+    day := 5
+    
+    switch day {
+    case 1:
+        fmt.Println("Кол, очень плохо")
+    case 2:
+        fmt.Println("Двойка, стремись познать программирование")
+    case 3:
+        fmt.Println("Удвл")
+    case 4:
+        fmt.Println("Хорошо")
+    case 5:
+        fmt.Println("Отлично")
+    default:
+     fmt.Println("Других оценок нет")
+    }
+}
