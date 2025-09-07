@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+    age := 100
+    
+    switch {
+    case age >= 0 && age <= 12:
+        fmt.Println("Ребенок")
+    case age >= 13 && age <= 17:
+        fmt.Println("Подросток")
+    case age >= 18 && age <= 60:
+        fmt.Println("Взрослый")
+    case age >= 60 && age <=99:
+        fmt.Println("Пожилой")
+     case age >= 90:
+        fmt.Println("Привет эльфийка")   
+    default:
+        fmt.Println("Неверный возраст")
+    }
+}
+// Switch без выражения - удобно для сложных условий
