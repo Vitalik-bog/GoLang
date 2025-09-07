@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    purchases := 22
+    
+    switch {
+    case purchases >= 1 && purchases <= 5:
+        fmt.Println("Скидка: 0%")
+    case purchases >= 6 && purchases <= 10:
+        fmt.Println("Скидка: 5%")
+    case purchases >= 11 && purchases <= 20:
+        fmt.Println("Скидка: 10%")
+    case purchases > 20:
+        fmt.Println("Скидка: 15%")
+    default:
+        fmt.Println("Неверное количество")
+    }
+}
