@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+    a := 10
+    b := 5
+    operation :="+"
+
+    switch operation {
+    case"+":
+        fmt.Println(a+b)
+    case"-":
+        fmt.Println(a-b)
+    case"*":
+        fmt.Println(a*b)
+    case"/":
+        if b  !=0{
+            fmt.Println(a/b)
+        }else{
+            fmt.Println("Деление не ноль неприемлимо")
+        }
+    default:
+        fmt.Println("Такой операции нет")
+    }
+}     
