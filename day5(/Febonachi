@@ -1,0 +1,36 @@
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    a, b := 0, 1
+    maxInt := math.MaxInt64 // Максимальное значение для int
+    
+    for i := 0; a >= 0 && a <= maxInt; i++ {
+        fmt.Print(a, " ")
+        a, b = b, a+b
+        
+        if a < 0 { // Проверка на переполнение
+            fmt.Printf("\nПереполнение на %d-й итерации!\n", i+2)
+            break
+        }
+    }
+}
+//крч сам написал но было переполнения  и уходил в минус числа 
+// package main
+
+//import "fmt"
+
+//func main() {
+  //  n := 10 // Сколько чисел вывести
+    
+    //a, b := 0, 1
+    
+    //for i := 0; i < n; i++ {
+      //  fmt.Print(a, " ")
+        //a, b = b, a+b
+    //}
+//}
