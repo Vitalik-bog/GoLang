@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    year := 2024
+    
+    // Сложное условие со скобками для порядка выполнения
+    isLeap := (year%4 == 0 && year%100 != 0) || year%400 == 0
+    
+    fmt.Printf("Год %d високосный: %t\n", year, isLeap)
+}
