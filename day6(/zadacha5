@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    number := 8
+    
+    // Два условия через И
+    isValid := number > 0 && number % 2 == 0
+    
+    fmt.Printf("Число %d: положительное и четное = %t\n", number, isValid)
+}
