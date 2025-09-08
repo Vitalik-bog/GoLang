@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    isPremium := true
+    age := 16
+    
+    // Логика: premium ИЛИ возраст больше 18
+    hasAccess := isPremium || age > 18
+    
+    fmt.Printf("Premium: %t, Возраст: %d\n", isPremium, age)
+    fmt.Println("Доступ к контенту:", hasAccess)
+}
