@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    dice := 7
+    
+    // Выпало 7 ИЛИ 11
+    isWin := dice == 7 || dice == 11
+    
+    fmt.Printf("Выпало: %d\n", dice)
+    fmt.Println("Победа:", isWin)
+}
