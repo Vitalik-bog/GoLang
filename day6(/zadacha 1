@@ -1,0 +1,17 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    age := 25
+    
+    if age >= 18 && age <= 60 {
+        fmt.Println("Доступ разрешен! Возраст подходит.")
+    } else if age < 18 {
+        fmt.Println("Доступ запрещен! Слишком молод.")
+    } else {
+        fmt.Println("Доступ запрещен! Превышен возрастной лимит.")
+    }
+}
