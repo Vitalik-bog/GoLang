@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    login := "admin"
+    password := "12345"
+
+    if login == "admin" && password == "12345" {
+        fmt.Println("Вход в личный кабинет разрешен")
+    } else {
+        fmt.Println("Напишите правильные данные!")   
+    }
+}
