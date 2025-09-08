@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    money := 500.0
+    hasLoyalty := true
+    
+    // ИЛИ 
+
+    hasDiscount := money > 1000 || hasLoyalty
+    
+    fmt.Printf("Сумма: $%.2f, Карта лояльности: %t\n", money, hasLoyalty)
+    fmt.Println("Скидка доступна:", hasDiscount)
+}
