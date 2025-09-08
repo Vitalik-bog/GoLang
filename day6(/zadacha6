@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    day := "понедельник"
+    hour := 14
+    
+    // Не выходной И время между 9 и 18
+    isWorking := (day != "суббота" && day != "воскресенье") && hour >= 9 && hour <= 18
+    
+    fmt.Printf("День: %s, Время: %d:00\n", day, hour)
+    fmt.Println("Рабочее время:", isWorking)
+}
