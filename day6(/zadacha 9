@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+    age := 17
+    emailConfirmed := true
+    parentalControl := true
+    
+    // (Взрослый с подтвержденным email) ИЛИ родительский контроль
+    hasAccess := (age >= 18 && emailConfirmed) || parentalControl
+    
+    fmt.Printf("Возраст: %d, Email подтвержден: %t, Родительский контроль: %t\n",
+        age, emailConfirmed, parentalControl)
+    fmt.Println("Доступ разрешен:", hasAccess)
+}
