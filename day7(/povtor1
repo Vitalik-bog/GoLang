@@ -1,0 +1,12 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var name string
+    fmt.Print("Введи свое имя")
+    fmt.Scan(&name)
+    fmt.Printf("Привет %s!",name)
+}
