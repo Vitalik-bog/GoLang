@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+
+func main() {
+    x, y := 10, 20
+    result := max(x, y)
+    fmt.Printf("Максимум из %d и %d = %d\n", x, y, result)
+}
