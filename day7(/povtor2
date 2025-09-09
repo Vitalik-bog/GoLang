@@ -1,0 +1,13 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var a,b int
+    fmt.Print("Введите два числа:")
+    fmt.Scan(&a,&b)
+    sum := a + b
+    fmt.Printf("Сумма: %d + %d =%d\n",a,b,sum)
+}
