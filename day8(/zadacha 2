@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+func main(){
+    fmt.Println("Дебильный калькулятор")
+    fmt.Println("какое действие вы хотите выполнить ?(+,-,/,*,%)")
+    
+    var action string 
+    fmt.Scan(&action)
+    
+    var a float64
+    var b float64
+
+    fmt.Println("Введите первое число:")
+    fmt.Scan(&a) 
+
+    
+    fmt.Println("Введите второе  число:")
+    fmt.Scan(&b) 
+
+
+    switch  {
+    case action == "+":
+        fmt.Println("Сумма чисел " +fmt. Sprint(a + b))
+    case action == "-":
+        fmt.Println("Вычитание " +fmt. Sprint(a - b))
+    case action == "/":
+        fmt.Println("Деление " +fmt. Sprint(a / b))
+    case action == "*":
+        fmt.Println("Умножение " +fmt. Sprint(a * b))
+    }
+}
