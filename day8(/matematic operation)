@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+import "math"
+
+func main(){
+    var a float64 = 225
+    
+
+    result := math.Sqrt(a)
+    fmt.Println(result)
+    
+}
