@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+    // 1. Создаем пустой список покупок (срез строк)
+    shoppingList := []string{} // Пока пустой
+    
+    // 2. Добавляем товары в список
+    shoppingList = append(shoppingList, "Хлеб")
+    shoppingList = append(shoppingList, "Молоко")
+    shoppingList = append(shoppingList, "Яйца")
+    
+    // 3. Смотрим, что получилось
+    fmt.Println("Мой список покупок:")
+    for i, item := range shoppingList {
+        fmt.Printf("%d. %s\n", i+1, item)
+    }
+    
+    // 4. Добавим еще один товар
+    shoppingList = append(shoppingList, "Шоколадка")
+    fmt.Println("\nДобавили шоколадку:", shoppingList)
+}
