@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+// 1. Создаем метод "Отпраздновать день рождения"
+// (b *Person) - это как сказать "работай с оригинальной записью, а не с копией"
+func (b *Person) HappyBirthday() {
+    b.Age = b.Age + 1 // Увеличиваем возраст на 1
+    fmt.Println("С днем рождения,", b.Name, "! Теперь тебе", b.Age)
+}
+
+func main() {
+    // 2. Создаем человека
+    friend := Person{Name: "Иван", Age: 20}
+    
+    fmt.Println("До дня рождения:", friend.Age) // 20
+    
+    // 3. Вызываем метод
+    friend.HappyBirthday() // Стало 21
+    friend.HappyBirthday() // Стало 22
+    
+    fmt.Println("После двух дней рождений:", friend.Age) // 22
+}
