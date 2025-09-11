@@ -1,0 +1,40 @@
+package main
+
+import "fmt"
+
+type Book struct {
+    Title  string
+    Author string
+}
+
+func main() {
+    // 1. СОЗДАНИЕ СРЕЗА СТРУКТУР
+    // Вариант 1: Инициализация с данными
+    library := []Book{
+        {"Война и мир", "Толстой"},
+        {"Идиот", "Достоевский"},
+    }
+
+    // 2. ДОБАВЛЕНИЕ В СРЕЗ (ИЗМЕНЯЕТ СРЕЗ)
+    // Функция append возвращает новый срез, поэтому нужно перезаписать переменную.
+    newBook := Book{Title: "1984", Author: "Оруэлл"}
+    library = append(library, newBook)
+
+    // 3. ОБХОД СРЕЗА (Итерация)
+    fmt.Println("Вся библиотека:")
+    // i - индекс, book - копия элемента на текущем шаге
+    for i, book := range library {
+        fmt.Printf("%d. %s - %s\n", i+1, book.Author, book.Title)
+    }
+
+    // 4. ФУНКЦИЯ MAKE (Создание среза с заданной длиной и вместимостью)
+    // Полезно, когда вы знаете заранее, сколько элементов вам примерно понадобится.
+    // Это может помочь избежать множественных переаллокаций памяти при append.
+    // make([]Type, length, capacity)
+    futureLibrary := make([]Book, 0, 10) // Длина 0 (пустой), но вместимость под 10 элементов
+    fmt.Printf("\nДлина: %d, Вместимость: %d\n", len(futureLibrary), cap(futureLibrary))
+
+    // Теперь можно добавлять элементы, и переаллокация произойдет только после 10-го append.
+    futureLibrary = append(futureLibrary, Book{"Гарри Поттер", "Роулинг"})
+    fmt.Printf("После добавления. Длина: %d, Вместимость: %d\n", len(futureLibrary), cap(futureLibrary))
+}
