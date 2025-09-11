@@ -1,0 +1,41 @@
+package main
+
+import "fmt"
+
+type Book struct {
+    Title  string
+    Author string
+    Year   int
+    Read   bool // Новое поле: прочитана ли книга
+}
+
+// 1. МЕТОД С ПОЛУЧАТЕЛЕМ ПО ЗНАЧЕНИЮ (НЕ ИЗМЕНИТ ОРИГИНАЛ)
+// `b` - это КОПИЯ структуры. Изменения внутри метода не повлияют на исходный экземпляр.
+func (b Book) MarkAsReadNoEffect() {
+    b.Read = true
+    fmt.Println("Inside MarkAsReadNoEffect:", b.Read) // Выведет true
+}
+
+// 2. МЕТОД С ПОЛУЧАТЕЛЕМ-УКАЗАТЕЛЕМ (ИЗМЕНИТ ОРИГИНАЛ)
+// `b *Book` - это указатель на оригинальную структуру.
+// `*` перед типом означает "указатель на Book".
+// Изменения через указатель меняют исходный объект.
+func (b *Book) MarkAsRead() {
+    b.Read = true // Go автоматически разыменовывает указатель для доступа к полям (`(*b).Read = true`)
+    fmt.Println("Inside MarkAsRead:", b.Read) // Выведет true
+}
+
+func main() {
+    book := Book{Title: "Преступление и наказание", Author: "Достоевский", Read: false}
+
+    fmt.Println("Before:", book.Read) // false
+
+    book.MarkAsReadNoEffect()
+    fmt.Println("After MarkAsReadNoEffect:", book.Read) // false! Оригинал не изменился
+
+    // 3. ВЫЗОВ МЕТОДА С УКАЗАТЕЛЕМ
+    // Несмотря на то, что `book` - не указатель, а значение,
+    // Go автоматически берет его адрес (&book) для вызова метода.
+    book.MarkAsRead()
+    fmt.Println("After MarkAsRead:", book.Read) // true! Оригинал изменен
+}
