@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+// 1. Создаем структуру для книги
+type Book struct {
+    Title  string
+    Read   bool
+}
+
+// 2. Создаем метод для пометки "Прочитано"
+func (b *Book) MarkAsRead() {
+    b.Read = true
+}
+
+func main() {
+    // 3. Создаем книжную полку (срез книг)
+    shelf := []Book{
+        {Title: "Сказки", Read: false},
+        {Title: "Энциклопедия", Read: false},
+        {Title: "Детектив", Read: false},
+    }
+    
+    // 4. Отмечаем одну книгу как прочитанную
+    shelf[0].MarkAsRead() // Прочитали "Сказки"
+    
+    // 5. Смотрим статус книг
+    fmt.Println("Статус книг на полке:")
+    for i, book := range shelf {
+        status := "еще не читал"
+        if book.Read {
+            status = "прочитано"
+        }
+        fmt.Printf("%d. %s - %s\n", i+1, book.Title, status)
+    }
+}
