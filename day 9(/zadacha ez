@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+// 1. Создаем шаблон (структуру) для человека
+type Person struct {
+    Name string
+    Age  int
+    City string
+}
+
+func main() {
+    // 2. Делаем свою визитку
+    me := Person{
+        Name: "Виталя",
+        Age:  25,
+        City: "Москва",
+    }
+
+    // 3. Красиво представляемся
+    fmt.Println("Привет! Меня зовут", me.Name)
+    fmt.Println("Мне", me.Age, "лет")
+    fmt.Println("Я живу в городе", me.City)
+}
