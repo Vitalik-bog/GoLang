@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    // 2D массив - таблица умножения
+    multiplicationTable := [3][3]int{}
+    
+    // Заполняем таблицу
+    for i := 0; i < 3; i++ {
+        for j := 0; j < 3; j++ {
+            multiplicationTable[i][j] = (i + 1) * (j + 1)
+        }
+    }
+    
+    // Выводим красиво
+    fmt.Println("Таблица умножения 3x3:")
+    for i := 0; i < 3; i++ {
+        for j := 0; j < 3; j++ {
+            fmt.Printf("%d × %d = %d\t", i+1, j+1, multiplicationTable[i][j])
+        }
+        fmt.Println()
+    }
+}
