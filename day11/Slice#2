@@ -1,0 +1,14 @@
+package main
+
+import (
+    "fmt"
+    "sort" // Cортирует даже алфавит.
+)
+
+func main() {
+    slice :=[]string{"v","b","a","c","d","z"}
+	fmt.Println(slice)
+	slice = append(slice,"hhh")
+	sort.Strings(slice)
+	fmt.Println(slice)	
+}
