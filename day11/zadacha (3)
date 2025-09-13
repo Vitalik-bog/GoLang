@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{3, 7, 1, 7, 4}
+    for i, num := range numbers {
+        if num == 7 {
+            fmt.Printf("Число 7 найдено на позиции %d\n", i)
+        }
+    }
+}
