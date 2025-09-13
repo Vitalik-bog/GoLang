@@ -1,0 +1,40 @@
+package main
+
+import (
+    "fmt"
+)
+// type - значит создаем новый тип
+// struct - значит это структура (как чертеж)
+type  Rectangle struct{
+	width float64
+	height float64
+}
+// Создаем метод для вычисления площади
+// (r Rectangle) - это "получатель". Метод будет работать с копией прямоугольника
+// area() - название метода
+// float64 - тип возвращаемого значения (площадь будет дробным числом)
+func (r Rectangle)area()float64  {
+	result := r.width *r.height
+	return result
+}
+
+func main(){
+	priam1 := Rectangle{//создание первого прямоугольника
+		width: 10.5,
+		height: 20.3,
+	}
+//создаем второй прямоугольник
+	priam2 := Rectangle{5.0,8.0}
+// вычисление площади
+area1 := priam1.area()
+area2 := priam2.area()
+
+fmt.Printf("Прямоугольник 1: ширина=%1.f,высота =%1f,площадь = %.2f\n",priam1.width,priam1.height,area1)
+
+fmt.Printf("Прямоугольник 2: ширина=%1.f,высота =%1f,площадь = %.2f\n",priam2.width,priam2.height,area2)
+
+fmt.Println("Площадь первого прямоугльника:", priam1.area())
+
+    smallRect := Rectangle{2.5, 4.0}
+    fmt.Printf("Маленький прямоугольник: %.2f x %.2f = %.2f\n",smallRect.width, smallRect.height, smallRect.area())
+}
