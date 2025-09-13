@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{1, 2, 3, 4, 5, 6}
+    var oddIndex, evenIndex []int
+    
+    for i, num := range numbers {
+        if i%2 == 0 {
+            evenIndex = append(evenIndex, num)
+        } else {
+            oddIndex = append(oddIndex, num)
+        }
+    }
+    
+    fmt.Println("Нечетные позиции:", oddIndex)
+    fmt.Println("Четные позиции:", evenIndex)
+}
