@@ -1,0 +1,15 @@
+package main
+
+import (
+    "fmt"
+    "sort" // Добавляем этот импорт!Для соортировки.
+)
+
+func main() {
+    slice := []int{3, 1, 2, 5, 7, 4}
+    slice = append(slice, 0) // добавление 0 в конец
+    // slice[0] = 11 // меняем первый элемент массива 3 на 11
+    
+    sort.Ints(slice) 
+    fmt.Println(slice)
+}
