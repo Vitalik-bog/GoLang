@@ -1,0 +1,48 @@
+package main
+
+import "fmt"
+
+func urMinMax(numbers []int) (int, int) {
+    if len(numbers) == 0 { // Проверяем, не пустой ли срез
+        return 0, 0 // Если пустой, возвращаем нули
+    }
+
+    min := numbers[0] // Первое число - начальный минимум
+    max := numbers[0] // Первое число - начальный максимум
+
+    for _, num := range numbers {
+        // Если текущее число МЕНЬШЕ нашего минимума
+        if num < min {
+            min = num // Значит нашли новое минимальное число
+        }
+        
+        // Если текущее число БОЛЬШЕ нашего максимума  
+        if num > max {
+            max = num // Значит нашли новое максимальное число
+        }
+    }
+    
+    return min, max // Возвращаем результат ПОСЛЕ цикла
+}
+
+func main() {
+    // Пример 1: Обычные числа
+    numbers := []int{3, 7, 1, 9, 4, 2}
+    min, max := urMinMax(numbers)
+    fmt.Printf("Числа: %v\n", numbers)
+    fmt.Printf("Минимальное: %d, Максимальное: %d\n", min, max)
+    fmt.Println() // Пустая строка для красоты
+
+    // Пример 2: Отрицательные числа
+    numbers2 := []int{-5, -2, -10, -1}
+    min2, max2 := urMinMax(numbers2)
+    fmt.Printf("Числа: %v\n", numbers2)
+    fmt.Printf("Минимальное: %d, Максимальное: %d\n", min2, max2)
+    fmt.Println()
+
+    // Пример 3: Одно число
+    numbers3 := []int{42}
+    min3, max3 := urMinMax(numbers3)
+    fmt.Printf("Числа: %v\n", numbers3)
+    fmt.Printf("Минимальное: %d, Максимальное: %d\n", min3, max3)
+}
