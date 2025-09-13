@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{1, 2, 3, 4}
+    doubled := make([]int, len(numbers))
+    
+    for i, num := range numbers {
+        doubled[i] = num * 2
+    }
+    
+    fmt.Println("Удвоенные:", doubled)
+}
