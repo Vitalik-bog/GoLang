@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    numbers := []int{5, -2, 0, -8, 3, -1}
+    count := 0
+    for _, num := range numbers {
+        if num < 0 {
+            count++
+        }
+    }
+    fmt.Println("Отрицательных чисел:", count)
+}
