@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main()  {
+	numbers :=[]int{5, -2, 10, -8, 3}//если число меньше 0 то заменяется на индекс по порядку.
+	for i , num := range numbers{
+		if num < 0{
+			numbers[i]=i
+		}
+	}
+	fmt.Println(numbers)
+}
