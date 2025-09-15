@@ -1,0 +1,85 @@
+package main
+
+import "fmt"
+
+type Task struct {
+    ID     int    
+    Title  string 
+    IsDone bool  
+}
+var tasks []Task
+var nextID = 1
+
+//Функция для добавления новой задачи
+func addTask(title string) {
+    task := Task{
+        ID:     nextID,
+        Title:  title,
+        IsDone: false,
+    }
+    tasks = append(tasks, task)
+    nextID++
+    fmt.Printf("Задача добавлена: %s (ID: %d)\n", title, task.ID)
+}
+
+//Функция для удаления задачи по ID
+func deleteTask(id int) {
+    for i, task := range tasks {
+        if task.ID == id {
+            // Удаляем задачу из среза
+            tasks = append(tasks[:i], tasks[i+1:]...)
+            fmt.Printf("Задача с ID %d удалена\n", id)
+            return
+        }
+    }
+    fmt.Printf("Задача с ID %d не найдена\n", id)
+}
+
+//Функция для вывода всех задач
+func listTasks() {
+    if len(tasks) == 0 {
+        fmt.Println("Список задач пуст")
+        return
+    }
+    
+    fmt.Println("\nСписок всех задач:")
+    fmt.Println("ID | Статус | Задача")
+    fmt.Println("-------------------")
+    for _, task := range tasks {
+        status := "❌" // Не выполнено
+        if task.IsDone {
+            status = "✅" // Выполнено
+        }
+        fmt.Printf("%2d |   %s    | %s\n", task.ID, status, task.Title)
+    }
+}
+
+// Функция для отметки задачи как выполненной
+func completeTask(id int) {
+    for i := range tasks {
+        if tasks[i].ID == id {
+            tasks[i].IsDone = true
+            fmt.Printf("Задача с ID %d отмечена как выполненная\n", id)
+            return
+        }
+    }
+    fmt.Printf("Задача с ID %d не найдена\n", id)
+}
+
+func main() {
+    //  Пример использования
+    fmt.Println("=== МЕНЕДЖЕР ЗАДАЧ ===")
+    // Добавляем задачи
+    addTask("Выучить Go")
+    addTask("Сделать домашнее задание")
+    addTask("Прочитать книгу")
+    listTasks()
+    fmt.Println("\nОтмечаем задачу как выполненную:")
+    completeTask(1)
+    listTasks()
+    // Удаляем задачу
+    fmt.Println("\nУдаляем задачу:")
+    deleteTask(2)
+    // Финальный список
+    listTasks()
+}
