@@ -1,0 +1,11 @@
+package main
+
+import "fmt"
+
+func main() {
+    age := 31
+    name := "Jonh"
+    value := 100.476
+    aaa:= true
+    fmt.Printf("My age is %d. My name is %s. I have %.2f dollars.", age, name, value,aaa)
+}
