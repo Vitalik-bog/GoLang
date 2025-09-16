@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    scores := map[string]int{
+        "Alice": 95,
+        "Bob":   87,
+        "Carol": 92,
+    }
+    
+    delete (scores,"Bob")
+    
+    fmt.Println(scores)
+}
