@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+
+    capitals := map[string]string{
+    "Russia": "Moscow",
+    "USA":    "Washington",
+    "France": "Paris",
+    "Belarus": "Mins",
+    "Germany":"Berlin"
+}
+    fmt.Println(capitals["Russia"])
+}
