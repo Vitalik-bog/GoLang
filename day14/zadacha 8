@@ -1,0 +1,14 @@
+
+package main
+
+import "fmt"
+
+func main() {
+    // Карта где ключ - строка, значение - срез строк
+    students := make(map[string][]string)
+    
+    students["classA"] = []string{"Alice", "Bob"}
+    students["classB"] = []string{"Carol", "Dave"}
+    
+    fmt.Println(students)
+}
