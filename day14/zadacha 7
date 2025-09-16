@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    map1 := map[string]int{"a": 1, "b": 2}
+    map2 := map[string]int{"b": 3, "c": 4}
+    
+for k, v := range map2 {
+    map1[k] = v
+}
+    
+    fmt.Println(map1)
+}
