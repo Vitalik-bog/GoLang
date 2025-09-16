@@ -1,0 +1,18 @@
+package main
+
+import (
+    "fmt"
+    "strings" // Правильный импорт пакета strings
+)
+
+func main() {
+    text := "go learn go practice go code"
+    words := strings.Split(text, " ") // Используем strings.Split
+    
+    frequency := make(map[string]int)
+    for _, word := range words {
+        frequency[word]++
+    }
+    
+    fmt.Println(frequency)
+}
