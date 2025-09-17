@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func countChars(s string) map[rune]int {
+    result := make(map[rune]int)
+    for _, char := range s {
+        result[char]++
+    }
+    return result
+}
+
+func main() {
+    fmt.Println(countChars("hello")) 
+}
