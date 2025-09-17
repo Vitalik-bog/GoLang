@@ -1,0 +1,84 @@
+package main
+
+import (
+    "fmt"
+)
+
+// Функция для получения возраста пользователя из map
+func getAge(users map[string]int, name string) (int, error) {
+    // Проверяем, существует ли пользователь в map
+    // users[name] возвращает два значения: значение и флаг exists
+    if age, exists := users[name]; exists {
+        // Если пользователь существует, возвращаем его возраст и nil (ошибки нет)
+        return age, nil
+    }
+    // Если пользователь не найден, возвращаем 0 и ошибку
+    return 0, fmt.Errorf("user %s not found", name)
+}
+
+func main() {
+    // 1. Создаем map с пользователями и их возрастом
+    // map[string]int - это словарь, где ключи - строки (имена), значения - числа (возраст)
+    userAges := map[string]int{
+        "Alice":   25,
+        "Bob":     30,
+        "Charlie": 35,
+        "Diana":   28,
+    }
+
+    // 2. Выводим всех пользователей (для наглядности)
+    fmt.Println("Все пользователи в системе:")
+    for name, age := range userAges {
+        fmt.Printf("- %s: %d лет\n", name, age)
+    }
+    fmt.Println()
+
+    // 3. Тестируем функцию getAge с разными именами
+    testNames := []string{"Alice", "Bob", "Eve", "Charlie", "Frank"}
+
+    for _, name := range testNames {
+        fmt.Printf("Поиск пользователя '%s':\n", name)
+        
+        // Вызываем нашу функцию
+        age, err := getAge(userAges, name)
+        
+        // Проверяем, есть ли ошибка
+        if err != nil {
+            // Если есть ошибка (пользователь не найден)
+            fmt.Printf("  ❌ Ошибка: %v\n", err)
+        } else {
+            // Если ошибки нет (пользователь найден)
+            fmt.Printf("  ✅ Найден! Возраст: %d лет\n", age)
+        }
+        fmt.Println()
+    }
+
+    // 4. Дополнительные операции с map (что можно еще делать)
+    fmt.Println("=== ДОПОЛНИТЕЛЬНЫЕ ОПЕРАЦИИ С MAP ===")
+    
+    // Добавление нового пользователя
+    userAges["Eve"] = 22
+    fmt.Println("Добавили нового пользователя Eve:", userAges["Eve"])
+    
+    // Обновление возраста
+    userAges["Alice"] = 26
+    fmt.Println("Обновили возраст Alice:", userAges["Alice"])
+    
+    // Удаление пользователя
+    delete(userAges, "Bob")
+    fmt.Println("Удалили Bob. Теперь в map:", len(userAges), "пользователей")
+    
+    // Проверка существования (альтернативный способ)
+    if age, exists := userAges["Diana"]; exists {
+        fmt.Println("Diana существует в map, возраст:", age)
+    }
+    
+    // Получение количества элементов
+    fmt.Println("Всего пользователей:", len(userAges))
+    
+    // Итерация по всем элементам map
+    fmt.Println("\nТекущий список пользователей:")
+    for name, age := range userAges {
+        fmt.Printf("  %s: %d лет\n", name, age)
+    }
+}
