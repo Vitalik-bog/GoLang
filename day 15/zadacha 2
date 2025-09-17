@@ -1,0 +1,65 @@
+package main
+
+import (
+    "fmt"
+    "strings" // Добавляем импорт пакета strings
+)
+
+func validateEmail(email string) error {
+    // 1. Проверяем, что есть символ @
+    if !strings.Contains(email, "@") {
+        return fmt.Errorf("invalid email format: no @ symbol")
+    }
+    
+    // 2. Делим email по @ и проверяем части
+    parts := strings.Split(email, "@")
+    if len(parts) != 2 {
+        return fmt.Errorf("invalid email format: must contain exactly one @")
+    }
+    
+    // 3. Проверяем имя пользователя (часть до @)
+    username := parts[0]
+    if len(username) < 1 {
+        return fmt.Errorf("invalid email format: no username")
+    }
+    
+    // 4. Проверяем домен (часть после @)
+    domain := parts[1]
+    if len(domain) < 1 {
+        return fmt.Errorf("invalid email format: no domain")
+    }
+    
+    // 5. Проверяем, что в домене есть точка
+    if !strings.Contains(domain, ".") {
+        return fmt.Errorf("invalid email format: domain must contain a dot")
+    }
+    
+    // 6. Проверяем, что после последней точки есть хотя бы 2 символа
+    domainParts := strings.Split(domain, ".")
+    if len(domainParts[len(domainParts)-1]) < 2 {
+        return fmt.Errorf("invalid email format: domain suffix too short")
+    }
+    
+    return nil // Все проверки пройдены
+}
+
+func main() {
+    // Тестируем функцию
+    emails := []string{
+        "test@example.com",
+        "invalid.email",
+        "@example.com", 
+        "test@",
+        "test@example",
+        "test@example.c",
+    }
+    
+    for _, email := range emails {
+        err := validateEmail(email)
+        if err != nil {
+            fmt.Printf("❌ %s: %v\n", email, err)
+        } else {
+            fmt.Printf("✅ %s: valid\n", email)
+        }
+    }
+}
