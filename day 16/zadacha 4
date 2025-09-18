@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func addNumbers(a int, b int) int {
+        sum:=a + b
+        return sum
+}
+
+func main() {
+    sum := addNumbers(10, 15)
+    fmt.Println("Сумма:", sum)
+}
