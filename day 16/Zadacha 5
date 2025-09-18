@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func isEven(number int) bool {
+     return number % 2 == 0
+}
+
+func main() {
+    fmt.Println("10 четное?", isEven(10))
+    fmt.Println("7 четное?", isEven(7))
+}
