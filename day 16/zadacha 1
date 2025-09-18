@@ -1,0 +1,11 @@
+package main
+
+import "fmt"
+
+func printMessage() {
+    fmt.Println("Я учу Go-lang")
+}
+
+func main() {
+    printMessage()
+}
