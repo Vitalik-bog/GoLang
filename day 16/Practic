@@ -1,0 +1,11 @@
+package main
+
+import "fmt"
+
+func greetByName(name string) {
+    fmt.Printf("Привет, %s!\n", name)
+}
+
+func main() {
+    greetByName("Виталя") 
+}
