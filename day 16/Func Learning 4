@@ -1,0 +1,17 @@
+package main
+
+import  "fmt"
+
+func math_func(a int, b int) (int,int,int,int) {
+    sum := a + b
+    sub := a - b
+    mul := a * b
+    div := a / b
+    return sum,sub,mul,div
+}
+
+func main(){
+    s, su, m, d := math_func(3,5)
+    fmt.Println(s,su,m,d)
+}
+
