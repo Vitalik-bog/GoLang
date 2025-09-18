@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func square(number int) int {
+     return number * number
+}
+
+func main() {
+    result := square(5)
+    fmt.Println("Квадрат числа:", result)
+}
