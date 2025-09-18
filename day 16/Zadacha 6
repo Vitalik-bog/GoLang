@@ -1,0 +1,29 @@
+package main
+
+import (
+    "fmt"
+    "errors"
+)
+
+func safeDivide(a, b int) (int, error) {
+    if b == 0 {
+        return 0, errors.New("делить на нуль")
+    }
+    return a / b, nil
+}
+
+func main() {
+    result, err := safeDivide(10, 2)
+    if err != nil {
+        fmt.Println("Ошибка:", err)
+    } else {
+        fmt.Println("Результат:", result)
+    }
+    
+    result, err = safeDivide(10, 0)
+    if err != nil {
+        fmt.Println("Ошибка:", err)
+    } else {
+        fmt.Println("Результат:", result)
+    }
+}
