@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func test(someFunction func(int) int) {
+    fmt.Println(someFunction(25))
+}
+
+func main() {
+  
+    square := func(x int) int {
+        return x * x
+    }
+    test(square)
+}
