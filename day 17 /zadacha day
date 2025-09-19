@@ -1,0 +1,25 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    // Исходный текст
+    text := "кошка собака кошка птица собака кошка"
+    
+    // Разбиваем текст на слова
+    words := strings.Fields(text) // Разделяем по пробелам
+    // Создаем map для подсчета слов
+    wordCount := make(map[string]int)
+    //Подсчитываем слова
+    for _, word := range words {
+        wordCount[word]++ // Увеличиваем счетчик для каждого слова
+    }
+    //Выводим результат
+    fmt.Println("Частота слов:")
+    for word, count := range wordCount {
+        fmt.Printf("%s: %d\n", word, count)
+    }
+}
