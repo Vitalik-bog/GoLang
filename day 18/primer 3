@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    person := Person{"Анна", 25}
+    ptr := &person
+    
+    fmt.Println("Имя:", (*ptr).Name) // Анна
+    fmt.Println("Имя:", ptr.Name)    // Анна (Go сам разыменует)
+    
+    ptr.Age = 26 // Меняем возраст через указатель
+    fmt.Println("Новый возраст:", person.Age) // 26
+}
