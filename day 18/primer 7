@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    value := 55
+    ptr := &value
+    pptr := &ptr
+    
+    // Допиши: получи значение 55 через pptr
+    fmt.Println("Значение через двойной указатель:", fmt.Println("Значение через двойной указатель:", **pptr))
+}
