@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func doubleValue(n *int) {
+    // Допиши функцию: удвой значение по указателю
+    func doubleValue(n *int) {
+    *n = *n * 2
+}
+}
+
+func main() {
+    num := 8
+    doubleValue(&num)
+    fmt.Println("Удвоенное значение:", num) // Должно быть 16
+}
