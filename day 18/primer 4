@@ -1,0 +1,10 @@
+package main
+
+import "fmt"
+
+func main() {
+    a := 42
+    ptr := &a
+    
+   fmt.Println("Значение через указатель:", *ptr)
+}
