@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func swap(a, b *int) {
+    // Допиши функцию: поменяй значения a и b местами
+    func swap(a, b *int) {
+    temp := *a
+    *a = *b
+    *b = temp
+}
+}
+
+func main() {
+    x, y := 10, 20
+    swap(&x, &y)
+    fmt.Printf("x=%d, y=%d", x, y) // Должно быть: x=20, y=10
+}
