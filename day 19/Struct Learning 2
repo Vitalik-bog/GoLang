@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+type User struct{
+  name string 
+  age int64
+  password string     
+} 
+
+func change(u*User){
+  u.name = "Kate"
+}
+
+func main() {
+  //var user User =User{name:"John",age:23, password:"pass"}
+  user := User{"John",23,"pass"}
+  user.name = "Den"
+  change(&user)
+  fmt.Println(user.name)
+}
