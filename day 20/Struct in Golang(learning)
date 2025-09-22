@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+type User struct {
+    name     string
+    age      int64
+    password string
+}
+
+func (u *User) setName(name1 string) {
+    u.name = name1
+}
+func (u *User) getName() string {
+    return u.name
+}
+
+func main() {
+    user := User{"John", 23, "pass"}
+    user.setName("Den")
+    fmt.Println(user.getName())
+}
