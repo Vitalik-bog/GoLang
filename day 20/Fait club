@@ -22,5 +22,9 @@ func (u User) isElder() bool {
 
 func main() {
     user := User{"John", 23, "pass"}  
-    fmt.Println(user.isElder())
+    if user.isElder(){
+      fmt.Println("Добро пожаловать в бойцовский клуб!")
+    }else{
+      fmt.Println("Нельзя!Проваливай!")
+    }
 }
