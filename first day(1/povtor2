@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+
+func main(){
+  score := 120
+
+  text := "Game over"
+
+  score = score + 10
+
+  fmt.Println(score)
+  fmt.Println(text)
+}
