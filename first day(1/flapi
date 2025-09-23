@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+
+func main(){
+  text1 := "Get Ready"
+  text2 :="Game Over"
+  
+  score:= 0
+
+  fmt.Println(text1)
+  fmt.Println("Ваш счет:",score)
+
+  fmt.Println("Вы пролетели через трубу")
+  score = score + 1
+  fmt.Println("Ваш Счет:",score)
+
+  fmt.Println("Вы пролетели через трубу")
+  score = score + 1
+  fmt.Println("Ваш Счет:",score)
+
+  fmt.Println("Вы пролетели через трубу")
+  score = score + 1
+  fmt.Println("Ваш Счет:",score)
+
+  fmt.Println("Врезались в трубу!",text2)
+}
