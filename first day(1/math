@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+
+func main(){
+
+  score := 11
+  celoe := score / 3
+  ostatok := score % 3
+
+   fmt.Println(score,celoe,ostatok)
+}
