@@ -1,0 +1,53 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func countWords(text string) map[string]int {
+
+	wordCount := make(map[string]int)	
+	words := strings.Fields(strings.ToLower(text))
+    
+	for _, word := range words {
+
+		word = strings.Trim(word, ".,!?;:\"()")
+		if word != "" {
+			wordCount[word]++
+		}
+	}
+	
+	return wordCount
+}
+
+func printWordCount(wordCount map[string]int) {
+	fmt.Println("Частота слов в тексте:")
+	fmt.Println("=====================")
+	
+	for word, count := range wordCount {
+		fmt.Printf("%-15s: %d\n", word, count)
+	}
+}
+
+func main() {
+	text := `Ветер ветер ветер крутил вертел вертел 
+	ветер листья осенние осенние листья падали 
+	на землю землю холодную холодную землю`
+	
+
+	wordCount := countWords(text)
+	printWordCount(wordCount)
+
+	fmt.Printf("\nОбщее количество уникальных слов: %d\n", len(wordCount))
+	
+	mostFrequentWord := ""
+	maxCount := 0
+	for word, count := range wordCount {
+		if count > maxCount {
+			maxCount = count
+			mostFrequentWord = word
+		}
+	}
+	fmt.Printf("Самое частое слово: '%s' (встречается %d раз)\n", mostFrequentWord, maxCount)
+}
