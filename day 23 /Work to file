@@ -1,0 +1,28 @@
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+func main() {
+    data := []byte("text to file\n League of Legends")
+    
+    // Запись в файл
+    err := ioutil.WriteFile("text.txt", data, 0600)
+    if err != nil {
+        fmt.Println("Не могу создать файл:", err)
+        return
+    }
+
+    // Чтение из файла
+    fileData, err := ioutil.ReadFile("text.txt")
+    if err != nil {
+        fmt.Println("Не могу прочитать файл:", err)
+        return
+    }
+
+    fmt.Println(string(fileData))
+    
+    os.Remove("text.txt")
+}
