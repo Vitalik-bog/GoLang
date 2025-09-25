@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main(){
+   sunny:= false // true
+   weekend:= false //true 
+
+   if sunny && weekend {// ||- &&
+    fmt.Println("Я иду гулять и это правда!")
+   }else{
+    fmt.Println("Я не пойду гулять")
+   }
+}
