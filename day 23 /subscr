@@ -1,0 +1,15 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main(){
+    subscibed := true  
+
+    if subscibed {
+        fmt.Println("Ты подписан на мой ютуб канал!")
+    } else {
+        fmt.Println("Пожалуйста, подпишись на мой канал!")
+    }
+}
