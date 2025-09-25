@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+)
+
+func main(){
+    score :=  10 
+    if score < 6|| score > 16{
+        fmt.Println("Ты попал в Петушиную зону!")
+    }else if score >8  && score < 15{
+        fmt.Println("Ты попал в яблочко")
+    } else{
+        fmt.Println("Ты попал в золотую середину!")
+    }
+}
