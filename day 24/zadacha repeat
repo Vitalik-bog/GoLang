@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    old :=64
+    if old > 65 {
+        fmt.Println("Cкидка пенсионерам!")
+    } else if old >= 18 {
+        fmt.Println("Доступ разрешен!")
+    } else {
+        fmt.Println("Доступ запрещен!")
+    }
+}
