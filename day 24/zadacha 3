@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+    var hour int
+    fmt.Print("Введите час (0-23): ")
+    fmt.Scan(&hour)
+    
+    if hour >= 6 && hour <= 11 {
+        fmt.Println("Утро")
+    } else if hour >= 12 && hour <= 17 {
+        fmt.Println("День")
+    } else if hour >= 18 && hour <= 23 {
+        fmt.Println("Вечер")
+    } else if hour >= 0 && hour <= 5 {
+        fmt.Println("Ночь")
+    } else {
+        fmt.Println("Некорректное время! Введите число от 0 до 23")
+    }
+}
