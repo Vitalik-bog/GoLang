@@ -1,0 +1,40 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"unicode"
+)
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Введите пароль: ")
+	password, _ := reader.ReadString('\n')
+
+	level := checkPasswordSecurity(password)
+	fmt.Printf("Уровень безопасности: %s\n", level)
+}
+
+func checkPasswordSecurity(password string) string {
+	length := len(password)
+	hasDigit := false
+	hasUpper := false
+
+	for _, char := range password {
+		if unicode.IsDigit(char) {
+			hasDigit = true
+		}
+		if unicode.IsUpper(char) {
+			hasUpper = true
+		}
+	}
+
+	if length >= 8 && hasDigit && hasUpper {
+		return "сильный"
+	} else if length >= 8 && (hasDigit || hasUpper) {
+		return "средний"
+	} else {
+		return "слабый"
+	}
+}
