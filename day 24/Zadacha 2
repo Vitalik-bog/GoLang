@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    estimation := 90
+
+    if estimation >= 90 && estimation <= 100 {
+        fmt.Println("A")
+    } else if estimation >= 80 && estimation <= 89 {
+        fmt.Println("B")
+    } else if estimation >= 70 && estimation <= 79 {
+        fmt.Println("C")
+    } else if estimation >= 60 && estimation <= 69 {
+        fmt.Println("D")
+    } else {
+        fmt.Println("F")
+    }
+}
