@@ -1,0 +1,48 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Курсы
+    rates := map[string]float64{
+        "USD": 90.5,
+        "EUR": 98.2,
+        "RUB": 1.0,
+    }
+    
+    var amount float64
+    var fromCurrency, toCurrency string
+    
+    fmt.Println("🎯 Конвертер валют")
+    fmt.Println("Доступные валюты: USD, EUR, RUB")
+    
+    fmt.Print("Введите сумму: ")
+    fmt.Scan(&amount)
+    
+    fmt.Print("Из валюты (USD/EUR/RUB): ")
+    fmt.Scan(&fromCurrency)
+    
+    fmt.Print("В валюту (USD/EUR/RUB): ")
+    fmt.Scan(&toCurrency)
+    
+    // Проверка валидности валют
+    fromRate, fromOk := rates[fromCurrency]
+    toRate, toOk := rates[toCurrency]
+    
+    if !fromOk || !toOk {
+        fmt.Println("Ошибка: неверная валюта!")
+        return
+    }
+    
+    if amount <= 0 {
+        fmt.Println("Ошибка: сумма должна быть положительной!")
+        return
+    }
+    
+    // Конвертация: сумма * (курс целевой валюты / курс исходной валюты)
+    result := amount * (toRate / fromRate)
+      
+    fmt.Printf("\n=== Результат конвертации ===\n")
+    fmt.Printf("%.2f %s = %.2f %s\n", amount, fromCurrency, result, toCurrency)
+    fmt.Printf("Курс: 1 %s = %.4f %s\n", fromCurrency, toRate/fromRate, toCurrency)
+}
