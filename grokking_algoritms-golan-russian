@@ -1,0 +1,35 @@
+package main
+
+import "fmt"
+
+// Бинарный поиск в отсортированном массиве
+func binarySearch(list []int, item int) int {
+    low := 0
+    high := len(list) - 1
+
+    for low <= high {
+        mid := (low + high) / 2
+        guess := list[mid]
+        
+        if guess == item {
+            return mid // Нашли элемент, возвращаем индекс
+        }
+        if guess > item {
+            high = mid - 1 // Искомый элемент в левой половине
+        } else {
+            low = mid + 1 // Искомый элемент в правой половине
+        }
+    }
+    
+    return -1 // Элемент не найден
+}
+
+func main() {
+    myList := []int{1, 3, 5, 7, 9}
+    
+    // Ищем число 3 (должно вернуть индекс 1)
+    fmt.Println(binarySearch(myList, 3))
+    
+    // Ищем число -1 (должно вернуть -1, так как его нет в списке)
+    fmt.Println(binarySearch(myList, -1))
+}
