@@ -1,0 +1,162 @@
+package main
+
+import (
+	"fmt"
+	"strings" // Добавляем импорт пакета strings
+)
+
+func main() {
+	fmt.Println("🎮 СОЗДАНИЕ ПЕРСОНАЖА RPG")
+	fmt.Println("========================")
+
+	// Выбор класса
+	fmt.Println("\n🏹 Выберите класс:")
+	fmt.Println("1 - Воин")
+	fmt.Println("2 - Маг")
+	fmt.Println("3 - Лучник")
+	var classChoice int
+	fmt.Print("Ваш выбор (1-3): ")
+	fmt.Scan(&classChoice)
+
+	// Выбор расы
+	fmt.Println("\n🧝 Выберите расу:")
+	fmt.Println("1 - Человек")
+	fmt.Println("2 - Эльф")
+	fmt.Println("3 - Гном")
+	var raceChoice int
+	fmt.Print("Ваш выбор (1-3): ")
+	fmt.Scan(&raceChoice)
+
+	// Выбор стиля игры
+	fmt.Println("\n⚔️ Выберите стиль игры:")
+	fmt.Println("1 - Агрессивный")
+	fmt.Println("2 - Защитный")
+	fmt.Println("3 - Поддержка")
+	var styleChoice int
+	fmt.Print("Ваш выбор (1-3): ")
+	fmt.Scan(&styleChoice)
+
+	// Создаем персонажа
+	character := createCharacter(classChoice, raceChoice, styleChoice)
+
+	// Выводим результат
+	displayCharacter(character)
+}
+
+type Character struct {
+	Class        string
+	Race         string
+	Style        string
+	Health       int
+	Mana         int
+	Attack       int
+	Defense      int
+	Agility      int
+	Intelligence int
+	Abilities    []string
+}
+
+func createCharacter(class, race, style int) Character {
+	char := Character{}
+
+	// Устанавливаем класс
+	switch class {
+	case 1:
+		char.Class = "Воин"
+		char.Health = 120
+		char.Attack = 15
+		char.Defense = 12
+		char.Agility = 8
+		char.Intelligence = 6
+		char.Abilities = []string{"Мощная атака", "Щитовой блок"}
+	case 2:
+		char.Class = "Маг"
+		char.Health = 80
+		char.Mana = 100
+		char.Attack = 8
+		char.Defense = 6
+		char.Agility = 10
+		char.Intelligence = 18
+		char.Abilities = []string{"Огненный шар", "Ледяная стрела"}
+	case 3:
+		char.Class = "Лучник"
+		char.Health = 90
+		char.Attack = 14
+		char.Defense = 8
+		char.Agility = 16
+		char.Intelligence = 9
+		char.Abilities = []string{"Меткий выстрел", "Уклонение"}
+	default:
+		char.Class = "Путешественник"
+	}
+
+	// Устанавливаем расу
+	switch race {
+	case 1:
+		char.Race = "Человек"
+		char.Health += 10
+		char.Attack += 2
+		char.Intelligence += 2
+	case 2:
+		char.Race = "Эльф"
+		char.Mana += 20
+		char.Agility += 3
+		char.Intelligence += 3
+	case 3:
+		char.Race = "Гном"
+		char.Health += 15
+		char.Defense += 4
+		char.Attack += 1
+	default:
+		char.Race = "Неизвестная раса"
+	}
+
+	// Устанавливаем стиль игры
+	switch style {
+	case 1:
+		char.Style = "Агрессивный"
+		char.Attack += 5
+		char.Abilities = append(char.Abilities, "Ярость")
+	case 2:
+		char.Style = "Защитный"
+		char.Defense += 5
+		char.Health += 20
+		char.Abilities = append(char.Abilities, "Укрепление")
+	case 3:
+		char.Style = "Поддержка"
+		char.Intelligence += 5
+		char.Mana += 30
+		char.Abilities = append(char.Abilities, "Исцеление")
+	default:
+		char.Style = "Универсальный"
+	}
+
+	return char
+}
+
+func displayCharacter(char Character) {
+	fmt.Println("\n" + "✨" + strings.Repeat("=", 40) + "✨")
+	fmt.Println("         ВАШ ПЕРСОНАЖ СОЗДАН!")
+	fmt.Println("✨" + strings.Repeat("=", 40) + "✨")
+
+	fmt.Printf("🎭 Класс: %s\n", char.Class)
+	fmt.Printf("🧬 Раса: %s\n", char.Race)
+	fmt.Printf("⚡ Стиль: %s\n", char.Style)
+
+	fmt.Println("\n📊 ХАРАКТЕРИСТИКИ:")
+	fmt.Printf("  ❤️  Здоровье: %d\n", char.Health)
+	fmt.Printf("  🔮 Мана: %d\n", char.Mana)
+	fmt.Printf("  ⚔️  Атака: %d\n", char.Attack)
+	fmt.Printf("  🛡️  Защита: %d\n", char.Defense)
+	fmt.Printf("  🏃 Ловкость: %d\n", char.Agility)
+	fmt.Printf("  📚 Интеллект: %d\n", char.Intelligence)
+
+	fmt.Println("\n🎯 СПОСОБНОСТИ:")
+	for i, ability := range char.Abilities {
+		fmt.Printf("  %d. %s\n", i+1, ability)
+	}
+
+	// Расчет уровня силы
+	power := char.Attack + char.Defense + char.Agility + char.Intelligence
+	fmt.Printf("\n💪 Уровень силы: %d\n", power)
+}
