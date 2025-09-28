@@ -1,0 +1,21 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch := make(chan string)
+	ch2 := make(chan int)
+
+	go say("Hello Golang!", ch, ch2)
+	time.Sleep(2 * time.Second)
+	fmt.Println(<-ch, <-ch2)
+}
+
+func say(greet string, ch chan string, ch2 chan int) {
+	fmt.Println(greet)
+	ch <- "Привет от гоу рутины"
+	ch2 <- 77
+}
