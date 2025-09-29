@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	file, err := os.Create("text.txt")
+
+	if err != nil {
+		fmt.Println("Ошибка -", err)
+		os.Exit(1)
+	}
+	
+	defer file.Close()
+
+	data := "Hello\nfrom\nGo\tTab"
+	
+	// Записываем данные в файл
+	_, err = file.WriteString(data)
+	if err != nil {
+		fmt.Println("Ошибка записи -", err)
+		os.Exit(1)
+	}
+
+	fmt.Println("Файл успешно создан и данные записаны")
+}
