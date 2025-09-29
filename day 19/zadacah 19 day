@@ -1,0 +1,30 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func divide(a, b float64) (float64, error) {
+	if b == 0 {
+		return 0, errors.New("деление на ноль")
+	}
+	return a / b, nil
+}
+
+func main() {
+	// Примеры использования
+	result1, err1 := divide(10, 2)
+	if err1 != nil {
+		fmt.Println("Ошибка:", err1)
+	} else {
+		fmt.Println("10 / 2 =", result1)
+	}
+
+	result2, err2 := divide(8, 0)
+	if err2 != nil {
+		fmt.Println("Ошибка:", err2)
+	} else {
+		fmt.Println("8 / 0 =", result2)
+	}
+}
