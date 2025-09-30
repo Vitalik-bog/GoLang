@@ -1,0 +1,39 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Создание map
+    fruits := map[string]int{
+        "apple":  5,
+        "banana": 3,
+        "orange": 8,
+    }
+    
+    // Добавление/обновление элемента
+    fruits["grape"] = 12
+    fruits["apple"] = 10
+    
+    // Получение значения
+    apples := fruits["apple"]
+    fmt.Println("Apples:", apples) // Apples: 10
+    
+    // Получение с проверкой существования
+    value, exists := fruits["mango"]
+    if exists {
+        fmt.Println("Mango:", value)
+    } else {
+        fmt.Println("Mango not found")
+    }
+    
+    // Удаление элемента
+    delete(fruits, "banana")
+    
+    // Итерация по map
+    for key, value := range fruits {
+        fmt.Printf("%s: %d\n", key, value)
+    }
+    
+    // Длина map
+    fmt.Println("Total fruits:", len(fruits))
+}
