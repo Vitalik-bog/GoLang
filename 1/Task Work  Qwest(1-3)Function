@@ -1,0 +1,47 @@
+package main
+
+import "fmt"
+
+// Простая функция
+func greet(name string) {
+    fmt.Println("Hello,", name)
+}
+
+// Функция с возвращаемым значением
+func calculateSalary(hours int, rate float64) float64 {
+    return float64(hours) * rate
+}
+
+// Функция с несколькими возвращаемыми значениями
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("cannot divide by zero")
+    }
+    return a / b, nil
+}
+
+// Именованные возвращаемые значения
+func getEmployeeInfo() (name string, age int, salary float64) {
+    name = "Alice"
+    age = 30
+    salary = 75000.50
+    return // автоматически возвращает name, age, salary
+}
+
+func main() {
+    // Вызов функций
+    greet("John")
+    
+    salary := calculateSalary(40, 25.5)
+    fmt.Println("Salary:", salary)
+    
+    result, err := divide(10, 2)
+    if err != nil {
+        fmt.Println("Error:", err)
+    } else {
+        fmt.Println("Result:", result)
+    }
+    
+    name, age, salary := getEmployeeInfo()
+    fmt.Printf("%s, %d years, $%.2f\n", name, age, salary)
+}
