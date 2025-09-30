@@ -1,0 +1,15 @@
+package main
+
+import ("fmt"
+	"math/rand"
+)
+func main(){
+	fmt.Println("Hello,World!")
+	fmt.Println("Рандомная цифра:",rand.Intn(10))
+	
+	if rand.Intn(2) == 1{
+		fmt.Println("Я сгенерировал рандомно число один!")
+	}else {
+		fmt.Println("Я не попал в еденицу(")
+	}
+}
