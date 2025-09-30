@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    var n int
+    fmt.Print("Введите число n для таблицы умножения: ")
+    fmt.Scan(&n)
+    
+	fmt.Printf("Таблица умножения для числа %d:\n", n)
+    fmt.Println("---------------------------")
+
+    for i := 1; i <= 10; i++ {
+		result := n * i
+		fmt.Printf("%d * %d = %d\n", n, i, result)
+    }
+     
+}
+
