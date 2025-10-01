@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main(){
+    oficiantWork("Иван")
+    oficiantWork("Олег")
+    oficiantWork("Василий")
+}
+
+func oficiantWork(name string){
+    fmt.Println("Накрываю на стол!")
+    fmt.Println("Привет,",name,"!")
+}  
