@@ -1,0 +1,38 @@
+package main
+
+import (
+    "fmt"
+)
+
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("cannot divide by zero")
+    }
+    return a / b, nil
+}
+
+func main() {
+    // Пример 1: Успешное деление
+    result1, err1 := divide(10, 2)
+    if err1 != nil {
+        fmt.Println("Ошибка:", err1)
+    } else {
+        fmt.Printf("10 / 2 = %.1f\n", result1) // 10 / 2 = 5.0
+    }
+
+    // Пример 2: Деление на ноль
+    result2, err2 := divide(8, 0)
+    if err2 != nil {
+        fmt.Println("Ошибка:", err2) // Ошибка: cannot divide by zero
+    } else {
+        fmt.Printf("8 / 0 = %.1f\n", result2)
+    }
+
+    // Пример 3: Деление дробных чисел
+    result3, err3 := divide(7.5, 3)
+    if err3 != nil {
+        fmt.Println("Ошибка:", err3)
+    } else {
+        fmt.Printf("7.5 / 3 = %.2f\n", result3) // 7.5 / 3 = 2.50
+    }
+}
