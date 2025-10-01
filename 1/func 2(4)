@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+ 
+func main(){
+    s:=str()
+    fmt.Println(s)
+}
+
+
+func str()string{
+    subscrubed := true
+
+    if subscrubed{
+        return "Ты подписан на канал!"
+    }else {
+        return"Ты не подписан на канал"
+    }
+}
+
+
+
