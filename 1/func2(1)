@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+ 
+func main(){
+    sum(1,2,"Приветствую вас!")
+    sum(10,33,"Как ваше ничего?")
+}
+
+func sum (a int, b  int, greeting string){
+    s:= a + b
+
+    fmt.Println(greeting)
+
+    fmt.Println("Сумма а + b =",s)
+
+}
