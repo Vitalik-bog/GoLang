@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+ 
+func main(){
+    kvadrat:=square(5)
+
+    fmt.Println("Квадрат:",kvadrat )
+}
+
+func square(n int)int{
+    s:= n * n 
+
+    return s
+}
+
+
+
