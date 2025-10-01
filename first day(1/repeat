@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+// Задание 1: Функция с несколькими возвращаемыми значениями
+func calculate(a, b int) (int, int) {
+    sum := a + b
+    product := a * b
+    return sum, product
+}
+
+// Задание 2: Таблица умножения
+func multiplicationTable(n int) {
+    for i := 1; i <= 10; i++ {
+        fmt.Printf("%d x %d = %d\n", n, i, n*i)
+    }
+}
+
+func main() {
+    // Тестируем функции
+    s, p := calculate(4, 5)
+    fmt.Printf("Sum: %d, Product: %d\n", s, p)
+    
+    multiplicationTable(5)
+}
