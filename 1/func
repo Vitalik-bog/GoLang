@@ -1,0 +1,35 @@
+package main
+
+import "fmt"
+
+// 1--как работают функции
+// 2-- осмысленные примеры работы функций
+
+func main(){
+    fmt.Println("До вызова функции ")
+    hello()
+    hello()
+    fmt.Println("После вызова функции")
+
+    aboba()
+
+    square(5)
+}
+
+func square(x int){
+    fmt.Println("Мы приняли в функции переменную x:", x)
+    fmt.Println("x в квадрате:",x*x)
+}
+
+func hello(){
+    fmt.Println("Hello 1")
+    fmt.Println("Hello 2")
+}
+
+func aboba(){
+    a:= 0
+    b:= 10
+    c:= 3
+
+    fmt.Println("Cумма:",a+b+c)
+}
