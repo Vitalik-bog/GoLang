@@ -1,0 +1,37 @@
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Я main и я начался")
+    defer func() {
+        fmt.Println("Я main и я закончился")
+    }()
+
+    hello()
+    foo()
+    fmt.Println("Hello1")
+    fmt.Println("Hello2")
+    fmt.Println("Hello3")
+}
+
+func hello() {
+    fmt.Println("Я hello и я начался")
+    defer func() {
+        fmt.Println("Я hello и я закончился")
+    }() 
+    fmt.Println("я функция hello 1")
+    fmt.Println("я функция hello 2")
+    fmt.Println("я функция hello 3")
+} 
+func foo(){
+    defer func(){
+        fmt.Println("Defer1")
+    }()
+    defer func(){
+        fmt.Println("Defer2")
+    }()
+    defer func(){
+        fmt.Println("Defer3")
+    }()
+}
