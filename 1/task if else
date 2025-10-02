@@ -1,0 +1,53 @@
+package main
+
+import "fmt"
+
+// Задание 1: Проверка простого числа
+func isPrime(n int) bool {
+    if n < 2 {
+        return false
+    }
+    for i := 2; i*i <= n; i++ {
+        if n%i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+// Задание 2: FizzBuzz
+func fizzBuzz() {
+    for i := 1; i <= 100; i++ {
+        switch {
+        case i%15 == 0:
+            fmt.Println("FizzBuzz")
+        case i%3 == 0:
+            fmt.Println("Fizz")
+        case i%5 == 0:
+            fmt.Println("Buzz")
+        default:
+            fmt.Println(i)
+        }
+    }
+}
+
+// Задание 3: Классификация возраста
+func classifyAge(age int) string {
+    switch {
+    case age < 0:
+        return "Invalid age"
+    case age < 13:
+        return "Child"
+    case age < 20:
+        return "Teenager"
+    case age < 65:
+        return "Adult"
+    default:
+        return "Senior"
+    }
+}
+
+func main() {
+    fmt.Println("7 is prime:", isPrime(7))
+    fmt.Println("Age 25:", classifyAge(25))
+}
