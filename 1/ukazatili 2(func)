@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+// Функция принимает копию переменной (не меняет оригинал)
+func changeByValue(val int) {
+    val = 50
+}
+
+// Функция принимает указатель (может менять оригинал)
+func changeByPointer(ptr *int) {
+    *ptr = 50
+}
+
+func main() {
+    num := 10
+    
+    changeByValue(num)
+    fmt.Println("После changeByValue:", num) // 10 (не изменилось)
+    
+    changeByPointer(&num)
+    fmt.Println("После changeByPointer:", num) // 50 (изменилось)
+}
