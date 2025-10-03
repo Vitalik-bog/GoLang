@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func modifySlice(s []int) {
+    s[0] = 100 // меняет оригинальный слайс
+}
+
+func main() {
+    nums := []int{1, 2, 3}
+    fmt.Println("До:", nums) // [1 2 3]
+    
+    modifySlice(nums)
+    fmt.Println("После:", nums) // [100 2 3]
+    
+    // Для слайсов обычно не используют указатели,
+    // так как они сами являются ссылочным типом
+}
