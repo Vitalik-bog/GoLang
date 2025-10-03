@@ -1,0 +1,59 @@
+package main
+
+import "fmt"
+
+// Определяем интерфейс
+type Speaker interface {
+    Speak() string
+    Volume() int
+}
+
+// Структура Dog реализует интерфейс Speaker
+type Dog struct {
+    Name string
+}
+
+func (d Dog) Speak() string {
+    return "Гав!"
+}
+
+func (d Dog) Volume() int {
+    return 10
+}
+
+// Структура Cat также реализует интерфейс Speaker
+type Cat struct {
+    Name string
+}
+
+func (c Cat) Speak() string {
+    return "Мяу!"
+}
+
+func (c Cat) Volume() int {
+    return 5
+}
+
+func main() {
+    animals := []Speaker{
+        Dog{Name: "Бобик"},
+        Cat{Name: "Мурка"},
+    }
+    
+    for _, animal := range animals {
+        fmt.Printf("%s говорит: %s (громкость: %d)\n", 
+            getAnimalName(animal), animal.Speak(), animal.Volume())
+    }
+}
+
+// Вспомогательная функция для получения имени
+func getAnimalName(s Speaker) string {
+    switch v := s.(type) {
+    case Dog:
+        return v.Name
+    case Cat:
+        return v.Name
+    default:
+        return "Неизвестное животное"
+    }
+}
