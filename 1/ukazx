@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    // new() выделяет память и возвращает указатель
+    ptr := new(int)
+    
+    fmt.Println("Указатель:", ptr)   // 0xc000018030
+    fmt.Println("Значение:", *ptr)   // 0 (значение по умолчанию)
+    
+    *ptr = 42
+    fmt.Println("Новое значение:", *ptr) // 42
+}
