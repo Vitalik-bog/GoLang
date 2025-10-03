@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    // Создаем структуру
+    person := Person{Name: "Alice", Age: 25}
+    
+    // Указатель на структуру
+    personPtr := &person
+    
+    // Обращение к полям через указатель
+    fmt.Println("Имя:", (*personPtr).Name) // классический способ
+    fmt.Println("Имя:", personPtr.Name)    // упрощенный способ (синтаксический сахар)
+    
+    // Меняем значение через указатель
+    personPtr.Age = 30
+    fmt.Println("Новый возраст:", person.Age) // 30
+}
