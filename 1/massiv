@@ -1,0 +1,32 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Задание 1: Базовые операции со слайсами
+    numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    
+    // 1. Добавь число 11
+    numbers = append(numbers, 11)
+    
+    // 2. Удали первый элемент
+    numbers = numbers[1:]
+    
+    // 3. Получи слайс с 3-го по 7-й элемент (индексы 2-6)
+    middleSlice := numbers[2:7]
+    
+    // 4. Создай новый слайс с емкостью 20
+    bigSlice := make([]int, 0, 20)
+    bigSlice = append(bigSlice, numbers...)
+    
+    fmt.Println("Original:", numbers)
+    fmt.Println("Middle:", middleSlice)
+    fmt.Println("Big slice len:", len(bigSlice), "cap:", cap(bigSlice))
+    
+    // Задание 2: Сумма элементов слайса
+    sum := 0
+    for _, num := range numbers {
+        sum += num
+    }
+    fmt.Println("Sum:", sum)
+}
