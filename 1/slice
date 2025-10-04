@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Создание слайса с помощью make
+    slice := make([]int, 3, 6)
+    fmt.Printf("Создан: %v, len: %d, cap: %d\n", slice, len(slice), cap(slice))
+    
+    // Заполнение слайса
+    for i := 0; i < len(slice); i++ {
+        slice[i] = i * 10
+    }
+    fmt.Printf("Заполнен: %v\n", slice)
+    
+    // Добавление сверх емкости
+    slice = append(slice, 30, 40, 50, 60)
+    fmt.Printf("После переаллокации: %v, len: %d, cap: %d\n", 
+        slice, len(slice), cap(slice))
+    
+    // Копирование слайсов
+    src := []int{1, 2, 3, 4, 5}
+    dst := make([]int, 3)
+    copied := copy(dst, src)
+    fmt.Printf("Скопировано %d элементов: %v\n", copied, dst)
+}
