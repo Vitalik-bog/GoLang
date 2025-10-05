@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+type User struct {
+    Name        string
+    Age         int
+    PhoneNumber string
+    IsClose     bool
+    Rating      float64//0.0-10.0
+}
+
+func main() {
+    user := User{
+        Name:"Виталя",
+        Age: 23,
+        PhoneNumber: "+79613539314",
+        IsClose: true,
+        Rating: 5.5,
+    }
+
+    fmt.Println("User:", user)
+    fmt.Println("Имя:",user.Name)
+}
