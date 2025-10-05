@@ -1,0 +1,29 @@
+package main
+
+import "fmt"
+
+func main(){
+    name :="Виталик"
+
+    ptr :=&name
+
+    fmt.Println("Имя до изменения:", name)
+    
+    changeName(ptr)
+
+    fmt.Println("Имя после изменения:", name)
+}
+
+func changeName( s * string){
+    *s ="Cергей"
+}
+
+func foo (n *int){
+    fmt.Println(n)
+    fmt.Println(*n)
+
+    *n = 10
+}
+func boo(n int){
+    n = 10
+}
