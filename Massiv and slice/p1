@@ -1,0 +1,38 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Массивы
+    var arr1 [3]int = [3]int{1, 2, 3}
+    arr2 := [5]string{"a", "b", "c", "d", "e"}
+    arr3 := [...]float64{1.1, 2.2, 3.3} // компилятор сам посчитает размер
+    
+    fmt.Println("Массивы:")
+    fmt.Printf("arr1: %v, длина: %d\n", arr1, len(arr1))
+    fmt.Printf("arr2: %v, длина: %d\n", arr2, len(arr2))
+    fmt.Printf("arr3: %v, длина: %d\n", arr3, len(arr3))
+    
+    // Доступ по индексу
+    arr1[0] = 10
+    fmt.Printf("arr1[0]: %d\n", arr1[0])
+    
+    // Слайсы
+    slice1 := []int{1, 2, 3, 4, 5}
+    slice2 := make([]string, 3, 5) // тип, длина, емкость
+    var slice3 []float64
+    
+    fmt.Println("\nСлайсы:")
+    fmt.Printf("slice1: %v, длина: %d, емкость: %d\n", slice1, len(slice1), cap(slice1))
+    fmt.Printf("slice2: %v, длина: %d, емкость: %d\n", slice2, len(slice2), cap(slice2))
+    fmt.Printf("slice3: %v, nil?: %t\n", slice3, slice3 == nil)
+    
+    // Операции со слайсами
+    slice1 = append(slice1, 6, 7, 8)
+    fmt.Printf("После append: %v, длина: %d, емкость: %d\n", slice1, len(slice1), cap(slice1))
+    
+    // Создание слайса из массива
+    arr := [5]int{10, 20, 30, 40, 50}
+    sliceFromArr := arr[1:4] // элементы с 1 по 3 (4 не включительно)
+    fmt.Printf("Слайс из массива: %v\n", sliceFromArr)
+}
