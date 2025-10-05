@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main(){
+    number := 5
+
+    pointer :=&number
+
+    foo(pointer)
+    //boo(number)
+    //fmt.Println(number)
+    fmt.Println(number)
+}
+
+func foo( n * int){
+    fmt.Println(n)
+    fmt.Println(*n)
+
+    *n=10
+}
+func boo (n int){
+    n = 10
+}
