@@ -1,0 +1,49 @@
+package main
+
+import "fmt"
+
+func getStats(numbers []float64) (min, max, avg float64) {
+    if len(numbers) == 0 {
+        return 0, 0, 0
+    }
+    
+    min = numbers[0]
+    max = numbers[0]
+    sum := 0.0
+    
+    for _, num := range numbers {
+        if num < min {
+            min = num
+        }
+        if num > max {
+            max = num
+        }
+        sum += num
+    }
+    
+    avg = sum / float64(len(numbers))
+    return min, max, avg
+}
+
+func main() {
+    test1 := []float64{1.5, 2.7, 3.1, 4.8, 5.2}
+    test2 := []float64{10.0}
+    test3 := []float64{-1.5, 0, 1.5, -2.0, 3.0}
+    test4 := []float64{}
+    
+    min1, max1, avg1 := getStats(test1)
+    fmt.Printf("Слайс: %v\n", test1)
+    fmt.Printf("Мин: %.2f, Макс: %.2f, Среднее: %.2f\n\n", min1, max1, avg1)
+    
+    min2, max2, avg2 := getStats(test2)
+    fmt.Printf("Слайс: %v\n", test2)
+    fmt.Printf("Мин: %.2f, Макс: %.2f, Среднее: %.2f\n\n", min2, max2, avg2)
+
+    min3, max3, avg3 := getStats(test3)
+    fmt.Printf("Слайс: %v\n", test3)
+    fmt.Printf("Мин: %.2f, Макс: %.2f, Среднее: %.2f\n\n", min3, max3, avg3)
+
+    min4, max4, avg4 := getStats(test4)
+    fmt.Printf("Слайс: %v\n", test4)
+    fmt.Printf("Мин: %.2f, Макс: %.2f, Среднее: %.2f\n", min4, max4, avg4)
+}
