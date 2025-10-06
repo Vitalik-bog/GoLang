@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Создаем слайс с длиной 2 и емкостью 2
+    slice := make([]int, 2, 2)
+    slice[0] = 1
+    slice[1] = 2
+
+    fmt.Printf("Before append: %v, len=%d, cap=%d, %p\n", slice, len(slice), cap(slice), slice)
+
+    // Добавляем элемент, превышающий емкость
+    slice = append(slice, 3
+
+    fmt.Printf("After append:  %v, len=%d, cap=%d, %p\n", slice, len(slice), cap(slice), slice)
+}
