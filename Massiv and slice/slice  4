@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    slice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    fmt.Println("Мой слайс в начале:", slice)
+
+    result := []int{}
+    
+    for _,  slinum := rangece {
+        if num % 2 != 0 {
+            result = append(result, num)
+        }
+    }
+    
+    fmt.Println("После удаления четных чисел:", result)
+    fmt.Println("Количество оставшихся элементов:", len(result))
+}
