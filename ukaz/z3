@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 5
+    fmt.Println("До:", num) // 5
+    increment(&num)
+    fmt.Println("После:", num) // 6
+}
+func increment(n *int) {
+    *n-- // Увеличиваем или уменьшаем значение, на которое указывает n
+}
