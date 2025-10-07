@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 8
+    fmt.Println("До:", num)
+    increase(&num, 5)
+    fmt.Println("После:", num)
+}
+
+// Решение
+func increase(ptr *int, n int) {
+    *ptr += n
+}
