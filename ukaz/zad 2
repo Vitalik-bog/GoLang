@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+func concatSlices(slice1, slice2 []string) []string {
+    // Создаем новый слайс достаточной длины
+    result := make([]string, 0, len(slice1)+len(slice2))
+    
+    // Добавляем все элементы из первого слайса
+    result = append(result, slice1...)
+    
+    // Добавляем все элементы из второго слайса
+    result = append(result, slice2...)
+    
+    return result
+}
+
+func main() {
+    slice1 := []string{"hello", "world"}
+    slice2 := []string{"foo", "bar", "baz"}
+    
+    result := concatSlices(slice1, slice2)
+    fmt.Println("Первый слайс:", slice1)
+    fmt.Println("Второй слайс:", slice2)
+    fmt.Println("Результат:", result)
+    
+    // Тест с пустыми слайсами
+    empty := []string{}
+    single := []string{"single"}
+    
+    fmt.Println("\nОбъединение пустого и одиночного:", concatSlices(empty, single))
+    fmt.Println("Объединение двух пустых:", concatSlices(empty, empty))
+}
