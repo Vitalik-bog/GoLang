@@ -1,0 +1,61 @@
+package main
+
+import "fmt"
+
+// Интерфейс с двумя методами
+type Animal interface {
+    Speak() string
+    Move() string
+}
+
+type Bird struct {
+    Name string
+}
+
+func (b Bird) Speak() string {
+    return "Чик-чирик! Я " + b.Name
+}
+
+func (b Bird) Move() string {
+    return "Лечу в небе"
+}
+
+type Fish struct {
+    Name string
+}
+
+func (f Fish) Speak() string {
+    return "Буль-буль! Я " + f.Name
+}
+
+func (f Fish) Move() string {
+    return "Плыву в воде"
+}
+
+type Dog struct {
+    Name string
+}
+
+func (d Dog) Speak() string {
+    return "Гав гав! Я " + d.Name
+}
+
+func (d Dog) Move() string {
+    return "Мчу быстрее ветра!"
+}
+
+func main() {
+    animals := []Animal{
+        Bird{Name: "Воробей"},
+        Fish{Name: "Золотая рыбка"},
+        Dog{Name: "Золотой ретривер"},
+    }
+    
+    for _, animal := range animals {
+        describeAnimal(animal)
+    }
+}
+
+func describeAnimal(a Animal) {
+    fmt.Printf("%s | %s\n", a.Speak(), a.Move())
+}
