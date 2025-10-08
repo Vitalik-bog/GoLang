@@ -1,0 +1,39 @@
+package main
+
+import "fmt"
+
+type Speaker interface {
+    Speak() string
+}
+
+
+type Dog struct {
+    Name string
+}
+
+
+func (d Dog) Speak() string {
+    return "Гав! Меня зовут " + d.Name
+}
+
+
+type Cat struct {
+    Name string
+}
+
+func (c Cat) Speak() string {
+    return "Мяу! Я " + c.Name
+}
+
+func main() {
+    dog := Dog{Name: "Бобик"}
+    cat := Cat{Name: "Мурка"}
+    
+    
+    makeSound(dog) 
+    makeSound(cat) 
+}
+
+func makeSound(s Speaker) {
+    fmt.Println(s.Speak())
+}
