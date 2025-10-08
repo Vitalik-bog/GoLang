@@ -1,0 +1,50 @@
+package main
+
+import "fmt"
+
+type Storage interface {
+    Save(data string) error
+    Load() (string, error)
+}
+
+// Реализация для памяти
+type MemoryStorage struct {
+    data string
+}
+
+func (m *MemoryStorage) Save(data string) error {
+    m.data = data
+    fmt.Println("Сохранено в память:", data)
+    return nil
+}
+
+func (m *MemoryStorage) Load() (string, error) {
+    return m.data, nil
+}
+
+// Реализация для файла (заглушка)
+type FileStorage struct {
+    filename string
+}
+
+func (f *FileStorage) Save(data string) error {
+    fmt.Println("Сохранено в файл", f.filename, ":", data)
+    return nil
+}
+
+func (f *FileStorage) Load() (string, error) {
+    return "данные из файла", nil
+}
+
+func main() {
+    // Можем легко менять реализацию!
+    var storage Storage = &MemoryStorage{}
+    
+    storage.Save("Важные данные")
+    data, _ := storage.Load()
+    fmt.Println("Загружено:", data)
+    
+    // Переключаемся на файловое хранилище
+    storage = &FileStorage{filename: "data.txt"}
+    storage.Save("Другие данные")
+}
