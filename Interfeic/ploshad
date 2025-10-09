@@ -1,0 +1,53 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// 1. Определяем интерфейс
+type Shape interface {
+	Area() float64
+}
+
+// 2. Создаем структуры Circle и Rectangle
+type Circle struct {
+	Radius float64
+}
+
+// Cоздается структура высоты и ширины
+type Rectangle struct {
+	Width, Height float64
+}
+
+// 3. Реализуем метод Area() для Circle
+// (Circle неявно реализует интерфейс Shape)
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+// 4. Реализуем метод Area() для Rectangle
+// (Rectangle неявно реализует интерфейс Shape)
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// 5. Функция, принимающая любой Shape
+func printArea(s Shape) {
+	fmt.Printf("Площадь фигуры: %.2f\n", s.Area())
+}
+
+func main() {
+	circle := Circle{Radius: 5}
+	rectangle := Rectangle{Width: 4, Height: 6}
+
+	// Мы можем использовать их как интерфейс Shape
+	printArea(circle)    // Площадь фигуры: 78.54
+	printArea(rectangle) // Площадь фигуры: 24.00
+
+	// Также можно создать срез Shape
+	shapes := []Shape{circle, rectangle}
+	for _, shape := range shapes {
+		printArea(shape)
+	}
+}
