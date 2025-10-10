@@ -1,0 +1,29 @@
+package main
+
+import "fmt"
+
+// 1. Создаем структуру Person
+type Person struct {
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+func (p Person) String() string {
+    return fmt.Sprintf("Person: %s %s, %d years old", p.FirstName, p.LastName, p.Age)
+}
+
+func main() {
+    // Создаем экземпляр Person
+    person := Person{
+        FirstName: "Иван",
+        LastName:  "Петров",
+        Age:       30,
+    }
+
+    // При передаче в fmt.Print автоматически вызовется person.String()
+    fmt.Println(person) // Person: Иван Петров, 30 years old
+
+    // Также можно использовать в форматированном выводе
+    fmt.Printf("Информация: %s\n", person)
+}
