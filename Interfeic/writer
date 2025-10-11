@@ -1,0 +1,46 @@
+package main
+
+import (
+    "bytes"
+    "fmt"
+)
+
+// 1. Определяем интерфейс Writer
+type Writer interface {
+    WriteString(s string) (n int, err error)
+}
+
+// 2. Создаем собственный тип, оборачивающий bytes.Buffer
+type MyBuffer struct {
+    buf *bytes.Buffer
+}
+
+// 3. Конструктор для удобства
+func NewMyBuffer() *MyBuffer {
+    return &MyBuffer{
+        buf: bytes.NewBuffer(nil),
+    }
+}
+
+// 4. Реализуем метод WriteString для MyBuffer
+// Теперь MyBuffer удовлетворяет интерфейсу Writer
+func (mb *MyBuffer) WriteString(s string) (int, error) {
+    return mb.buf.WriteString(s)
+}
+
+// 5. Дополнительный метод для получения строки из буфера
+func (mb *MyBuffer) String() string {
+    return mb.buf.String()
+}
+
+func main() {
+    myBuf := NewMyBuffer()
+
+    // Используем его как интерфейс Writer
+    var w Writer = myBuf
+    w.WriteString("Hello, ")
+    w.WriteString("World!")
+    w.WriteString("\nЭто работает!")
+
+    fmt.Print(myBuf.String())
+}
