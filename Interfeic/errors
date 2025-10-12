@@ -1,0 +1,71 @@
+package main
+
+import (
+    "errors"
+    "fmt"
+)
+
+type Rectangle struct {
+    Width  float64
+    Height float64
+}
+
+func (r *Rectangle) Area() (float64, error) {
+    if err := r.validate(); err != nil {
+        return 0, err
+    }
+    return r.Width * r.Height, nil
+}
+
+func (r *Rectangle) Perimeter() (float64, error) {
+    if err := r.validate(); err != nil {
+        return 0, err
+    }
+    return 2 * (r.Width + r.Height), nil
+}
+
+func (r *Rectangle) validate() error {
+    if r.Width < 0 {
+        return errors.New("width cannot be negative")
+    }
+    if r.Height < 0 {
+        return errors.New("height cannot be negative")
+    }
+    return nil
+}
+
+func NewRectangle(width, height float64) (*Rectangle, error) {
+    rect := &Rectangle{Width: width, Height: height}
+    if err := rect.validate(); err != nil {
+        return nil, err
+    }
+    return rect, nil
+}
+
+func main() {
+    // Тестирование валидного прямоугольника
+    rect1, err := NewRectangle(5, 10)
+    if err != nil {
+        fmt.Println("Error:", err)
+    } else {
+        area, _ := rect1.Area()
+        perimeter, _ := rect1.Perimeter()
+        fmt.Printf("Rectangle: width=%.1f, height=%.1f, area=%.1f, perimeter=%.1f\n",
+            rect1.Width, rect1.Height, area, perimeter)
+    }
+    
+    // Тестирование невалидного прямоугольника
+    rect2, err := NewRectangle(-5, 10)
+    if err != nil {
+        fmt.Println("Error creating rectangle:", err)
+    }
+    
+    // Тестирование методов на невалидном прямоугольнике
+    badRect := &Rectangle{Width: -1, Height: 5}
+    area, err := badRect.Area()
+    if err != nil {
+        fmt.Println("Error calculating area:", err)
+    } else {
+        fmt.Println("Area:", area)
+    }
+}
