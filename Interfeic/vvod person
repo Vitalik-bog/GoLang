@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Введите команду:")
+	var input string
+	_, err := fmt.Scan(&input)
+	if err != nil {
+		fmt.Println("Ошибка ввода:", err)
+		return
+	}
+	fmt.Println("Вы ввели:", input)
+}
