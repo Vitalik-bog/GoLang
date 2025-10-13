@@ -1,0 +1,46 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+var ErrSomething = errors.New("something")
+
+type SomethingError struct {
+	code int
+}
+
+func (s SomethingError) Error() string {
+	return fmt.Sprintf("some error[code%d]", s.code)
+}
+
+func (s SomethingError) Code() int {
+	return s.code
+}
+func main() {
+
+}
+
+type constStringError string
+
+func (e constStringError) Error() string {
+	return string(e)
+}
+
+const ErrConstSomething constStringError = "some error"
+
+type constIntError int
+
+func (e constIntError) Error() string {
+	return fmt.Sprintf("some error[code%d]", e)
+}
+
+const (
+	ErrFirst constIntError = iota
+	ErrSecond
+)
+
+func main() {
+
+}
