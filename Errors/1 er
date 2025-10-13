@@ -1,0 +1,12 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	err := errors.New("Something")
+	err := fmt.Errorf("Could not do id[code%d]", http.StatusTeapot)
+}
