@@ -1,0 +1,41 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+var ErrFirst = errors.New("first error type")
+
+type SomethingError struct {
+	Number int
+}
+
+func (e SomethingError) Error() string {
+	return fmt.Sprintf("something error with number: %d", e.Number)
+}
+
+func main() {
+	if err := ProcessNumber(0); err != nil {
+		if errors.Is(err, ErrFirst) {
+			fmt.Println("Error is first type")
+		} else {
+			fmt.Printf("Error is not first type: %v\n", err)
+		}
+	}
+}
+
+func FirstFunc(n int) error {
+	if n == 1 {
+		return ErrFirst
+	}
+	return SomethingError{n}
+}
+
+// Отдельная функция-обертка с другим именем
+func ProcessNumber(n int) error {
+	if err := FirstFunc(n); err != nil {
+		return fmt.Errorf("Could not do it: %w", err)
+	}
+	return nil
+}
