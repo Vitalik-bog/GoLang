@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+	var map1 map[string]int
+	fmt.Println("Map-1:", map1)
+
+	map2 := make(map[string]int)
+	fmt.Println("Map-2:", map2)
+
+	map3 := map[string]int{
+		"Apple": 1000,
+		"Intel": 5000,
+		"AMD":   4300,
+	}
+	fmt.Println("Map-3:", map3)
+}
