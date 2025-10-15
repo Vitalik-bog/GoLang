@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+	fruits := map[string]int{
+		"яблоко":   5,
+		"банан":    3,
+		"апельсин": 7,
+	}
+
+	fmt.Println("До удаления:", fruits)
+
+	// Удаляем элемент
+	delete(fruits, "банан")
+
+	fmt.Println("После удаления:", fruits)
+}
