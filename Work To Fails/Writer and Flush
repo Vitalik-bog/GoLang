@@ -1,0 +1,39 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+	// Создаем или перезаписываем файл
+	file, err := os.Create("output.txt")
+	if err != nil {
+		log.Fatal("Ошибка создания файла:", err)
+	}
+	defer file.Close()
+
+	// Создаем писатель
+	writer := bufio.NewWriter(file)
+
+	// Записываем строки
+	lines := []string{
+		"Первая строка",
+		"Вторая строка",
+		"Третья строка",
+	}
+
+	for _, line := range lines {
+		_, err := writer.WriteString(line + "\n")
+		if err != nil {
+			log.Fatal("Ошибка записи строки:", err)
+		}
+	}
+
+	// Важно: сбрасываем буфер в файл
+	writer.Flush()
+
+	fmt.Println("Файл успешно записан!")
+}
