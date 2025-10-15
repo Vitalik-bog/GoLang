@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	products := make(map[string]int)
+
+	products["apple"] = 50
+	products["banana"] = 150
+	products["orange"] = 320
+
+	fmt.Println("Добавление новых поступивших продуктов:", products)
+
+	products["apple"] = 155 //добавили яблок)
+	fmt.Println("Добавление нового вида :", products)
+}
