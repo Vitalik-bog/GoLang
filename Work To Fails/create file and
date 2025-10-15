@@ -1,0 +1,19 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+)
+
+func main() {
+	content := "Привет, мир!\nЭто вторая строка.\nА это третья."
+
+	// Записываем все содержимое
+	err := ioutil.WriteFile("output.txt", []byte(content), 0644)
+	if err != nil {
+		log.Fatal("Ошибка записи файла:", err)
+	}
+
+	fmt.Println("Файл успешно записан!")
+}
