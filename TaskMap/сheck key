@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+	fructs := map[string]int{
+		"apples": 5,
+		"banans": 6,
+	}
+	//проверка наличия ключа
+	count, exists := fructs["apples"]
+
+	if exists {
+		fmt.Printf("Яблоки есть в карте.Количество:%d\n", count)
+	} else {
+		fmt.Println("Яблок нет в карте")
+	}
+	//запись более компактенне
+	if count, exists := fructs["orange"]; exists {
+		fmt.Printf("Апельсины есть:%d\n,", count)
+	} else {
+		fmt.Println("Апельсинов нет в карте")
+	}
+}
