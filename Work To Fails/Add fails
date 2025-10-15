@@ -1,0 +1,34 @@
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "os"
+)
+
+func main() {
+    filename := "test.txt"
+    
+    // Проверяем, существует ли файл
+    if _, err := os.Stat(filename); os.IsNotExist(err) {
+        // Файл не существует - создаем его с содержимым по умолчанию
+        defaultContent := "Привет, мир!\nЭто тестовый файл.\nТретья строка файла."
+        
+        err := ioutil.WriteFile(filename, []byte(defaultContent), 0644)
+        if err != nil {
+            log.Fatal("Ошибка создания файла:", err)
+        }
+        fmt.Println("Файл", filename, "создан автоматически")
+    }
+    
+    // Чтение всего файла
+    content, err := ioutil.ReadFile(filename)
+    if err != nil {
+        log.Fatal("Ошибка чтения файла:", err)
+    }
+    
+    // content имеет тип []byte (байтовый срез)
+    fmt.Println("Содержимое файла:")
+    fmt.Println(string(content)) // Преобразуем байты в строку
+}
