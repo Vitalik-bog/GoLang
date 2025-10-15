@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+func main() {
+	fruits := map[string]int{
+		"яблоко":   5,
+		"банан":    3,
+		"апельсин": 7,
+		"виноград": 12,
+	}
+
+	// Итерация по всем элементам карты
+	fmt.Println("Все фрукты:")
+	for key, value := range fruits {
+		fmt.Printf("Фрукт: %s, Количество: %d\n", key, value)
+	}
+
+	// Итерация только по ключам
+	fmt.Println("\nТолько ключи:")
+	for key := range fruits {
+		fmt.Println("Ключ:", key)
+	}
+
+	// Итерация только по значениям
+	fmt.Println("\nТолько значения:")
+	for _, value := range fruits {
+		fmt.Println("Значение:", value)
+	}
+}
