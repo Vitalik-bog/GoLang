@@ -1,0 +1,29 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+	file, err := os.Open("test.txt")
+	if err != nil {
+		log.Fatal("Ошибка открытия файла:", err)
+	}
+	defer file.Close() // defer гарантирует, что файл закроется при выходе из функции
+
+	// Создаем сканер для построчного чтения
+	scanner := bufio.NewScanner(file)
+
+	lineNumber := 1
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Printf("Строка %d: %s\n", lineNumber, line)
+		lineNumber++
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal("Ошибка сканирования:", err)
+	}
+}
