@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	fruits := map[string]int{
+		"apple":  5,
+		"banan":  3,
+		"orange": 7,
+	}
+	appleCount := fruits["apple"]//получаем ключ даем значение
+	fmt.Println("Kol-vo apples:", appleCount)
+
+	grapeCount := fruits["tomato"] //нет ключа и получаем значение 0
+	fmt.Println("Kol-vo tomatos", grapeCount)
+}
