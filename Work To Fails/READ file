@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+)
+
+func main() {
+	content, err := ioutil.ReadFile("test.txt")
+	if err != nil {
+		log.Fatal("Ошибка чтения файла:", err)
+	}
+
+	// content имеет тип []byte (байтовый срез)
+	fmt.Println("Содержимое файла:")
+	fmt.Println(string(content)) // Преобразуем байты в строку
+}
