@@ -1,0 +1,45 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"os"
+)
+
+func copyFile(sourcePath, destPath string) error {
+	// Открываем исходный файл
+	sourceFile, err := os.Open(sourcePath)
+	if err != nil {
+		return err
+	}
+	defer sourceFile.Close()
+
+	// Создаем целевой файл
+	destFile, err := os.Create(destPath)
+	if err != nil {
+		return err
+	}
+	defer destFile.Close()
+
+	// Копируем содержимое
+	_, err = io.Copy(destFile, sourceFile)
+	if err != nil {
+		return err
+	}
+
+	// Синхронизируем запись на диск
+	return destFile.Sync()
+}
+
+func main() {
+	source := "original.txt"
+	destination := "copy.txt"
+
+	err := copyFile(source, destination)
+	if err != nil {
+		log.Fatal("Ошибка копирования:", err)
+	}
+
+	fmt.Printf("Файл успешно скопирован из %s в %s\n", source, destination)
+}
