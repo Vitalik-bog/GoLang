@@ -1,0 +1,26 @@
+package main
+
+import (
+    "fmt"
+    "project/calculator" // Импортируем наш пакет
+)
+
+func main() {
+    a, b := 10.0, 3.0
+    
+    fmt.Printf("Сложение: %.2f + %.2f = %.2f\n", a, b, calculator.Add(a, b))
+    fmt.Printf("Вычитание: %.2f - %.2f = %.2f\n", a, b, calculator.Subtract(a, b))
+    fmt.Printf("Умножение: %.2f * %.2f = %.2f\n", a, b, calculator.Multiply(a, b))
+    
+    result, ok := calculator.Divide(a, b)
+    if ok {
+        fmt.Printf("Деление: %.2f / %.2f = %.2f\n", a, b, result)
+    } else {
+        fmt.Println("Ошибка: деление на ноль!")
+    }
+    
+    result, ok = calculator.Divide(a, 0)
+    if !ok {
+        fmt.Println("Обнаружено деление на ноль!")
+    }
+}
