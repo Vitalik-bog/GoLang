@@ -1,0 +1,46 @@
+package main
+
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "os"
+)
+
+func checkFile(filename string) error {
+    // Проверяем существование файла
+    if _, err := os.Stat(filename); os.IsNotExist(err) {
+        // Создаем файл с примером содержимого
+        exampleContent := `Это пример содержимого файла.
+Строка 1: Изучаем Go!
+Строка 2: Работа с файлами.
+Строка 3: Успешное чтение и запись.`
+        
+        if err := ioutil.WriteFile(filename, []byte(exampleContent), 0644); err != nil {
+            return fmt.Errorf("не удалось создать файл: %v", err)
+        }
+        fmt.Printf("✓ Файл '%s' создан автоматически\n", filename)
+    }
+    return nil
+}
+
+func main() {
+    filename := "test.txt"
+    
+    // Проверяем и создаем файл если нужно
+    if err := checkFile(filename); err != nil {
+        log.Fatal("Ошибка:", err)
+    }
+    
+    // Читаем файл
+    content, err := ioutil.ReadFile(filename)
+    if err != nil {
+        log.Fatal("Ошибка чтения файла:", err)
+    }
+    
+    fmt.Println("Содержимое файла:")
+    fmt.Println("════════════════════")
+    fmt.Println(string(content))
+    fmt.Println("════════════════════")
+    fmt.Printf("Файл прочитан успешно! Прочитано %d байт\n", len(content))
+}
