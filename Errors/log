@@ -1,0 +1,41 @@
+package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    filename := "test.txt"
+    
+    // Создаем файл, если он не существует
+    if _, err := os.Stat(filename); os.IsNotExist(err) {
+        file, err := os.Create(filename)
+        if err != nil {
+            log.Fatal("Ошибка создания файла:", err)
+        }
+        defer file.Close()
+        
+        // Записываем пример содержимого
+        content := "Привет! Этот файл был создан автоматически.\n"
+        content += "Сейчас мы изучаем работу с файлами в Go.\n"
+        content += "Это последняя строка файла."
+        
+        if _, err := file.WriteString(content); err != nil {
+            log.Fatal("Ошибка записи в файл:", err)
+        }
+        fmt.Println("✓ Файл создан автоматически")
+    }
+    
+    // Чтение файла (современный способ)
+    content, err := os.ReadFile(filename)
+    if err != nil {
+        log.Fatal("Ошибка чтения файла:", err)
+    }
+    
+    fmt.Println("\nСодержимое файла:")
+    fmt.Println("────────────────────")
+    fmt.Println(string(content))
+    fmt.Println("────────────────────")
+}
