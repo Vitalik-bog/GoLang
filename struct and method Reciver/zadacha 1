@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+// TODO: Объяви структуру Person с полями Name и Age
+type Person struct {
+	Name string
+	Age  int
+}
+
+// TODO: Напиши метод Introduce для структуры Person
+func (p Person) Introduce() {
+	fmt.Printf("Привет меня зовут %s, и мне %d лет\n", p.Name, p.Age)
+}
+
+func main() {
+	person := Person{Name: "Анна", Age: 25}
+	person.Introduce()
+}
