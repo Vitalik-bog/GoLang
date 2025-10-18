@@ -1,0 +1,77 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+// BankAccount структура для представления банковского счета
+type BankAccount struct {
+	owner   string
+	balance float64
+}
+
+// NewBankAccount - функция-конструктор для создания нового счета
+func NewBankAccount(owner string, initialBalance float64) *BankAccount {
+	return &BankAccount{
+		owner:   owner,
+		balance: initialBalance,
+	}
+}
+
+// Deposit - метод для пополнения счета (Pointer Receiver, так как меняет баланс)
+func (acc *BankAccount) Deposit(amount float64) {
+	if amount > 0 {
+		acc.balance += amount
+		fmt.Printf("Внесено %.2f. Новый баланс: %.2f\n", amount, acc.balance)
+	} else {
+		fmt.Println("Сумма для пополнения должна быть положительной.")
+	}
+}
+
+// Withdraw - метод для снятия средств (Pointer Receiver, так как меняет баланс)
+func (acc *BankAccount) Withdraw(amount float64) error {
+	if amount <= 0 {
+		return errors.New("сумма для снятия должна быть положительной")
+	}
+	if amount > acc.balance {
+		return errors.New("недостаточно средств на счете")
+	}
+	acc.balance -= amount
+	fmt.Printf("Снято %.2f. Новый баланс: %.2f\n", amount, acc.balance)
+	return nil
+}
+
+// Balance - метод для получения текущего баланса (Value Receiver, так как только читает)
+func (acc BankAccount) Balance() float64 {
+	return acc.balance
+}
+
+// Owner - метод для получения владельца счета (Value Receiver)
+func (acc BankAccount) Owner() string {
+	return acc.owner
+}
+
+func main() {
+	// Создаем новый счет
+	account := NewBankAccount("Иван Иванов", 1000)
+
+	fmt.Printf("Владелец счета: %s\n", account.Owner())
+	fmt.Printf("Начальный баланс: %.2f\n", account.Balance())
+
+	// Используем методы
+	account.Deposit(250.50)
+
+	err := account.Withdraw(500)
+	if err != nil {
+		fmt.Println("Ошибка при снятии:", err)
+	}
+
+	err = account.Withdraw(1000) // Попытка снять больше, чем на счете
+	if err != nil {
+		fmt.Println("Ошибка при снятии:", err)
+	}
+
+	// Проверяем финальный баланс
+	fmt.Printf("Финальный баланс: %.2f\n", account.Balance())
+}
