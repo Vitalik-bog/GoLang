@@ -1,0 +1,38 @@
+package main
+
+import "fmt"
+
+type Book struct {
+	title  string
+	author string
+	pages  int
+}
+
+// TODO: Напиши конструктор NewBook
+func NewBook(title, author string, pages int) *Book {
+	return &Book{
+		title:  title,
+		author: author,
+		pages:  pages,
+	}
+}
+
+// TODO: Напиши геттеры (методы получения значений)
+func (b Book) GetTitle() string {
+	return b.title
+}
+
+func (b Book) GetAuthor() string {
+	return b.author
+}
+
+func (b Book) GetPages() int {
+	return b.pages
+}
+
+func main() {
+	book := NewBook("Война и мир", "Лев Толстой", 1225)
+	fmt.Printf("Книга: %s\n", book.GetTitle())
+	fmt.Printf("Автор: %s\n", book.GetAuthor())
+	fmt.Printf("Страниц: %d\n", book.GetPages())
+}
