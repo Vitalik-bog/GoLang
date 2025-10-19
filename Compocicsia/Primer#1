@@ -1,0 +1,59 @@
+package main
+
+import "fmt"
+
+// Определяем структуру Address
+type Address struct {
+	City, Street string
+	HouseNumber  int
+}
+
+// Определяем базовую структуру Person
+type Person struct {
+	FirstName, LastName string
+	Age                 int
+	Address             // Встроенное поле (Embedded Field) - композиция
+}
+
+// Определяем структуру Employee, которая включает Person
+type Employee struct {
+	Person  // Встроенное поле Person. Employee "имеет" Person
+	Company string
+	Salary  float64
+}
+
+func main() {
+	// Создаем адрес
+	addr := Address{
+		City:        "Москва",
+		Street:      "Ленина",
+		HouseNumber: 10,
+	}
+
+	// Создаем человека
+	person := Person{
+		FirstName: "Иван",
+		LastName:  "Петров",
+		Age:       30,
+		Address:   addr, // Присваиваем структуру Address
+	}
+
+	// Создаем сотрудника, включая структуру Person
+	employee := Employee{
+		Person:  person,
+		Company: "Рога и копыта",
+		Salary:  100000.50,
+	}
+
+	// Обращение к полям:
+	// Можно обращаться напрямую к полям вложенной структуры
+	fmt.Printf("Сотрудник: %s %s\n", employee.FirstName, employee.LastName) // Поля из Person
+	fmt.Printf("Работает в: %s\n", employee.Company)
+	fmt.Printf("Зарплата: %.2f\n", employee.Salary)
+	fmt.Printf("Город: %s\n", employee.Address.City)   // Полный путь
+	fmt.Printf("Город (коротко): %s\n", employee.City) // Так тоже можно, благодаря встраиванию
+
+	// Также можно обновлять вложенные структуры
+	employee.City = "Санкт-Петербург" // Изменили город через Employee
+	fmt.Printf("Новый город: %s\n", employee.Address.City)
+}
