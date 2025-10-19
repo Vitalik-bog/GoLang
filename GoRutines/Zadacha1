@@ -1,0 +1,27 @@
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func sayHello() {
+    for i := 0; i < 3; i++ {
+        fmt.Println("Hello from goroutine")
+        time.Sleep(time.Millisecond * 500)
+    }
+}
+
+func main() {
+
+    go sayHello()
+    
+    // Основная функция продолжает выполняться
+    for i := 0; i < 3; i++ {
+        fmt.Println("Hello from main")
+        time.Sleep(time.Millisecond * 500)
+    }
+    
+    // Даем время goroutine завершиться
+    time.Sleep(time.Second * 2)
+}
