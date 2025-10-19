@@ -1,0 +1,94 @@
+package main
+
+import "fmt"
+
+// 1. Определите структуру Address с полями:
+//    - City (город)
+//    - Street (улица)
+//    - Building (номер здания)
+//    - Apartment (квартира, может быть пустой строкой для частных домов)
+
+type Address struct {
+	City      string
+	Street    string
+	Building  string
+	Apartment string
+}
+
+// 2. Определите структуру Student с полями:
+//    - FirstName (имя)
+//    - LastName (фамилия)
+//    - Course (курс)
+//    - Address (встроенная структура Address)
+
+type Student struct {
+	FirstName string
+	LastName  string
+	Course    int
+	Address
+}
+
+func main() {
+	// 3. Создайте экземпляр адреса
+	addr := Address{
+		City:      "Penza",
+		Street:    "Ufimskaya",
+		Building:  "7",
+		Apartment: "0",
+	}
+
+	// 4. Создайте экземпляр студента, используя созданный адрес
+	student := Student{
+		FirstName: "Vitalik",
+		LastName:  "Madamking",
+		Course:    3,
+		Address:   addr,
+	}
+
+	// 5. Выведите информацию о студенте, включая его адрес
+	// Разными способами:
+	// - Через полный путь (student.Address.City)
+	// - Через короткую запись (student.City)
+
+	fmt.Println("Информация о студенте:")
+	fmt.Printf("Студент: %s %s\n", student.FirstName, student.LastName)
+	fmt.Printf("Курс: %d\n", student.Course)
+
+	// Вывод адреса разными способами
+	fmt.Println("\nАдрес (разные способы доступа):")
+	fmt.Printf("Полный путь - Город: %s\n", student.Address.City)
+	fmt.Printf("Короткая запись - Город: %s\n", student.City)
+	fmt.Printf("Полный путь - Улица: %s\n", student.Address.Street)
+	fmt.Printf("Короткая запись - Улица: %s\n", student.Street)
+
+	// Полный форматированный вывод адреса
+	fmt.Println("\nПолный адрес:")
+	if student.Apartment != "" && student.Apartment != "0" {
+		fmt.Printf("Адрес: %s, %s, %s, кв. %s\n",
+			student.City, student.Street, student.Building, student.Apartment)
+	} else {
+		fmt.Printf("Адрес: %s, %s, %s\n",
+			student.City, student.Street, student.Building)
+	}
+
+	// Пример с частным домом (без квартиры)
+	fmt.Println("\n--- Пример с частным домом ---")
+	addr2 := Address{
+		City:      "Spb",
+		Street:    "pr nev",
+		Building:  "45",
+		Apartment: "", // Пустая строка для частного дома
+	}
+
+	student2 := Student{
+		FirstName: "Alex",
+		LastName:  "Car",
+		Course:    1,
+		Address:   addr2,
+	}
+
+	fmt.Printf("Student: %s %s\n", student2.FirstName, student2.LastName)
+	fmt.Printf("Course: %d\n", student2.Course)
+	fmt.Printf("Address: %s, %s, %s\n",
+		student2.City, student2.Street, student2.Building)
+}
