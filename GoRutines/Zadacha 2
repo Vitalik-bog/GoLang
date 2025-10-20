@@ -1,0 +1,48 @@
+ package main
+
+import (
+    "fmt"
+    "math/rand"
+    "sync"
+    "time"
+)
+
+func processData(id int, data []int, result chan<- int, wg *sync.WaitGroup) {
+    defer wg.Done()
+    
+    sum := 0
+    for _, value := range data {
+        sum += value
+        time.Sleep(time.Millisecond * time.Duration(rand.Intn(10)))
+    }
+    
+    result <- sum
+    fmt.Printf("Worker %d processed data, sum: %d\n", id, sum)
+}
+
+func main() {
+    rand.Seed(time.Now().UnixNano())
+    
+    data := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    result := make(chan int, 2)
+    var wg sync.WaitGroup
+    
+    // Разделяем данные пополам
+    mid := len(data) / 2
+    data1 := data[:mid]
+    data2 := data[mid:]
+    
+    wg.Add(2)
+    go processData(1, data1, result, &wg)
+    go processData(2, data2, result, &wg)
+    
+    wg.Wait()
+    close(result)
+    
+    total := 0
+    for res := range result {
+        total += res
+    }
+    
+    fmt.Printf("Total sum: %d\n", total)
+}
