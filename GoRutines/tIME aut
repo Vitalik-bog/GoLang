@@ -1,0 +1,22 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	resultCh := make(chan string)
+
+	go func() {
+		time.Sleep(4 * time.Second) // Эмуляция долгого запроса
+		resultCh <- "Данные от API"
+	}()
+
+	select {
+	case res := <-resultCh:
+		fmt.Println(res)
+	case <-time.After(3 * time.Second):
+		fmt.Println("Таймаут! Сервер не ответил.")
+	}
+}
