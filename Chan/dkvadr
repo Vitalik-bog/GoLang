@@ -1,0 +1,36 @@
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func worker(id int, done chan bool) {
+    sleepTime := time.Duration(rand.Intn(3)+1) * time.Second
+    fmt.Printf("Воркер %d: начал работу (займет %v)\n", id, sleepTime)
+    
+    time.Sleep(sleepTime) // Имитация работы
+    
+    fmt.Printf("Воркер %d: завершил работу\n", id)
+    done <- true
+}
+
+func main() {
+    rand.Seed(time.Now().UnixNano())
+    done := make(chan bool, 3) // Буферизированный канал
+    
+    fmt.Println("Запускаем 3 воркера...")
+    
+    // Запускаем горутины
+    for i := 1; i <= 3; i++ {
+        go worker(i, done)
+    }
+    
+    // Ждем завершения всех горутин без time.Sleep
+    for i := 0; i < 3; i++ {
+        <-done
+    }
+    
+    fmt.Println("Все воркеры завершили работу!")
+}
