@@ -1,0 +1,25 @@
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    messageChan := make(chan string)
+    
+    // Горутина-отправитель
+    go func() {
+        fmt.Println("Горутина: готовлю сообщение...")
+        time.Sleep(2 * time.Second)
+        messageChan <- "Привет из горутины!"
+        fmt.Println("Горутина: сообщение отправлено")
+    }()
+    
+    // Главная горутина-получатель
+    fmt.Println("Главная: жду сообщение...")
+    message := <-messageChan
+    fmt.Println("Главная: получено -", message)
+    
+    time.Sleep(100 * time.Millisecond) // Даем время вывести последнее сообщение
+}
