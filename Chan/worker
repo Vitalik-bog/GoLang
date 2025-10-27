@@ -1,0 +1,29 @@
+package main
+
+import "fmt"
+
+func worker(id int, done chan bool) {
+	fmt.Printf("Воркер %d: начал работу\n", id)
+	// Имитация работы
+	for i := 0; i < 3; i++ {
+		fmt.Printf("Воркер %d: шаг %d\n", id, i)
+	}
+	fmt.Printf("Воркер %d: завершил работу\n", id)
+	done <- true // Сигнализируем о завершении
+}
+
+func main() {
+	done := make(chan bool, 3) // Буферизированный канал для 3 воркеров
+
+	// Запускаем 3 горутины не зависящих ддруг от друга 
+	for i := 1; i <= 3; i++ {
+		go worker(i, done)
+	}
+
+	// Ждем завершения всех горутин
+	for i := 0; i < 3; i++ {
+		<-done
+	}
+
+	fmt.Println("Все воркеры завершили работу!")
+}
