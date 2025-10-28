@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    numbers := make(chan int)
+    done := make(chan bool)
+
+    // Горутина для чтения чисел и вывода квадратов
+    go func() {
+        for num := range numbers {
+            fmt.Printf("Квадрат %d: %d\n", num, num*num)
+        }
+        done <- true
+    }()
+
+    // Главная горутина отправляет числа
+    for i := 1; i <= 5; i++ {
+        numbers <- i
+    }
+    close(numbers) // Закрытие канала для завершения range
+
+    <-done // Ожидание завершения второй горутины
+}
