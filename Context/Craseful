@@ -1,0 +1,40 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func worker(ctx context.Context, id int) {
+	for {
+		select {
+		case <-ctx.Done():
+			fmt.Printf("Горутина %d завершена: %v\n", id, ctx.Err())
+			return
+		default:
+			fmt.Printf("Горутина %d работает...\n", id)
+			time.Sleep(500 * time.Millisecond)
+		}
+	}
+}
+
+func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+
+	// Запускаем несколько горутин
+	for i := 1; i <= 3; i++ {
+		go worker(ctx, i)
+	}
+
+	// Даем поработать 2 секунды
+	time.Sleep(2 * time.Second)
+
+	// Отправляем сигнал завершения
+	fmt.Println("Отправляем сигнал отмены...")
+	cancel()
+
+	// Даем время на завершение
+	time.Sleep(1 * time.Second)
+	fmt.Println("Основная программа завершена")
+}
