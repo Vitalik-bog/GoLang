@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func main() {
+	people := []Person{
+		{"John", 30},
+		{"Jane", 25},
+		{"Jack", 40},
+		{"Jill", 20},
+	}
+
+	// Сортируем по возрасту (от младшего к старшему)
+	sort.Slice(people, func(i, j int) bool {
+		return people[i].Age < people[j].Age
+	})
+
+	fmt.Println("Отсортировано по возрасту (возрастание):")
+	for _, person := range people {
+		fmt.Printf("%s: %d лет\n", person.Name, person.Age)
+	}
+
+	// Для сортировки по убыванию просто меняем знак сравнения
+	sort.Slice(people, func(i, j int) bool {
+		return people[i].Age > people[j].Age
+	})
+
+	fmt.Println("\nОтсортировано по возрасту (убывание):")
+	for _, person := range people {
+		fmt.Printf("%s: %d лет\n", person.Name, person.Age)
+	}
+}
