@@ -1,0 +1,42 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+
+	//go func() {
+	//	ch2 <- 1
+	//}()
+	//time.Sleep(1 * time.Second)
+	timer := time.NewTimer(1 * time.Millisecond)
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Microsecond)
+	defer cancel()
+
+	ch3 := make(chan any)
+	close(ch3)
+
+	select {
+	case v := <-ch1:
+		fmt.Println("v=", v, "from ch1")
+
+	case v := <-ch2:
+		fmt.Println("v=", v, "from ch2")
+	//default:
+	//fmt.Println("это дефолт для выхода и не блокировки")
+	//case <-time.After(1 * time.Second):
+	//fmt.Println("exit by after")
+	case <-timer.C:
+		fmt.Println("exited be aft")
+	case <-ctx.Done():
+		fmt.Println("exited by timer")
+	case <-ch3:
+		fmt.Println("exited by channel")
+	}
+}
