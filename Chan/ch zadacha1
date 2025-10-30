@@ -1,0 +1,31 @@
+package main
+
+import (
+	"math/rand"
+	"time"
+)
+
+// имеется функция , которая работает неорпеделенно долго (до 100 секунд)
+func randomTimeWork() {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Second)
+}
+
+// напистаь обертку для этой функции , которая будет прерывать выполнение , есои
+//функция работает дольше 3 секунд, и возрващает ошибку
+
+func predictableTimeWork() {
+	ch := make(chan struct{})
+	go func() {
+		randomTimeWork()
+		close(ch)
+	}()
+
+	select {
+	case <-ch:
+	case <-time.After(3 * time.Second):
+	}
+}
+func main() {
+	predictableTimeWork()
+
+}
