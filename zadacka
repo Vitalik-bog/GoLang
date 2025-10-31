@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// 1. Создаем базовую структуру Person (Человек)
+struct Person {
+    string firstName;
+    string lastName;
+    int age;
+};
+
+// 2. Создаем структуру Employee (Сотрудник), которая ВКЛЮЧАЕТ в себя структуру Person
+struct Employee {
+    // Вложенная структура - композиция
+    Person personalInfo; // У каждого Employee ЕСТЬ Person
+
+    // Собственные поля структуры Employee
+    string company;
+    string position;
+    double salary;
+};
+
+int main() {
+    // Создаем и заполняем объект структуры Employee
+    Employee emp;
+
+    // Обратите внимание на цепочку доступа (оператор ".")
+    emp.personalInfo.firstName = "Иван";
+    emp.personalInfo.lastName = "Петров";
+    emp.personalInfo.age = 30;
+
+    emp.company = "ООО Рога и копыта";
+    emp.position = "Разработчик";
+    emp.salary = 150000.0;
+
+    // Выводим информацию на экран
+    cout << "Информация о сотруднике:" << endl;
+    cout << "Имя: " << emp.personalInfo.firstName << endl;
+    cout << "Фамилия: " << emp.personalInfo.lastName << endl;
+    cout << "Возраст: " << emp.personalInfo.age << endl;
+    cout << "Компания: " << emp.company << endl;
+    cout << "Должность: " << emp.position << endl;
+    cout << "Зарплата: " << emp.salary << " руб." << endl;
+
+    return 0;
+}
