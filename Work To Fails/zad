@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// 1. Создаем структуру Address (Адрес)
+struct Address {
+    string country;
+    string city;
+    string street;
+    int houseNumber;
+    int apartmentNumber; // Может быть не у всех, например, в частном доме
+    string postalCode;
+};
+
+// 2. Создаем структуру Student (Студент), которая ВКЛЮЧАЕТ в себя структуру Address
+struct Student {
+    // Собственные поля Student
+    string firstName;
+    string lastName;
+    int studentId;
+    string faculty;
+
+    // Вложенная структура - композиция
+    Address homeAddress; // У каждого Student ЕСТЬ Address
+};
+
+// Функция для красивого вывода адреса
+void printAddress(const Address& addr) {
+    cout << addr.postalCode << ", " << addr.country << ", г. " << addr.city
+         << ", ул. " << addr.street << ", д. " << addr.houseNumber;
+    if (addr.apartmentNumber > 0) { // Проверяем, указана ли квартира
+        cout << ", кв. " << addr.apartmentNumber;
+    }
+}
+
+// Функция для вывода информации о студенте
+void printStudent(const Student& stud) {
+    cout << "--- Информация о студенте ---" << endl;
+    cout << "Имя: " << stud.firstName << " " << stud.lastName << endl;
+    cout << "Студенческий билет №: " << stud.studentId << endl;
+    cout << "Факультет: " << stud.faculty << endl;
+    cout << "Домашний адрес: ";
+    printAddress(stud.homeAddress);
+    cout << endl << "---------------------------" << endl;
+}
+
+int main() {
+    // Создаем и инициализируем объект структуры Student
+    Student student1;
+
+    // Заполняем основные данные студента
+    student1.firstName = "Мария";
+    student1.lastName = "Сидорова";
+    student1.studentId = 123456;
+    student1.faculty = "Информатика и вычислительная техника";
+
+    // Заполняем вложенную структуру Address
+    student1.homeAddress.country = "Россия";
+    student1.homeAddress.city = "Москва";
+    student1.homeAddress.street = "Ленина";
+    student1.homeAddress.houseNumber = 15;
+    student1.homeAddress.apartmentNumber = 42;
+    student1.homeAddress.postalCode = "101000";
+
+    // Выводим информацию о студенте, используя функцию
+    printStudent(student1);
+
+    // Пример создания и заполнения второго студента
+    Student student2 = {
+        "Алексей", // firstName
+        "Иванов",  // lastName
+        654321,     // studentId
+        "Экономика", // faculty
+        {           // homeAddress - создаем Address "на лету"
+            "Россия",       // country
+            "Санкт-Петербург", // city
+            "Цветочная",    // street
+            33,             // houseNumber
+            0,              // apartmentNumber (0 для частного дома)
+            "190000"        // postalCode
+        }
+    };
+
+    cout << "\n";
+    printStudent(student2);
+
+    return 0;
+}
