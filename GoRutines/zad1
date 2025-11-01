@@ -1,0 +1,23 @@
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func simpleGoroutine(id int) {
+    for i := 0; i < 3; i++ {
+        fmt.Printf("Горутина %d: шаг %d\n", id, i)
+        time.Sleep(time.Millisecond * 100)
+    }
+}
+
+func main() {
+    // Запуск нескольких горутин
+    for i := 1; i <= 3; i++ {
+        go simpleGoroutine(i)
+    }
+    
+    // Ждем завершения горутин
+    time.Sleep(time.Second)
+}
