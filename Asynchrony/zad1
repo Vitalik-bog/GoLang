@@ -1,0 +1,33 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+// Синхронная функция
+func syncFunction() {
+	fmt.Println("Начало синхронной функции")
+	time.Sleep(2 * time.Second)
+	fmt.Println("Конец синхронной функции")
+}
+
+// Асинхронная функция с горутиной
+func asyncFunction() {
+	fmt.Println("Начало асинхронной функции")
+	go func() {
+		time.Sleep(2 * time.Second)
+		fmt.Println("Конец асинхронной функции")
+	}()
+}
+
+func main() {
+	fmt.Println("=== Синхронный вызов ===")
+	syncFunction()
+
+	fmt.Println("=== Асинхронный вызов ===")
+	asyncFunction()
+
+	// Ждем завершения асинхронной операции
+	time.Sleep(3 * time.Second)
+}
