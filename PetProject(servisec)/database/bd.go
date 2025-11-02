@@ -3,6 +3,8 @@ package database
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
@@ -18,23 +20,6 @@ func InitDB(connectionString string) error {
 		return err
 	}
 
-	query := `
-    CREATE TABLE IF NOT EXISTS employees (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        surname VARCHAR(100) NOT NULL,
-        phone VARCHAR(20),
-        company_id INTEGER NOT NULL,
-        passport_type VARCHAR(50),
-        passport_number VARCHAR(50),
-        department_name VARCHAR(100),
-        department_phone VARCHAR(20)
-    )`
-
-	_, err = DB.Exec(query)
-	if err != nil {
-		return err
-	}
 	fmt.Println("✅ База данных подключена успешно")
 	return nil
 }
