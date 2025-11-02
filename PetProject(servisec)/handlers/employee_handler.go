@@ -18,7 +18,7 @@ func NewEmployeeHandler(db *sql.DB) *EmployeeHandler {
 	return &EmployeeHandler{DB: db}
 }
 
-// Добавление сотрудника
+//  Добавление сотрудника
 func (h *EmployeeHandler) AddEmployee(w http.ResponseWriter, r *http.Request) {
 	var employee models.Employee
 	if err := json.NewDecoder(r.Body).Decode(&employee); err != nil {
@@ -57,7 +57,7 @@ func (h *EmployeeHandler) AddEmployee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]int{"id": id})
 }
 
-//Удаление сотрудника по ID
+// Удаление сотрудника по ID
 func (h *EmployeeHandler) DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -125,7 +125,7 @@ func (h *EmployeeHandler) GetEmployeesByCompany(w http.ResponseWriter, r *http.R
 	json.NewEncoder(w).Encode(employees)
 }
 
-//  Список сотрудников по отделу
+// Список сотрудников по отделу
 func (h *EmployeeHandler) GetEmployeesByDepartment(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	companyId, err := strconv.Atoi(vars["companyId"])
