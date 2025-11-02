@@ -18,11 +18,17 @@ func NewEmployeeHandler(db *sql.DB) *EmployeeHandler {
 	return &EmployeeHandler{DB: db}
 }
 
-// 1. Добавление сотрудника
+// Добавление сотрудника
 func (h *EmployeeHandler) AddEmployee(w http.ResponseWriter, r *http.Request) {
 	var employee models.Employee
 	if err := json.NewDecoder(r.Body).Decode(&employee); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, "Invalid JSON: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// Валидация обязательных полей
+	if employee.Name == "" || employee.Surname == "" {
+		http.Error(w, "Name and surname are required", http.StatusBadRequest)
 		return
 	}
 
@@ -31,20 +37,27 @@ func (h *EmployeeHandler) AddEmployee(w http.ResponseWriter, r *http.Request) {
               VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`
 
 	var id int
-	err := h.DB.QueryRow(query, employee.Name, employee.Surname, employee.Phone,
-		employee.CompanyId, employee.Passport.Type, employee.Passport.Number,
-		employee.Department.Name, employee.Department.Phone).Scan(&id)
+	err := h.DB.QueryRow(query,
+		employee.Name,
+		employee.Surname,
+		employee.Phone,
+		employee.CompanyId,
+		employee.Passport.Type,
+		employee.Passport.Number,
+		employee.Department.Name,
+		employee.Department.Phone).Scan(&id)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(map[string]int{"id": id})
 }
 
-// 2. Удаление сотрудника по ID
+//Удаление сотрудника по ID
 func (h *EmployeeHandler) DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -55,7 +68,7 @@ func (h *EmployeeHandler) DeleteEmployee(w http.ResponseWriter, r *http.Request)
 
 	result, err := h.DB.Exec("DELETE FROM employees WHERE id = $1", id)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
@@ -66,10 +79,10 @@ func (h *EmployeeHandler) DeleteEmployee(w http.ResponseWriter, r *http.Request)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{"message": "Employee deleted"})
+	json.NewEncoder(w).Encode(map[string]string{"message": "Employee deleted successfully"})
 }
 
-// 3. Список сотрудников по компании
+// Список сотрудников по компании
 func (h *EmployeeHandler) GetEmployeesByCompany(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	companyId, err := strconv.Atoi(vars["companyId"])
@@ -83,7 +96,7 @@ func (h *EmployeeHandler) GetEmployeesByCompany(w http.ResponseWriter, r *http.R
                passport_number, department_name, department_phone
         FROM employees WHERE company_id = $1`, companyId)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	defer rows.Close()
@@ -91,20 +104,28 @@ func (h *EmployeeHandler) GetEmployeesByCompany(w http.ResponseWriter, r *http.R
 	var employees []models.Employee
 	for rows.Next() {
 		var emp models.Employee
-		err := rows.Scan(&emp.Id, &emp.Name, &emp.Surname, &emp.Phone, &emp.CompanyId,
-			&emp.Passport.Type, &emp.Passport.Number, &emp.Department.Name, &emp.Department.Phone)
+		err := rows.Scan(
+			&emp.Id, &emp.Name, &emp.Surname, &emp.Phone, &emp.CompanyId,
+			&emp.Passport.Type, &emp.Passport.Number,
+			&emp.Department.Name, &emp.Department.Phone,
+		)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 		employees = append(employees, emp)
+	}
+
+	if err = rows.Err(); err != nil {
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(employees)
 }
 
-// 4. Список сотрудников по отделу
+//  Список сотрудников по отделу
 func (h *EmployeeHandler) GetEmployeesByDepartment(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	companyId, err := strconv.Atoi(vars["companyId"])
@@ -121,7 +142,7 @@ func (h *EmployeeHandler) GetEmployeesByDepartment(w http.ResponseWriter, r *htt
         FROM employees WHERE company_id = $1 AND department_name = $2`,
 		companyId, departmentName)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	defer rows.Close()
@@ -129,20 +150,28 @@ func (h *EmployeeHandler) GetEmployeesByDepartment(w http.ResponseWriter, r *htt
 	var employees []models.Employee
 	for rows.Next() {
 		var emp models.Employee
-		err := rows.Scan(&emp.Id, &emp.Name, &emp.Surname, &emp.Phone, &emp.CompanyId,
-			&emp.Passport.Type, &emp.Passport.Number, &emp.Department.Name, &emp.Department.Phone)
+		err := rows.Scan(
+			&emp.Id, &emp.Name, &emp.Surname, &emp.Phone, &emp.CompanyId,
+			&emp.Passport.Type, &emp.Passport.Number,
+			&emp.Department.Name, &emp.Department.Phone,
+		)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 		employees = append(employees, emp)
+	}
+
+	if err = rows.Err(); err != nil {
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(employees)
 }
 
-// 5. Обновление сотрудника по ID
+// Обновление сотрудника по ID
 func (h *EmployeeHandler) UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -153,14 +182,18 @@ func (h *EmployeeHandler) UpdateEmployee(w http.ResponseWriter, r *http.Request)
 
 	var updates map[string]interface{}
 	if err := json.NewDecoder(r.Body).Decode(&updates); err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, "Invalid JSON: "+err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	// Проверяем существование сотрудника
 	var exists bool
 	err = h.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM employees WHERE id = $1)", id).Scan(&exists)
-	if err != nil || !exists {
+	if err != nil {
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
+	if !exists {
 		http.Error(w, "Employee not found", http.StatusNotFound)
 		return
 	}
@@ -200,10 +233,10 @@ func (h *EmployeeHandler) UpdateEmployee(w http.ResponseWriter, r *http.Request)
 
 	_, err = h.DB.Exec(query, params...)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Database error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{"message": "Employee updated"})
+	json.NewEncoder(w).Encode(map[string]string{"message": "Employee updated successfully"})
 }
