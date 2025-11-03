@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 )
-
+//worker
 func worker(ctx context.Context, id int) {
-	for {
+	for { 
 		select {
 		case <-ctx.Done():
 			fmt.Printf("Горутина %d завершена: %v\n", id, ctx.Err())
