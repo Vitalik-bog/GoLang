@@ -1,0 +1,22 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch := make(chan string)
+
+	go func() {
+		time.Sleep(3 * time.Second)
+		ch <- "результат операции"
+	}()
+
+	select {
+	case res := <-ch:
+		fmt.Println("Успех:", res)
+	case <-time.After(5 * time.Second):
+		fmt.Println("Таймаут! Операция заняла слишком много времени")
+	}
+}
