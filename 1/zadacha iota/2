@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+const (
+	CanRead = 1 << iota
+	CanWrite
+	CanExecute
+)
+
+func checkPermission(userPerm, requiredPerm int) bool {
+	return userPerm&requiredPerm == requiredPerm
+}
+
+func main() {
+	userPermissions := CanRead | CanWrite
+
+	fmt.Printf("Can read: %v\n", checkPermission(userPermissions, CanRead))
+	fmt.Printf("Can write: %v\n", checkPermission(userPermissions, CanWrite))
+	fmt.Printf("Can execute: %v\n", checkPermission(userPermissions, CanExecute))
+}
