@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+const (
+	A = iota * 2
+	B
+	C
+	_ // пропуск значения
+	D
+)
+const (
+	Read = 1 << iota
+	Write
+	Execute
+)
+
+func main() {
+	fmt.Printf("A=%d, B=%d, C=%d, D=%d\n", A, B, C, D)
+	fmt.Printf("Read=%d, Write=%d, Execute=%d\n", Read, Write, Execute)
+}
