@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+const (
+	First = iota // 0
+	Second
+)
+
+const (
+	Alpha = iota // 0
+	Beta
+	Gamma
+)
+
+func main() {
+	fmt.Printf("First: %d, Second: %d\n", First, Second)
+	fmt.Printf("Alpha: %d, Beta: %d, Gamma: %d\n", Alpha, Beta, Gamma)
+}
