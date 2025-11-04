@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+	var input string
+
+	fmt.Print("Введите пожалуйста строку: ")
+	fmt.Scanln(&input)
+
+	length := len(input)
+	fmt.Printf("Длинна строки равна '%s' :%d\n", input, length)
+}
