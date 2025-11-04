@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+const (
+	Pending = iota
+	Processing
+	Shipped
+	Delivered
+	Cancelled
+)
+
+func main() {
+	fmt.Printf("Pending: %d, Processing %d,Shipped %d,Delivered %d,Cancelled %d\n",
+		Pending, Processing, Shipped, Delivered, Cancelled)
+}
