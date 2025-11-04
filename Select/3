@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	ch := make(chan string, 1)
+
+	// Пытаемся отправить в канал
+	select {
+	case ch <- "сообщение":
+		fmt.Println("Сообщение отправлено")
+	default:
+		fmt.Println("Канал заблокирован, сообщение не отправлено")
+	}
+
+	// Пытаемся прочитать из канала
+	select {
+	case msg := <-ch:
+		fmt.Println("Прочитано:", msg)
+	default:
+		fmt.Println("Нет сообщений для чтения")
+	}
+}
