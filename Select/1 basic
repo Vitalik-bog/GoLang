@@ -1,0 +1,29 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch1 := make(chan string)
+	ch2 := make(chan string)
+
+	go func() {
+		time.Sleep(3 * time.Second)
+		ch1 <- "сообщение из канала 1"
+	}()
+
+	go func() {
+		time.Sleep(2 * time.Second)
+		ch2 <- "сообщение из канала 2"
+	}()
+
+	// select будет ждать, пока один из каналов не получит сообщение.Соответственно если , будет 2 и 2 секунд то вызывается первая по очередм горутина.
+	select {
+	case msg1 := <-ch1:
+		fmt.Println("Получено:", msg1)
+	case msg2 := <-ch2:
+		fmt.Println("Получено:", msg2)
+	}
+}
