@@ -1,0 +1,48 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+
+	// Горутина для ch1
+	go func() {
+		for i := 0; i < 3; i++ {
+			ch1 <- i
+			time.Sleep(500 * time.Millisecond)
+		}
+		close(ch1)
+	}()
+
+	// Горутина для ch2
+	go func() {
+		for i := 10; i < 13; i++ {
+			ch2 <- i
+			time.Sleep(700 * time.Millisecond)
+		}
+		close(ch2)
+	}()
+
+	// Обрабатываем сообщения из обоих каналов
+	ch1Open, ch2Open := true, true
+	var msg int
+
+	for ch1Open || ch2Open {
+		select {
+		case msg, ch1Open = <-ch1:
+			if ch1Open {
+				fmt.Printf("Из ch1: %d\n", msg)
+			}
+		case msg, ch2Open = <-ch2:
+			if ch2Open {
+				fmt.Printf("Из ch2: %d\n", msg)
+			}
+		}
+	}
+
+	fmt.Println("Все каналы закрыты")
+}
