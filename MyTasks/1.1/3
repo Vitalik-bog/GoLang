@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func getLastChar(str string) (byte, bool) {
+	if len(str) == 0 {
+		return 0, false
+	}
+	return str[len(str)-1], true
+}
+
+func main() {
+	str := ""
+
+	if lastChar, exists := getLastChar(str); exists {
+		fmt.Printf("Последний символ: '%c'\n", lastChar)
+	} else {
+		fmt.Println("Строка пустая")
+	}
+}
