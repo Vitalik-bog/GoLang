@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	var Number int
+
+	fmt.Print("Введите пожалуйста число: ")
+	fmt.Scanln(&Number)
+
+	if Number%2 == 0 {
+		fmt.Printf("Число %d четное \n", Number)
+	} else {
+		fmt.Printf("Число %d нечетное\n", Number)
+	}
+}
