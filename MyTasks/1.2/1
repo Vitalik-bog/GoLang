@@ -1,0 +1,24 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    number := 12345
+    
+    // Способ 1: Преобразование в строку
+    str := strconv.Itoa(number)
+    if len(str) > 0 {
+        firstDigit := string(str[0])
+        fmt.Printf("Первая цифра числа %d: %s\n", number, firstDigit)
+    }
+    
+    // Способ 2: Математический (для положительных чисел)
+    n := number
+    for n >= 10 {
+        n = n / 10
+    }
+    fmt.Printf("Первая цифра числа %d: %d\n", number, n)
+}
