@@ -1,0 +1,30 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    number := 12345
+    
+    // Получаем последнюю цифру
+    lastDigit := number % 10
+    if number < 0 {
+        lastDigit = -number % 10
+    }
+    
+    // Получаем первую цифру математическим способом
+    firstDigit := number
+    for firstDigit >= 10 || firstDigit <= -10 {
+        firstDigit = firstDigit / 10
+    }
+    if firstDigit < 0 {
+        firstDigit = -firstDigit
+    }
+    
+    sum := firstDigit + lastDigit
+    fmt.Printf("Число: %d\n", number)
+    fmt.Printf("Первая цифра: %d, Последняя цифра: %d\n", firstDigit, lastDigit)
+    fmt.Printf("Сумма: %d + %d = %d\n", firstDigit, lastDigit, sum)
+}
