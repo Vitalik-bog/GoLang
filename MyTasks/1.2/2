@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+    number := 12345
+    
+    // Просто берем остаток от деления на 10
+    lastDigit := number % 10
+    
+    // Для отрицательных чисел берем модуль
+    if number < 0 {
+        lastDigit = -number % 10
+    }
+    
+    fmt.Printf("Последняя цифра числа %d: %d\n", number, lastDigit)
+}
