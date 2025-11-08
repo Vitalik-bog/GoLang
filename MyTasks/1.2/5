@@ -1,0 +1,75 @@
+package main
+
+import (
+    "fmt"
+)
+
+// Функция для получения первой цифры
+func getFirstDigit(num int) int {
+    if num < 0 {
+        num = -num
+    }
+    for num >= 10 {
+        num = num / 10
+    }
+    return num
+}
+
+// Функция для получения последней цифры
+func getLastDigit(num int) int {
+    if num < 0 {
+        return -num % 10
+    }
+    return num % 10
+}
+
+// Функция для подсчета количества цифр
+func countDigits(num int) int {
+    if num == 0 {
+        return 1
+    }
+    if num < 0 {
+        num = -num
+    }
+    count := 0
+    for num > 0 {
+        count++
+        num = num / 10
+    }
+    return count
+}
+
+func main() {
+    number := 12345
+    number2 := 17890
+    
+    fmt.Println("=== ЗАДАЧА 1: Первая цифра ===")
+    firstDigit := getFirstDigit(number)
+    fmt.Printf("Первая цифра числа %d: %d\n", number, firstDigit)
+    
+    fmt.Println("\n=== ЗАДАЧА 2: Последняя цифра ===")
+    lastDigit := getLastDigit(number)
+    fmt.Printf("Последняя цифра числа %d: %d\n", number, lastDigit)
+    
+    fmt.Println("\n=== ЗАДАЧА 3: Сумма первой и последней цифры ===")
+    sum := firstDigit + lastDigit
+    fmt.Printf("Число: %d\n", number)
+    fmt.Printf("Первая цифра: %d, Последняя цифра: %d\n", firstDigit, lastDigit)
+    fmt.Printf("Сумма: %d + %d = %d\n", firstDigit, lastDigit, sum)
+    
+    fmt.Println("\n=== ЗАДАЧА 4: Количество цифр ===")
+    digitCount := countDigits(number)
+    fmt.Printf("Количество цифр в числе %d: %d\n", number, digitCount)
+    
+    fmt.Println("\n=== ЗАДАЧА 5: Совпадение первых цифр ===")
+    firstDigit1 := getFirstDigit(number)
+    firstDigit2 := getFirstDigit(number2)
+    fmt.Printf("Число 1: %d, первая цифра: %d\n", number, firstDigit1)
+    fmt.Printf("Число 2: %d, первая цифра: %d\n", number2, firstDigit2)
+    
+    if firstDigit1 == firstDigit2 {
+        fmt.Printf("✓ Первые цифры совпадают: %d\n", firstDigit1)
+    } else {
+        fmt.Printf("✗ Первые цифры разные: %d и %d\n", firstDigit1, firstDigit2)
+    }
+}
