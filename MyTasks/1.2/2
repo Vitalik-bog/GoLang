@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-    number := 12345
+ //   number := 12345
     
     // Просто берем остаток от деления на 10
     lastDigit := number % 10
