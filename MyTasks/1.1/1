@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main() {/
 	a := -1
 	if a < 0 {
 		fmt.Printf("Число отрицательное\n", a)
