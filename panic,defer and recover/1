@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Старт программы")
+
+	defer fmt.Println("Это выполнится ПОСЛЕДНИМ")
+	defer fmt.Println("Это выполнится ПРЕДпоследним")
+
+	fmt.Println("Основная логика")
+	fmt.Println("Конец функции")
+}
