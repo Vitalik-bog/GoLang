@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	defer fmt.Println("defer: очистка ресурсов")
+
+	fmt.Println("Шаг 1: инициализация")
+	fmt.Println("Шаг 2: основная работа")
+
+	panic("внезапная ошибка!")
+
+	fmt.Println("Это не выполнится")
+}
