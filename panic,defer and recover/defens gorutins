@@ -1,0 +1,43 @@
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func worker(id int, wg chan bool) {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Printf("Рабочий %d восстановлен после: %v\n", id, r)
+        }
+        wg <- true
+    }()
+    
+    // Имитация работы
+    for i := 0; i < 3; i++ {
+        fmt.Printf("Рабочий %d: шаг %d\n", id, i)
+        time.Sleep(100 * time.Millisecond)
+        
+        // Случайная паника
+        if id == 2 && i == 1 {
+            panic("внезапная поломка!")
+        }
+    }
+}
+
+func main() {
+    workers := 4
+    wg := make(chan bool, workers)
+    
+    fmt.Println("Запуск рабочих...")
+    for i := 0; i < workers; i++ {
+        go worker(i, wg)
+    }
+    
+    // Ждем завершения всех рабочих
+    for i := 0; i < workers; i++ {
+        <-wg
+    }
+    
+    fmt.Println("Все рабочие завершили работу")
+}
