@@ -1,0 +1,37 @@
+package main
+
+import "fmt"
+
+func riskyOperation() {
+	defer fmt.Println("Завершение riskyOperation")
+	panic("ошибка в riskyOperation")
+}
+
+func main() {
+	fmt.Println("Начало программы")
+
+	// Защищенный вызов
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("Перехвачено: %v\n", r)
+			}
+		}()
+		riskyOperation()//обращаеся к функции для паники
+	}()
+
+	fmt.Println("Программа продолжает работать!")//проолжаем работать
+
+	// Еще один защищенный блок
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				fmt.Printf("Второй перехват: %v\n", r)//второй перехват с паникой уже в анонимной функции.
+			}
+		}()
+		fmt.Println("Второй блок выполняется")//выполняется второй блок
+		panic("еще одна ошибка")
+	}()
+
+	fmt.Println("Конец программы")
+}
