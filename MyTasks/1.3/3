@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a, b int
+	fmt.Scan(&a, &b)
+
+	if b == 0 {
+		fmt.Println("Ошибка: деление на ноль")
+	} else {
+		remainder := a % b
+		fmt.Println(remainder)
+	}
+}
