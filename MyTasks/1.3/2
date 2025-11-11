@@ -1,0 +1,14 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var s string
+	fmt.Scan(&s) // или любая другая строка
+
+	if len(s) > 1 {
+		fmt.Printf("%c\n", s[len(s)-2])
+	}
+}
