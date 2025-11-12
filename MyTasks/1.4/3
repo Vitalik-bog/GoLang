@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+	num := 30
+
+	var quarter string
+
+	switch {
+	case num >= 0 && num < 15:
+		quarter = "Первая четверть"
+	case num >= 15 && num < 30:
+		quarter = "Вторая четверть"
+	case num >= 30 && num < 45:
+		quarter = "Третья четверть"
+	case num >= 45 && num <= 59:
+		quarter = "Четвертая четверть"
+	case num == 60:
+		quarter = "Следующий час"
+	default:
+		quarter = "Неверное значение минуты"
+	}
+
+	fmt.Println(quarter)
+}
