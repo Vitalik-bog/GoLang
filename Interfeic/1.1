@@ -1,0 +1,38 @@
+package main
+
+import "fmt"
+
+// Структура - как "чертеж" объекта
+type Book struct {
+    Title  string
+    Author string
+    Pages  int
+}
+
+// Метод - функция, привязанная к структуре
+func (b Book) Display() {
+    fmt.Printf("📖 '%s' by %s (%d pages)\n", b.Title, b.Author, b.Pages)
+}
+
+// Еще один метод
+func (b Book) IsLong() bool {
+    return b.Pages > 300
+}
+
+func main() {
+    // Создаем экземпляр структуры
+    book1 := Book{
+        Title:  "The Go Programming Language",
+        Author: "Donovan & Kernighan",
+        Pages:  400,
+    }
+    
+    book2 := Book{"Learn Go in 1 Day", "John Doe", 150}
+    
+    // Вызываем методы
+    book1.Display()
+    book2.Display()
+    
+    fmt.Printf("Is '%s' long? %t\n", book1.Title, book1.IsLong())
+    fmt.Printf("Is '%s' long? %t\n", book2.Title, book2.IsLong())
+}
