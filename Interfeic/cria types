@@ -1,0 +1,49 @@
+package main
+
+import "fmt"
+
+// Определяем интерфейс
+type Duck interface {
+	Quack() string
+	Walk() string
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d Dog) Quack() string {
+	return "Dog trying to quack: Woof-woof!"
+}
+
+func (d Dog) Walk() string {
+	return "Dog walking like a duck"
+}
+
+type Bird struct {
+	Species string
+}
+
+func (b Bird) Quack() string {
+	return "Quack! Quack!"
+}
+
+func (b Bird) Walk() string {
+	return "Waddling like a duck"
+}
+
+func DuckShow(d Duck) {
+	fmt.Println(d.Quack())
+	fmt.Println(d.Walk())
+	fmt.Println("---")
+}
+
+func main() {
+	dog := Dog{Name: "Rex"}
+	bird := Bird{Species: "Mallard"}
+
+	// Оба типа могут быть переданы как Duck
+	// потому что они реализуют все методы интерфейса
+	DuckShow(dog)  // Dog реализует Duck!
+	DuckShow(bird) // Bird реализует Duck!
+}
