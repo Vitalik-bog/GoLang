@@ -1,0 +1,45 @@
+package main
+
+import "fmt"
+
+// Интерфейс - контракт на поведение
+type Greeter interface {
+	Greet() string
+}
+
+// Структура Person
+type Person struct {
+	Name string
+}
+
+// Person реализует интерфейс Greeter
+func (p Person) Greet() string {
+	return fmt.Sprintf("Hello, I'm %s!", p.Name)
+}
+
+// Структура Robot
+type Robot struct {
+	Model string
+}
+
+// Robot тоже реализует Greeter
+func (r Robot) Greet() string {
+	return fmt.Sprintf("Beep boop, I'm model %s", r.Model)
+}
+
+func Introduce(g Greeter) {
+	fmt.Println(g.Greet())
+}
+
+func main() {
+	alice := Person{Name: "Alice"}
+	r2d2 := Robot{Model: "R2-D2"}
+
+	// Оба объекта могут быть переданы как Greeter
+	Introduce(alice) // Hello, I'm Alice!
+	Introduce(r2d2)  // Beep boop, I'm model R2-D2
+
+	// Прямой вызов методов
+	fmt.Println(alice.Greet())
+	fmt.Println(r2d2.Greet())
+}
