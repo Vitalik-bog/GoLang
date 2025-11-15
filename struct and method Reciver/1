@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+// Определяем структуру для строки таблицы
+type User struct {
+    ID    int
+    Name  string
+    Email string
+    Age   int
+}
+
+func main() {
+    // Создаем "виртуальную таблицу" - срез структур
+    users := []User{
+        {1, "Алексей", "alex@example.com", 28},
+        {2, "Мария", "maria@example.com", 32},
+        {3, "Иван", "ivan@example.com", 25},
+    }
+    
+    // Фильтрация данных
+    var youngUsers []User
+    for _, user := range users {
+        if user.Age < 30 {
+            youngUsers = append(youngUsers, user)
+        }
+    }
+    
+    fmt.Println("Молодые пользователи:")
+    for _, user := range youngUsers {
+        fmt.Printf("ID: %d, Name: %s, Age: %d\n", user.ID, user.Name, user.Age)
+    }
+}
