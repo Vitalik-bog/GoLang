@@ -1,0 +1,63 @@
+package main
+
+import (
+    "fmt"
+    "sort"
+)
+
+type Product struct {
+    ID    int
+    Name  string
+    Price float64
+    Stock int
+}
+
+type ProductTable struct {
+    Products []Product
+}
+
+// Методы для работы с таблицей
+func (pt *ProductTable) AddProduct(product Product) {
+    pt.Products = append(pt.Products, product)
+}
+
+func (pt *ProductTable) SortByPrice() {
+    sort.Slice(pt.Products, func(i, j int) bool {
+        return pt.Products[i].Price < pt.Products[j].Price
+    })
+}
+
+func (pt *ProductTable) FilterByStock(minStock int) []Product {
+    var result []Product
+    for _, product := range pt.Products {
+        if product.Stock >= minStock {
+            result = append(result, product)
+        }
+    }
+    return result
+}
+
+func main() {
+    table := ProductTable{}
+    
+    // Добавляем данные
+    table.AddProduct(Product{1, "Ноутбук", 50000, 10})
+    table.AddProduct(Product{2, "Мышь", 1500, 25})
+    table.AddProduct(Product{3, "Клавиатура", 3000, 0})
+    table.AddProduct(Product{4, "Монитор", 20000, 5})
+    
+    // Сортируем по цене
+    table.SortByPrice()
+    
+    fmt.Println("Товары отсортированные по цене:")
+    for _, product := range table.Products {
+        fmt.Printf("%s: %.2f руб.\n", product.Name, product.Price)
+    }
+    
+    // Фильтруем по наличию
+    available := table.FilterByStock(1)
+    fmt.Println("\nТовары в наличии:")
+    for _, product := range available {
+        fmt.Printf("%s: %d шт.\n", product.Name, product.Stock)
+    }
+}
