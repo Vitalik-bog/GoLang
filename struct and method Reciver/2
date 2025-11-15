@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Таблица как срез карт
+    users := []map[string]interface{}{
+        {"id": 1, "name": "Алексей", "email": "alex@example.com", "age": 28},
+        {"id": 2, "name": "Мария", "email": "maria@example.com", "age": 32},
+        {"id": 3, "name": "Иван", "email": "ivan@example.com", "age": 25},
+    }
+    
+    // Поиск по таблице
+    for _, user := range users {
+        if user["age"].(int) > 27 {
+            fmt.Printf("Найден: %s, возраст: %d\n", user["name"], user["age"])
+        }
+    }
+}
