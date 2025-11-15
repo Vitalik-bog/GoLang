@@ -1,0 +1,24 @@
+// Пример с использованием github.com/go-gota/gota/dataframe
+import (
+    "fmt"
+    "github.com/go-gota/gota/dataframe"
+    "github.com/go-gota/gota/series"
+)
+
+func main() {
+    df := dataframe.LoadRecords(
+        [][]string{
+            {"Name", "Age", "City"},
+            {"Алексей", "28", "Москва"},
+            {"Мария", "32", "СПб"},
+            {"Иван", "25", "Москва"},
+        },
+    )
+    
+    // Фильтрация
+    filtered := df.Filter(
+        dataframe.F{Colname: "City", Comparator: series.Eq, Comparando: "Москва"},
+    )
+    
+    fmt.Println(filtered)
+}
