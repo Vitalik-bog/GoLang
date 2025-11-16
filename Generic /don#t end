@@ -1,0 +1,21 @@
+// Для int
+func Filter_int(slice []int, predicate func(int) bool) []int {
+    var result []int
+    for _, item := range slice {
+        if predicate(item) {
+            result = append(result, item)
+        }
+    }
+    return result
+}
+
+// Для string  
+func Filter_string(slice []string, predicate func(string) bool) []string {
+    var result []string
+    for _, item := range slice {
+        if predicate(item) {
+            result = append(result, item)
+        }
+    }
+    return result
+}
