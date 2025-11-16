@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func IsEqual[T comparable](a, b T) bool {
+	return a == b
+}
+func main() {
+	fmt.Println(IsEqual(10, 10))     // true
+	fmt.Println(IsEqual("a", "b"))   // false
+	fmt.Println(IsEqual(3.14, 3.14)) // true
+}
