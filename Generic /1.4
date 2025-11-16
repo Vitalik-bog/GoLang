@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func FindInSlice[U comparable](slice []U, target U) int { //targey по сути ищет элемент того же типа.
+	for i, item := range slice {
+		if item == target {
+			return i
+		}
+	}
+	return -1
+}
+func main() {
+	numbers := []int{1, 2, 3, 4, 5}
+	names := []string{"Alice", "Bob", "Charlie"}
+
+	fmt.Println(FindInSlice(numbers, 3))   // 2
+	fmt.Println(FindInSlice(numbers, 6))   // -1
+	fmt.Println(FindInSlice(names, "Bob")) // 1
+}
