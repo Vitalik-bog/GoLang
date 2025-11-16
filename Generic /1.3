@@ -1,0 +1,43 @@
+package main
+
+import "fmt"
+
+type Stack[T any] struct {
+	elements []T
+}
+
+func (s *Stack[T]) Push(value T) {
+	s.elements = append(s.elements, value)
+}
+
+func (s *Stack[T]) Pop() (T, bool) {
+	if len(s.elements) == 0 {
+		var zero T
+		return zero, false
+	}
+	lastIndex := len(s.elements) - 1
+	value := s.elements[lastIndex]
+	s.elements = s.elements[:lastIndex]
+	return value, true
+}
+
+func (s *Stack[T]) IsEmpty() bool {
+	return len(s.elements) == 0
+}
+
+func main() {
+	stack := Stack[int]{}
+	stack.Push(1)
+	stack.Push(2)
+	stack.Push(3)
+
+	fmt.Println("IsEmpty:", stack.IsEmpty()) // false
+
+	for !stack.IsEmpty() {
+		value, ok := stack.Pop()
+		if ok {
+			fmt.Println("Popped:", value)
+		}
+	}
+	// Output: 3, 2, 1
+}
