@@ -1,0 +1,47 @@
+package main
+
+import "fmt"
+
+func main() {
+	numbers := []int{1, 2, 3, 4, 5}
+	reversed := Reverse(numbers)
+	fmt.Println("Reversed:", reversed) // [5, 4, 3, 2, 1]
+
+	withDupes := []int{1, 2, 2, 3, 4, 4, 5}
+	unique := Unique(withDupes)
+	fmt.Println("Unique:", unique) // [1, 2, 3, 4, 5]
+
+	chunks := Chunk(numbers, 2)
+	fmt.Println("Chunks:", chunks) // [[1, 2], [3, 4], [5]]
+}
+func Reverse[T any](slice []T) []T {
+	result := make([]T, len(slice))
+	for i, j := 0, len(slice)-1; i < len(slice); i, j = i+1, j-1 {
+		result[i] = slice[j]
+	}
+	return result
+}
+
+func Unique[T comparable](slice []T) []T {
+	seen := make(map[T]bool)
+	var result []T
+	for _, item := range slice {
+		if !seen[item] {
+			seen[item] = true
+			result = append(result, item)
+		}
+	}
+	return result
+}
+
+func Chunk[T any](slice []T, size int) [][]T {
+	var chunks [][]T
+	for i := 0; i < len(slice); i += size {
+		end := i + size
+		if end > len(slice) {
+			end = len(slice)
+		}
+		chunks = append(chunks, slice[i:end])
+	}
+	return chunks
+}
