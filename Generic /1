@@ -1,0 +1,41 @@
+package main
+
+import "fmt"
+
+// Базовый пример - функция идентичности
+func Identity[T any](value T) T { //any эквивалентен  interface{} так же может подходить любой тип данных
+	return value
+}
+
+// ограничение для сравнения
+func AreEqual[T comparable](a, b T) bool {
+	return a == b
+}
+
+// ограничение интовых чисел
+type Numeric interface {
+	int | int8 | int16 | int32 | int64 | uint | uint8 | uint16 | uint32 | uint64 | float32 | float64
+}
+
+// Функция для числовых типов
+func Add[T Numeric](a, b T) T {
+	return a + b
+}
+
+func main() {
+	// Использование с any
+	str := Identity("hello")
+	num := Identity(42)
+
+	// Использование с comparable
+	eq1 := AreEqual(10, 10)   // true
+	eq2 := AreEqual("a", "b") // false
+
+	// Использование с Numeric
+	sumInt := Add(5, 3)       // 8
+	sumFloat := Add(2.5, 3.7) // 6.2
+
+	fmt.Printf("Identity: %v, %v\n", str, num)
+	fmt.Printf("AreEqual: %v, %v\n", eq1, eq2)
+	fmt.Printf("Add: %v, %v\n", sumInt, sumFloat)
+}
