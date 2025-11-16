@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func Identity[T any](value T) T {
+	return value
+}
+
+func main() {
+	result1 := Identity("hello")
+	result2 := Identity(42)
+	result3 := Identity(3.14)
+
+	fmt.Printf("String: %v,\n Int: %v,\n Float: %v\n", result1, result2, result3)
+}
