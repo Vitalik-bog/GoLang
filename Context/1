@@ -1,0 +1,41 @@
+package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    // Создание корневого контекста
+    ctx := context.Background()
+    
+    // Контекст с возможностью отмены
+    ctx, cancel := context.WithCancel(ctx)
+    defer cancel()
+    
+    // Контекст с таймаутом
+    ctx, cancel = context.WithTimeout(ctx, 2*time.Second)
+    defer cancel()
+    
+    // Контекст с дедлайном
+    ctx, cancel = context.WithDeadline(ctx, time.Now().Add(2*time.Second))
+    defer cancel()
+    
+    // Контекст с значениями
+    ctx = context.WithValue(ctx, "userID", 12345)
+    
+    processRequest(ctx)
+}
+
+func processRequest(ctx context.Context) {
+    userID := ctx.Value("userID").(int)
+    fmt.Printf("Обработка запроса для пользователя: %d\n", userID)
+    
+    select {
+    case <-time.After(1 * time.Second):
+        fmt.Println("Запрос успешно обработан")
+    case <-ctx.Done():
+        fmt.Printf("Запрос отменен: %v\n", ctx.Err())
+    }
+}
