@@ -1,0 +1,60 @@
+package main
+
+import (
+    "database/sql"
+    "fmt"
+    "log"
+
+    _ "github.com/go-sql-driver/mysql"
+)
+
+func initDatabase(db *sql.DB) error {
+    // Создание таблицы users
+    _, err := db.Exec(`
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(100) NOT NULL,
+            email VARCHAR(100) UNIQUE NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `)
+    if err != nil {
+        return fmt.Errorf("failed to create users table: %v", err)
+    }
+
+    // Создание таблицы posts
+    _, err = db.Exec(`
+        CREATE TABLE IF NOT EXISTS posts (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(200) NOT NULL,
+            content TEXT NOT NULL,
+            user_id INT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    `)
+    if err != nil {
+        return fmt.Errorf("failed to create posts table: %v", err)
+    }
+
+    fmt.Println("Database schema initialized successfully!")
+    return nil
+}
+
+func main() {
+    dsn := "username:password@tcp(localhost:3306)/my_database"
+    db, err := sql.Open("mysql", dsn)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer db.Close()
+
+    if err := db.Ping(); err != nil {
+        log.Fatal("Connection failed:", err)
+    }
+
+    // Инициализируем схему БД
+    if err := initDatabase(db); err != nil {
+        log.Fatal("Failed to initialize database:", err)
+    }
+}
