@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    var num1, num2 int
+    
+    fmt.Print("Введите первое число: ")
+    fmt.Scan(&num1)
+    
+    fmt.Print("Введите второе число: ")
+    fmt.Scan(&num2)
+    
+    if num2 == 0 {
+        fmt.Println("Ошибка: деление на ноль!")
+        return
+    }
+    
+    if num1%num2 == 0 {
+        fmt.Printf("Число %d делится на %d без остатка\n", num1, num2)
+    } else {
+        fmt.Printf("Число %d НЕ делится на %d без остатка. Остаток: %d\n", num1, num2, num1%num2)
+    }
+}
