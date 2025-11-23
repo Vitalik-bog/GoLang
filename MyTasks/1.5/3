@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    kb := 35
+    
+    if kb < 0 {
+        fmt.Println("Ошибка: количество килобайт не может быть отрицательным")
+        return
+    }
+    
+    bytes := kb * 1024
+    fmt.Printf("%d КБ = %d Б\n", kb, bytes)
+}
