@@ -1,0 +1,21 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    str := "12345"
+    
+    // Преобразование строки в целое число
+    num, err := strconv.Atoi(str)
+    if err != nil {
+        fmt.Println("Ошибка преобразования:", err)
+        return
+    }
+    
+    fmt.Printf("Строка: %s\n", str)
+    fmt.Printf("Число: %d\n", num)
+    fmt.Printf("Тип: %T\n", num)
+}
