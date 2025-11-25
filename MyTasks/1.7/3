@@ -1,10 +1,19 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "strconv"
+)
 
 func main() {
-    kb := 35
-    bytes := kb * 1024
+    str1 := "123"
+    str2 := "456" 
+    str3 := "789"
     
-    fmt.Printf("%d килобайт = %d байт\n", kb, bytes)
+    num1, _ := strconv.Atoi(str1)
+    num2, _ := strconv.Atoi(str2)
+    num3, _ := strconv.Atoi(str3)
+    
+    sum := num1 + num2 + num3
+    fmt.Printf("%s + %s + %s = %d\n", str1, str2, str3, sum)
 }
