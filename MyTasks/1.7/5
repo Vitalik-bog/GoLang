@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 12345
+    sum := 0
+    
+    for num > 0 {
+        digit := num % 10
+        sum += digit
+        num = num / 10
+    }
+    
+    fmt.Printf("Сумма цифр числа: %d\n", sum)
+}
