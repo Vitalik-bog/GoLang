@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    var num1, num2 int
+    num1 = 15
+    num2 = 5
+    
+    if num2 == 0 {
+        fmt.Println("Ошибка: деление на ноль!")
+        return
+    }
+    
+    if num1%num2 == 0 {
+        fmt.Printf("Число %d делится на %d без остатка\n", num1, num2)
+    } else {
+        fmt.Printf("Число %d НЕ делится на %d без остатка\n", num1, num2)
+    }
+}
