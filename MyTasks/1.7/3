@@ -1,0 +1,10 @@
+package main
+
+import "fmt"
+
+func main() {
+    kb := 35
+    bytes := kb * 1024
+    
+    fmt.Printf("%d килобайт = %d байт\n", kb, bytes)
+}
