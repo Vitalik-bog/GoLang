@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    b := 3535645778
+    kilobytes := float64(b) / 1024
+    megabytes := kilobytes / 1024
+    gigabytes := megabytes / 1024
+    
+    fmt.Printf("Исходное значение: %d байт\n", b)
+    fmt.Printf("В килобайтах: %.2f KB\n", kilobytes)
+    fmt.Printf("В мегабайтах: %.2f MB\n", megabytes)
+    fmt.Printf("В гигабайтах: %.2f GB\n", gigabytes)
+}
