@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+// Объявляем функцию-дженерик.
+// PrintAny[T any] - значит "функция PrintAny работает с типом T,
+// где T может быть ЛЮБЫМ типом (any)"
+func PrintAny[T any](value T) {
+	// Параметр value имеет тип T (который будет известен при вызове функции)
+	fmt.Println(value)
+}
+
+func main() {
+	PrintAny("Привет, мир!") // T автоматически становится string
+	PrintAny(42)             // T автоматически становится int
+	PrintAny(3.14)           // T автоматически становится float64
+	PrintAny(12.33)
+} 
