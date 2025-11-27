@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+// Объявляем дженерик-структуру
+// Box может хранить значение любого типа
+type Box[T any] struct {
+	Content T
+}
+
+func main() {
+	// Создаем коробку для строки
+	stringBox := Box[string]{Content: "Подарок"}
+	fmt.Println(stringBox.Content) // Подарок
+
+	// Создаем коробку для числа
+	intBox := Box[int]{Content: 100}
+	fmt.Println(intBox.Content) // 100
+}
