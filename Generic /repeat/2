@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+// MakeSlice[T any] создает и возвращает слайс типа []T
+func MakeSlice[T any](first, second T) []T {
+	// Создаем слайс, элементами которого являются значения типа T
+	return []T{first, second}
+}
+
+func main() {
+	// Создаем слайс строк
+	stringSlice := MakeSlice("Яблоко", "Банан")
+	fmt.Println(stringSlice) // [Яблоко Банан]
+
+	// Создаем слайс чисел
+	intSlice := MakeSlice(10, 20)
+	fmt.Println(intSlice) // [10 20]
+}
