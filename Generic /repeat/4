@@ -1,0 +1,26 @@
+package main
+
+import (
+    "fmt"
+    "golang.org/x/exp/constraints"
+)
+
+// Number - это тип, который может быть int, float64 и другими числами
+// constraints.Ordered включает типы, которые можно сравнивать (>, <, ==)
+type Number interface {
+    constraints.Integer | constraints.Float
+}
+
+// Max[T Number] - T может быть только численным типом
+func Max[T Number](a, b T) T {
+    if a > b {
+        return a
+    }
+    return b
+}
+
+func main() {
+    fmt.Println(Max(10, 20))     // 20
+    fmt.Println(Max(3.14, 2.71)) // 3.14
+    // Max("a", "b") - ЭТО НЕ СКОМПИЛИРУЕТСЯ! Строки не подходят под ограничение Number
+}
