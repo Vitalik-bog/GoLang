@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    word1 := "тест"
+    word2 := "тар"
+    
+    lastChar := word1[len(word1)-1]
+    firstChar := word2[0]
+    
+    if lastChar == firstChar {
+        fmt.Printf("Последняя буква '%s' совпадает с первой буквой '%s'\n", 
+            string(lastChar), string(firstChar))
+    } else {
+        fmt.Printf("Буквы не совпадают: '%s' != '%s'\n", 
+            string(lastChar), string(firstChar))
+    }
+}
