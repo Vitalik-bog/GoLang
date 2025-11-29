@@ -1,0 +1,8 @@
+package main
+
+import "fmt"
+
+func main() {
+    secondsInDay := 24 * 60 * 60
+    fmt.Printf("В сутках %d секунд\n", secondsInDay)
+}
