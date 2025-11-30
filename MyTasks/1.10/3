@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 12
+    fmt.Printf("Делители числа %d: ", num)
+    
+    for i := 1; i <= num; i++ {
+        if num%i == 0 {
+            fmt.Printf("%d ", i)
+        }
+    }
+    fmt.Println()
+}
