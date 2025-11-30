@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 12345
+    iterations := 0
+    current := float64(num)
+    
+    fmt.Printf("Начальное число: %.2f\n", current)
+    
+    for current >= 10 {
+        current /= 2
+        iterations++
+        fmt.Printf("Итерация %d: результат = %.2f\n", iterations, current)
+    }
+    
+    fmt.Printf("Потребовалось итераций: %d\n", iterations)
+    fmt.Printf("Финальный результат: %.2f\n", current)
+}
