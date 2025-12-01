@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+	num := 12
+	factorial := 1
+
+	// Вычисляем факториал
+	for i := 1; i <= num; i++ {
+		factorial *= i
+	}
+
+	fmt.Printf("Факториал числа %d: %d\n", num, factorial)
+
+	// Дополнительно: вывод промежуточных вычислений
+	fmt.Println("\nПошаговое вычисление:")
+	temp := 1
+	for i := 1; i <= num; i++ {
+		temp *= i
+		fmt.Printf("%d! = %d\n", i, temp)
+	}
+}
