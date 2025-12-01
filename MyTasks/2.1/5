@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	str := "привет"
+	// Преобразуе строку в срез рун
+	runes := []rune(str)
+
+	fmt.Printf("Исходная строка: %s\n", str)
+	fmt.Printf("Длина строки в байтах: %d\n", len(str))
+	fmt.Printf("Срез рун: %v\n", runes)
+	fmt.Printf("Длина среза рун: %d\n", len(runes))
+	fmt.Printf("Количество символов (рун): %d\n", len([]rune(str)))
+
+	// Покажем символы отдельно
+	fmt.Println("\nСимволы строки:")
+	for i, r := range runes {
+		fmt.Printf("Символ %d: %c (код руны: %d)\n", i+1, r, r)
+	}
+}
