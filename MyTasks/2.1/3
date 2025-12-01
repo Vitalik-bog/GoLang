@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	num := 12345
+	sumEven := 0
+	temp := num
+
+	// Обрабатываем каждую цифру числа
+	for temp > 0 {
+		digit := temp % 10 // получаем последнюю цифру
+		if digit%2 == 0 {  // проверяем четность
+			sumEven += digit
+		}
+		temp /= 10 // удаляем последнюю цифру
+	}
+
+	fmt.Printf("Число: %d\n", num)
+	fmt.Printf("Сумма четных цифр: %d\n", sumEven)
+}
