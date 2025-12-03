@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	slc := []string{"i", "love", "you"}
+
+	result := ""
+	for _, str := range slc {
+		result += str
+	}
+
+	fmt.Println("Объединенная строка:", result)
+}
