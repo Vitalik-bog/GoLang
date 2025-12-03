@@ -1,0 +1,17 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	num := 12345
+	numStr := strconv.Itoa(num)
+
+	fmt.Print("Цифры с конца: ")
+	for i := len(numStr) - 1; i >= 0; i-- {
+		fmt.Printf("%c ", numStr[i])
+	}
+	fmt.Println()
+}
