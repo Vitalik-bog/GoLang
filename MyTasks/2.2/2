@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+	slc := []int{1, 2, 3, 4, 5}
+	sum := 0
+	for _, num := range slc {
+		sum += num
+	}
+	fmt.Println("Сумма элементов:", sum)
+}
