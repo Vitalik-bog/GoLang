@@ -1,0 +1,17 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    num := 12345
+    numStr := strconv.Itoa(num)
+    
+    firstDigit, _ := strconv.Atoi(string(numStr[0]))
+    lastDigit, _ := strconv.Atoi(string(numStr[len(numStr)-1]))
+    
+    sum := firstDigit + lastDigit
+    fmt.Println("Сумма первой и последней цифры:", sum)
+}
