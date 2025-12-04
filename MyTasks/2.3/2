@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [5]int{1, 2, 3, 4, 5}
+    sum := 0
+    
+    for _, num := range arr {
+        sum += num
+    }
+    
+    average := float64(sum) / float64(len(arr))
+    fmt.Println("Среднее арифметическое:", average)
+}
