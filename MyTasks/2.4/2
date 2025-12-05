@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    slc := []int{1, 2, 3, 4, 5}
+    
+    for i := range slc {
+        slc[i] = slc[i] * 2
+    }
+    
+    fmt.Println("Увеличенный срез:", slc)
+}
