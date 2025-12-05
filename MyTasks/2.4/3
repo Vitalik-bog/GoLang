@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    var slc []int
+    
+    for i := 10; i >= 1; i-- {
+        slc = append(slc, i)
+    }
+    
+    fmt.Println("Заполненный срез:", slc)
+}
