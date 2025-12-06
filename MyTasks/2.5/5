@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+   
+    str := "программирование"
+    
+    runes := []rune(str)
+    count := len(runes)
+    
+    fmt.Printf("Строка: %s\n", str)
+    fmt.Printf("Количество букв: %d\n", count)
+}
