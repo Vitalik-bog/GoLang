@@ -1,0 +1,22 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    slc := []string{"123", "456", "789"}
+    intSlice := make([]int, len(slc))
+    
+    for i, str := range slc {
+        num, err := strconv.Atoi(str)
+        if err != nil {
+            fmt.Println("Ошибка преобразования:", err)
+            return
+        }
+        intSlice[i] = num
+    }
+    
+    fmt.Println("Новый срез с целыми числами:", intSlice)
+}
