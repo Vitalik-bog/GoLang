@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+    }
+    
+    // Создаем новую карту для четных значений
+    evenMap := make(map[string]int)
+    
+    for key, value := range m {
+        if value%2 == 0 {
+            evenMap[key] = value
+        }
+    }
+    
+    fmt.Println("Исходная карта:", m)
+    fmt.Println("Карта с четными значениями:", evenMap)
+}
