@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [6]int{-1, 2, -3, 4, 5, 11}
+    sum := 0
+    
+    for _, num := range arr {
+        if num > 0 && num < 10 {
+            sum += num
+        }
+    }
+    
+    fmt.Println("Сумма элементов > 0 и < 10:", sum)
+}
