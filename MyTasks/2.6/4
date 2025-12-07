@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+    }
+    
+    // Проверяем наличие ключа
+    if value, exists := m["c"]; exists {
+        fmt.Printf("Ключ 'c' найден, его значение: %d\n", value)
+    } else {
+        fmt.Println("Ключ 'c' не найден")
+    }
+}
