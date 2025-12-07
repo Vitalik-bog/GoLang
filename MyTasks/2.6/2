@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [5]int{1, 2, 3, 4, 5}
+    
+    fmt.Print("Четные элементы: ")
+    for _, num := range arr {
+        if num%2 == 0 {
+            fmt.Printf("%d ", num)
+        }
+    }
+    fmt.Println()
+}
