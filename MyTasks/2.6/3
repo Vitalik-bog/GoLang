@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [6]int{1, 2, 3, 0, 4, 5}
+    
+    fmt.Print("Элементы до первого нуля: ")
+    for _, num := range arr {
+        if num == 0 {
+            break
+        }
+        fmt.Printf("%d ", num)
+    }
+    fmt.Println()
+}
