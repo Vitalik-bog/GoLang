@@ -1,0 +1,17 @@
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    arr := [5]int{1, 2, 3, 4, 5}
+    sum := 0.0
+    
+    for _, num := range arr {
+        sum += math.Sqrt(float64(num))
+    }
+    
+    fmt.Printf("Сумма квадратных корней: %.4f\n", sum)
+}
