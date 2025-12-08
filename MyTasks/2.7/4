@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+    }
+    
+    doubledMap := make(map[string]int)
+    
+    for key, value := range m {
+        doubledMap[key] = value * 2
+    }
+    
+    fmt.Println("Исходная карта:", m)
+    fmt.Println("Карта с удвоенными значениями:", doubledMap)
+}
