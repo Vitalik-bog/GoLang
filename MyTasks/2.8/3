@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    a := 10
+    b := 20
+    
+    area := a * b
+    perimeter := 2 * (a + b)
+    
+    fmt.Printf("Площадь: %d\n", area)
+    fmt.Printf("Периметр: %d\n", perimeter)
+}
