@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "year":  2025,
+        "month": 12,
+        "day":   31,
+    }
+    
+    // Проверяем наличие всех необходимых ключей
+    year, hasYear := m["year"]
+    month, hasMonth := m["month"]
+    day, hasDay := m["day"]
+    
+    if hasYear && hasMonth && hasDay {
+        date := fmt.Sprintf("%02d.%02d.%d", day, month, year)
+        fmt.Println("Дата:", date)
+    } else {
+        fmt.Println("Не все необходимые ключи присутствуют в карте")
+    }
+}
