@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    str := "12345"
+    
+    if len(str) > 0 {
+        result := string(str[0]) + string(str[len(str)-1])
+        fmt.Println("Результат:", result)
+    } else {
+        fmt.Println("Строка пустая")
+    }
+}
