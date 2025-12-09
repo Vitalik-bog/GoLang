@@ -1,0 +1,39 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 1
+    var month string
+    
+    switch num {
+    case 1:
+        month = "Январь"
+    case 2:
+        month = "Февраль"
+    case 3:
+        month = "Март"
+    case 4:
+        month = "Апрель"
+    case 5:
+        month = "Май"
+    case 6:
+        month = "Июнь"
+    case 7:
+        month = "Июль"
+    case 8:
+        month = "Август"
+    case 9:
+        month = "Сентябрь"
+    case 10:
+        month = "Октябрь"
+    case 11:
+        month = "Ноябрь"
+    case 12:
+        month = "Декабрь"
+    default:
+        month = "Неверный номер месяца"
+    }
+    
+    fmt.Println("Месяц:", month)
+}
