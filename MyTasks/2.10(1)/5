@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    slc := [3]string{"abc", "def", "ghi"}
+    
+    fmt.Print("Первые символы: ")
+    for _, str := range slc {
+        if len(str) > 0 {
+            fmt.Printf("%c ", str[0])
+        }
+    }
+    fmt.Println()
+}
