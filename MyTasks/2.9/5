@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    tc := 25.0
+    
+    // Формула: F = C × 9/5 + 32
+    tf := tc*9/5 + 32
+    
+    fmt.Printf("%.1f°C = %.1f°F\n", tc, tf)
+}
