@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+    var evenNumbers []int
+    
+    for i := 1; i <= 100; i++ {
+        if i%2 == 0 {
+            evenNumbers = append(evenNumbers, i)
+        }
+    }
+    
+    fmt.Println("Четные числа от 1 до 100:")
+    fmt.Println(evenNumbers)
+    fmt.Printf("Всего чисел: %d\n", len(evenNumbers))
+}
