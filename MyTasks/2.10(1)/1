@@ -1,0 +1,20 @@
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    r := 10.3
+    
+    // Объем шара: V = (4/3) * π * r³
+    volume := (4.0 / 3.0) * math.Pi * math.Pow(r, 3)
+    
+    // Площадь поверхности шара: S = 4 * π * r²
+    surfaceArea := 4 * math.Pi * math.Pow(r, 2)
+    
+    fmt.Printf("Радиус шара: %.2f\n", r)
+    fmt.Printf("Объем шара: %.2f\n", volume)
+    fmt.Printf("Площадь поверхности: %.2f\n", surfaceArea)
+}
