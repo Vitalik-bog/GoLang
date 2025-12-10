@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+    slc := []int{1, 2, 3, 4, 5}
+    
+    fmt.Println("Исходный срез:", slc)
+    
+    if len(slc) > 1 {
+        slc[0], slc[len(slc)-1] = slc[len(slc)-1], slc[0]
+    }
+    
+    fmt.Println("Срез после замены:", slc)
+}
