@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+    }
+    
+    // Создаем новую карту с обратными парами
+    reversedMap := make(map[int]string)
+    
+    for key, value := range m {
+        reversedMap[value] = key
+    }
+    
+    fmt.Println("Исходная карта:")
+    for key, value := range m {
+        fmt.Printf("%s: %d\n", key, value)
+    }
+    
+    fmt.Println("\nКарта с обратными парами:")
+    for key, value := range reversedMap {
+        fmt.Printf("%d: %s\n", key, value)
+    }
+}
