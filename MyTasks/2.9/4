@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+    num := 1
+    
+    var dayType string
+    switch num {
+    case 1, 2, 3, 4, 5:
+        dayType = "будний день"
+    case 6, 7:
+        dayType = "выходной день"
+    default:
+        dayType = "некорректный номер дня недели"
+    }
+    
+    fmt.Printf("День недели №%d - %s\n", num, dayType)
+}
