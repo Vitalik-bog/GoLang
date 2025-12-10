@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    keys := []string{"a", "b", "c", "d", "e"}
+    values := []int{1, 2, 3, 4, 5}
+    
+    m := make(map[string]int)
+    
+    if len(keys) != len(values) {
+        fmt.Println("Срезы разной длины!")
+        return
+    }
+    
+    for i := 0; i < len(keys); i++ {
+        m[keys[i]] = values[i]
+    }
+    
+    fmt.Println("Созданная карта:")
+    for key, value := range m {
+        fmt.Printf("%s: %d\n", key, value)
+    }
+}
