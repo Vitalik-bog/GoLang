@@ -1,0 +1,41 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    num := 123321
+    // Преобразуем число в строку
+    numStr := strconv.Itoa(num)
+    
+    // Проверяем, что число имеет 6 цифр
+    if len(numStr) != 6 {
+        fmt.Println("Число должно содержать ровно 6 цифр")
+        return
+    }
+    
+    // Суммируем первые три цифры
+    sumFirstThree := 0
+    for i := 0; i < 3; i++ {
+        digit, _ := strconv.Atoi(string(numStr[i]))
+        sumFirstThree += digit
+    }
+    
+    // Суммируем последние три цифры
+    sumLastThree := 0
+    for i := 3; i < 6; i++ {
+        digit, _ := strconv.Atoi(string(numStr[i]))
+        sumLastThree += digit
+    }
+    
+    // Проверяем равенство сумм
+    if sumFirstThree == sumLastThree {
+        fmt.Printf("Сумма первых трех цифр (%d) равна сумме последних трех цифр (%d)\n", 
+            sumFirstThree, sumLastThree)
+    } else {
+        fmt.Printf("Сумма первых трех цифр (%d) НЕ равна сумме последних трех цифр (%d)\n", 
+            sumFirstThree, sumLastThree)
+    }
+}
