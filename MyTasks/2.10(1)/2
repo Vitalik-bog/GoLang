@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+    num1 := 12
+    num2 := 16
+    
+    // Находим минимальное число для определения максимального делителя
+    minNum := num1
+    if num2 < minNum {
+        minNum = num2
+    }
+    
+    fmt.Printf("Общие делители чисел %d и %d:\n", num1, num2)
+    
+    for i := 1; i <= minNum; i++ {
+        if num1%i == 0 && num2%i == 0 {
+            fmt.Printf("%d ", i)
+        }
+    }
+    fmt.Println()
+}
