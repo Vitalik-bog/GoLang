@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"unicode"
+)
+
+func main() {
+	ch := 'A'
+
+	if unicode.IsUpper(ch) {
+		fmt.Printf("Символ '%c' в верхнем регистре\n", ch)
+	} else if unicode.IsLower(ch) {
+		fmt.Printf("Символ '%c' в нижнем регистре\n", ch)
+	} else {
+		fmt.Printf("Символ '%c' не является буквой\n", ch)
+	}
+}
