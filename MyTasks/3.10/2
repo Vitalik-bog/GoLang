@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    str := "abcdef"
+    
+    if len(str) >= 3 {
+        firstThree := str[0:3]
+        fmt.Println("Первые три символа:", firstThree)
+    } else {
+        fmt.Println("Строка слишком короткая")
+    }
+}
