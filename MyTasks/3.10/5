@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+	slc := []int{1, 2, 3, 0, 4, 5}
+	found := false
+	for i, num := range slc {
+		if num == 0 {
+			fmt.Printf("Первый ноль найден на позиции: %d (индекс: %d)\n", i+1, i)
+			found = true
+			break
+		}
+	}
+	if !found {
+		fmt.Println("Ноль не найден в срезе")
+	}
+}
