@@ -1,0 +1,15 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	
+	str := "123-456-789"
+	newStr := strings.ReplaceAll(str, "-", " ")
+
+	fmt.Println("Исходная строка:", str)
+	fmt.Println("Строка после замены:", newStr)
+}
