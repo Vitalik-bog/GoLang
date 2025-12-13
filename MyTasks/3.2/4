@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [6]int{1, 2, 3, 4, 5, 6}
+    
+    // Получаем срез элементов 3, 4, 5 (индексы 2, 3, 4)
+    slc := arr[2:5]
+    
+    fmt.Println("Исходный массив:", arr)
+    fmt.Println("Полученный срез:", slc)
+}
