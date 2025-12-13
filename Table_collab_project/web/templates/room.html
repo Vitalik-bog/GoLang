@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TableCollab Room</title>
+		<link rel="stylesheet" href="/static/css/style.css" />
+	</head>
+	<body>
+		<div class="room-container">
+			<header class="room-header">
+				<div class="room-info">
+					<h2 id="roomTitle">Room: <span id="roomId">loading...</span></h2>
+					<div id="participantCount">0 participants</div>
+				</div>
+				<button onclick="window.location.href='/'" class="btn-leave">
+					Leave Room
+				</button>
+			</header>
+
+			<div class="room-content">
+				<div class="editor-section">
+					<div class="editor-header">
+						<h3>Collaborative Editor</h3>
+						<div class="editor-status" id="editorStatus">Connected</div>
+					</div>
+					<textarea
+						id="editor"
+						placeholder="Start typing collaboratively..."
+					></textarea>
+					<div id="cursors"></div>
+				</div>
+
+				<div class="sidebar">
+					<div class="participants-list">
+						<h3>Participants</h3>
+						<div id="participants"></div>
+					</div>
+
+					<div class="chat-section">
+						<h3>Chat</h3>
+						<div id="chatMessages"></div>
+						<div class="chat-input">
+							<input
+								type="text"
+								id="chatInput"
+								placeholder="Type a message..."
+							/>
+							<button id="sendBtn">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/static/js/room.js"></script>
+	</body>
+</html>

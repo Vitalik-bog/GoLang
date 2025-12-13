@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TableCollab - Real-time Collaboration</title>
+		<link rel="stylesheet" href="/static/css/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<h1>📊 TableCollab</h1>
+				<p class="subtitle">Real-time collaborative platform</p>
+			</header>
+
+			<main class="main">
+				<div class="card">
+					<h2>Create or Join Room</h2>
+					<div class="form-group">
+						<input
+							type="text"
+							id="roomId"
+							placeholder="Room ID (or leave empty)"
+						/>
+						<input type="text" id="username" placeholder="Your name" />
+						<button id="joinBtn" class="btn-primary">
+							Start Collaborating
+						</button>
+					</div>
+				</div>
+
+				<div class="card">
+					<h3>Features</h3>
+					<ul class="features">
+						<li>✅ Real-time document editing</li>
+						<li>✅ Collaborative whiteboard</li>
+						<li>✅ Live cursor tracking</li>
+						<li>✅ Built-in chat</li>
+						<li>✅ Multiple room support</li>
+					</ul>
+				</div>
+			</main>
+
+			<div id="status" class="status"></div>
+		</div>
+
+		<script src="/static/js/app.js"></script>
+		<script>
+			document.getElementById('joinBtn').addEventListener('click', () => {
+				let roomId = document.getElementById('roomId').value.trim()
+				let username = document.getElementById('username').value.trim()
+
+				if (!roomId) {
+					roomId = 'room_' + Math.random().toString(36).substr(2, 6)
+				}
+
+				if (!username) {
+					username = 'User_' + Math.random().toString(36).substr(2, 4)
+				}
+
+				localStorage.setItem('username', username)
+				window.location.href = `/room/${roomId}`
+			})
+		</script>
+	</body>
+</html>
