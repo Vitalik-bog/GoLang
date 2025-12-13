@@ -1,0 +1,21 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    str := "1203405"
+    
+    // Находим индекс первого нуля
+    index := strings.Index(str, "0")
+    
+    if index != -1 {
+        // Позиция в строке (начиная с 1)
+        position := index + 1
+        fmt.Printf("Первый ноль найден на позиции: %d (индекс: %d)\n", position, index)
+    } else {
+        fmt.Println("Ноль не найден в строке")
+    }
+}
