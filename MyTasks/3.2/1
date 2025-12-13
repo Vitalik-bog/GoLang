@@ -1,0 +1,23 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    urls := []string{
+        "http://example.com",
+        "https://google.com",
+        "ftp://server.com",
+        "http://github.com",
+        "file:///local/path",
+    }
+    
+    fmt.Println("Строки, начинающиеся на 'http://':")
+    for _, url := range urls {
+        if strings.HasPrefix(url, "http://") {
+            fmt.Println(url)
+        }
+    }
+}
