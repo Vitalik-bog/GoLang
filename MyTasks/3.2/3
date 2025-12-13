@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    str := "abcdef"
+    
+    if len(str) >= 3 {
+        lastThree := str[len(str)-3:]
+        fmt.Println("Три последних символа:", lastThree)
+    } else {
+        fmt.Println("Строка слишком короткая")
+    }
+}
