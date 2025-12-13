@@ -1,0 +1,31 @@
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+// Определение структуры Date
+type Date struct {
+    year  int
+    month int
+    day   int
+}
+
+func main() {
+    // Получение текущей даты
+    now := time.Now()
+    
+    // Создание структуры с текущей датой
+    currentDate := Date{
+        year:  now.Year(),
+        month: int(now.Month()),
+        day:   now.Day(),
+    }
+    
+    fmt.Printf("Текущая дата: %04d-%02d-%02d\n", 
+        currentDate.year, currentDate.month, currentDate.day)
+    
+    // Альтернативный вывод
+    fmt.Printf("Дата через структуру: %+v\n", currentDate)
+}
