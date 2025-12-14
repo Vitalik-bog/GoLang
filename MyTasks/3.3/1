@@ -1,0 +1,28 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    num := 1204
+    
+    // Преобразуем число в строку
+    numStr := strconv.Itoa(num)
+    
+    // Проверяем наличие нуля
+    containsZero := false
+    for _, ch := range numStr {
+        if ch == '0' {
+            containsZero = true
+            break
+        }
+    }
+    
+    if containsZero {
+        fmt.Printf("Число %d содержит цифру 0\n", num)
+    } else {
+        fmt.Printf("Число %d НЕ содержит цифру 0\n", num)
+    }
+}
