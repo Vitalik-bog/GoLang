@@ -1,0 +1,20 @@
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    arr := [5]float64{1.11, 2.23, 3.45, 4.66, 5.98}
+    
+    roundedArr := make([]int, len(arr))
+    
+    // Округляем и сохраняем
+    for i, num := range arr {
+        roundedArr[i] = int(math.Round(num))
+    }
+    
+    fmt.Println("Исходный массив:", arr)
+    fmt.Println("Округленный массив:", roundedArr)
+}
