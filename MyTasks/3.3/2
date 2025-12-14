@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    word := "abcba"
+    
+    isPalindrome := true
+    n := len(word)
+    
+    // Сравниваем символы с начала и с конца
+    for i := 0; i < n/2; i++ {
+        if word[i] != word[n-i-1] {
+            isPalindrome = false
+            break
+        }
+    }
+    
+    if isPalindrome {
+        fmt.Printf("Слово '%s' является палиндромом\n", word)
+    } else {
+        fmt.Printf("Слово '%s' НЕ является палиндромом\n", word)
+    }
+}
