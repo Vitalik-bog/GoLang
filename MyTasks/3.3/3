@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+func main() {
+    arr := [6]int{1, 2, 3, 4, 5, 6}
+    
+    // Получаем срез из двух последних элементов
+    lastTwo := arr[len(arr)-2:]
+    
+    fmt.Println("Исходный массив:", arr)
+    fmt.Println("Два последних элемента:", lastTwo)
+}
