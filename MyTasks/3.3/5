@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+type Employee struct {
+    name   string
+    salary int
+}
+
+func main() {
+ 
+    emp1 := Employee{
+        name:   "Иван",
+        salary: 50000,
+    }
+    
+    emp2 := Employee{
+        name:   "Мария",
+        salary: 60000,
+    }
+
+    fmt.Printf("Работник 1: %s, зарплата: %d руб.\n", emp1.name, emp1.salary)
+    fmt.Printf("Работник 2: %s, зарплата: %d руб.\n", emp2.name, emp2.salary)
+    
+
+    totalSalary := emp1.salary + emp2.salary
+    fmt.Printf("Сумма зарплат: %d руб.\n", totalSalary)
+}
