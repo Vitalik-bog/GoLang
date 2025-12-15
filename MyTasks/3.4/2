@@ -1,0 +1,29 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    num := 1357
+    
+    // Преобразуем число в строку
+    numStr := strconv.Itoa(num)
+    
+    allOdd := true
+    
+    for _, ch := range numStr {
+        digit, _ := strconv.Atoi(string(ch))
+        if digit%2 == 0 {
+            allOdd = false
+            break
+        }
+    }
+    
+    if allOdd {
+        fmt.Printf("Все цифры числа %d являются нечетными\n", num)
+    } else {
+        fmt.Printf("Не все цифры числа %d являются нечетными\n", num)
+    }
+}
