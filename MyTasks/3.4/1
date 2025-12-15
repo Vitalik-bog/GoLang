@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func main() {
+    m := map[string]int{
+        "a": 1,
+        "b": -2,
+        "c": -3,
+        "d": 4,
+        "e": -5,
+        "f": 6,
+    }
+    
+    negativeCount := 0
+    
+    for _, value := range m {
+        if value < 0 {
+            negativeCount++
+        }
+    }
+    
+    fmt.Println("Карта:", m)
+    fmt.Printf("Количество отрицательных чисел: %d\n", negativeCount)
+}
