@@ -1,0 +1,25 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+    num := 12345
+    
+    // Преобразуем число в строку
+    numStr := strconv.Itoa(num)
+    
+    // Создаем срез для цифр
+    digits := make([]int, len(numStr))
+    
+    // Заполняем срез цифрами
+    for i, ch := range numStr {
+        digit, _ := strconv.Atoi(string(ch))
+        digits[i] = digit
+    }
+    
+    fmt.Printf("Число: %d\n", num)
+    fmt.Printf("Срез цифр: %v\n", digits)
+}
