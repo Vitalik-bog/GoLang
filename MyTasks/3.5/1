@@ -1,0 +1,26 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    text := "apple banana apricot cherry avocado berry"
+    
+    // Разбиваем текст на слова
+    words := strings.Fields(text)
+    
+    // Создаем срез для слов на "a"
+    wordsWithA := []string{}
+    
+    // Проверяем каждое слово
+    for _, word := range words {
+        if len(word) > 0 && strings.ToLower(word)[0] == 'a' {
+            wordsWithA = append(wordsWithA, word)
+        }
+    }
+    
+    fmt.Println("Исходный текст:", text)
+    fmt.Println("Слова, начинающиеся на 'a':", wordsWithA)
+}
