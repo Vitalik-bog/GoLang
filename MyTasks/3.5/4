@@ -1,0 +1,20 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    str := "abc def jhi"
+    
+    // Разбиваем строку на слова
+    words := strings.Fields(str)
+    
+    // Подсчитываем количество слов
+    wordCount := len(words)
+    
+    fmt.Println("Исходная строка:", str)
+    fmt.Printf("Количество слов: %d\n", wordCount)
+    fmt.Println("Слова:", words)
+}
