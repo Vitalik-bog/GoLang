@@ -1,0 +1,21 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    str := "1203405"
+    
+    // Находим индекс последнего нуля
+    lastIndex := strings.LastIndex(str, "0")
+    
+    if lastIndex != -1 {
+        // Позиция в строке (начиная с 1)
+        position := lastIndex + 1
+        fmt.Printf("Последний ноль найден на позиции: %d (индекс: %d)\n", position, lastIndex)
+    } else {
+        fmt.Println("Ноль не найден в строке")
+    }
+}
