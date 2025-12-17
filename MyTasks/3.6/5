@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+    slc1 := []int{1, 2, 3}
+    slc2 := []int{4, 5, 6}
+    slc3 := []int{7, 8, 9}
+    
+    // Объединяем все срезы
+    combined := append(append(slc1, slc2...), slc3...)
+    
+    fmt.Println("Первый срез:", slc1)
+    fmt.Println("Второй срез:", slc2)
+    fmt.Println("Третий срез:", slc3)
+    fmt.Println("Объединенный срез:", combined)
+}
