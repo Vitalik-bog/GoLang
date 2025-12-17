@@ -1,0 +1,29 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    files := []string{
+        "index.html",
+        "style.css",
+        "script.js",
+        "about.html",
+        "contact.php",
+        "main.html",
+    }
+    
+    // Фильтруем строки
+    htmlFiles := []string{}
+    
+    for _, file := range files {
+        if strings.HasSuffix(file, ".html") {
+            htmlFiles = append(htmlFiles, file)
+        }
+    }
+    
+    fmt.Println("Исходный массив:", files)
+    fmt.Println("Только HTML файлы:", htmlFiles)
+}
