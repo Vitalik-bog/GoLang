@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    num := 5
+    
+    // Создаем строку из нулей
+    zeros := strings.Repeat("0", num)
+    
+    fmt.Printf("Число: %d\n", num)
+    fmt.Printf("Строка из нулей: \"%s\"\n", zeros)
+}
