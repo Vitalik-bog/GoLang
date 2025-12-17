@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+	arr := []int{10, 100, 1000, 9999, 123, 45, 5678}
+
+	fmt.Print("Числа, состоящие более чем из трех цифр: ")
+	for _, num := range arr {
+		count := 0
+		temp := num
+		if temp == 0 {
+			count = 1
+		} else {
+			for temp != 0 {
+				temp /= 10
+				count++
+			}
+		}
+
+		if count > 3 {
+			fmt.Printf("%d ", num)
+		}
+	}
+	fmt.Println()
+}
