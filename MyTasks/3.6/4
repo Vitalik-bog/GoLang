@@ -1,0 +1,30 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+func main() {
+   
+    num := 12345
+    
+    // Преобразуем число в строку
+    numStr := strconv.Itoa(num)
+    
+    allPositive := true
+    
+    for _, ch := range numStr {
+        digit, _ := strconv.Atoi(string(ch))
+        if digit <= 0 {
+            allPositive = false
+            break
+        }
+    }
+    
+    if allPositive {
+        fmt.Printf("Все цифры числа %d больше нуля\n", num)
+    } else {
+        fmt.Printf("Не все цифры числа %d больше нуля\n", num)
+    }
+}
