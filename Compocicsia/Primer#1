@@ -6,7 +6,7 @@ import "fmt"
 type Address struct {
 	City, Street string
 	HouseNumber  int
-}
+})
 
 // Определяем базовую структуру Person
 type Person struct {
