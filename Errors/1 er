@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	err := errors.New("Something")
+	err := errors.New("Somethings")
 	err := fmt.Errorf("Could not do id[code%d]", http.StatusTeapot)
 }
