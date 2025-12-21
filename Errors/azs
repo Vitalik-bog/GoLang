@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "fmt"s
 
 func main() {
     numbers := make(chan int)
