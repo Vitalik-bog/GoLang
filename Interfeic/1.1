@@ -8,7 +8,7 @@ type Book struct {
     Author string
     Pages  int
 }
-
+1
 // Метод - функция, привязанная к структуре
 func (b Book) Display() {
     fmt.Printf("📖 '%s' by %s (%d pages)\n", b.Title, b.Author, b.Pages)
@@ -18,7 +18,7 @@ func (b Book) Display() {
 func (b Book) IsLong() bool {
     return b.Pages > 300
 }
-
+2
 func main() {
     // Создаем экземпляр структуры
     book1 := Book{
