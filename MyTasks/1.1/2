@@ -11,3 +11,15 @@ func main() {
 	length := len(input)
 	fmt.Printf("Длинна строки равна '%s' :%d\n", input, length)
 }
+
+package main
+
+import "fmt"
+
+func main() {
+	stroka := "hello,world"
+	length := len(stroka)
+
+	fmt.Printf("Строка\"%s\"\n", stroka)
+	fmt.Printf("Длина строки: %d символов\n", length)
+}
