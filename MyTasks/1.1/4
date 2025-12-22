@@ -14,3 +14,17 @@ func main() {
 		fmt.Printf("Число %d нечетное\n", Number)
 	}
 }
+
+
+package main
+
+import "fmt"
+
+func main() {
+	num := 10
+	if num%2 == 0 {
+		fmt.Printf("четное %d число\n", num)
+	} else {
+		fmt.Printf("нечетное %d число\n", num)
+	}
+}
