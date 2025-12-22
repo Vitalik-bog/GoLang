@@ -1,0 +1,12 @@
+﻿server:
+  port: ":8080"
+  host: "0.0.0.0"
+  mode: "debug"
+
+database:
+  host: "postgres"  # Имя сервиса из docker-compose
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  dbname: "subscriptions_db"
+  sslmode: "disable"
