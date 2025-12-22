@@ -16,3 +16,24 @@ func main() {
 			str1, str2, runes1[0], runes2[0])
 	}
 }
+
+package main
+
+import "fmt"
+
+func main() {
+	word1 := "apple"
+	word2 := "ananas"
+
+	if len(word1) > 0 && len(word2) > 0 {
+		if word1[0] == word2[0] {
+			fmt.Printf("Первые буквы слов '%s' и '%s' совпадают ('%c')\n",
+				word1, word2, word1[0])
+		} else {
+			fmt.Printf("Первые буквы слов '%s' и '%s' не совпадают ('%c' vs '%c')\n",
+				word1, word2, word1[0], word2[0])
+		}
+	} else {
+		fmt.Println("Одно или оба слова пустые")
+	}
+}
