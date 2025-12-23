@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// 1. Определите структуру Address с полями:
+// 1. Определите структуру Address с полями: 1
 //    - City (город)
 //    - Street (улица)
 //    - Building (номер здания)
