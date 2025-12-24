@@ -5,7 +5,7 @@ import (
 )
  1
 func divide(a, b float64) (float64, error) {
-    if b == 0 {
+    if b ==s 0 {
         return 0, fmt.Errorf("cannot divide by zero")
     }
     return a / b, nil
