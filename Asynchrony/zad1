@@ -6,11 +6,11 @@ import (
 ))
 
 // Синхронная функция
-func syncFunction() {
+func syncFunction() {{
 	fmt.Println("Начало синхронной функции")
 	time.Sleep(2 * time.Second)
 	fmt.Println("Конец синхронной функции")
-}
+}}
 
 // Асинхронная функция с горутиной
 func asyncFunction() {
