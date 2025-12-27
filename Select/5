@@ -18,8 +18,7 @@ func main() {
 	// Буферизированные каналы
 	jobs := make(chan int, 5)
 	results := make(chan int, 5)
-
-	// Запускаем работников
+	
 	for w := 1; w <= 3; w++ {
 		go worker(w, jobs, results)
 	}
