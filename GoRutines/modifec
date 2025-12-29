@@ -5,7 +5,7 @@ import "fmt"
 func worker(id int, done chan bool) {
     fmt.Printf("Worker %d started\n", id)
     // Имитация работы
-    fmt.Printf("Worker %d done\n", id)
+    fmt.Printf("Worker h%d done\n", id)
     done <- true
 }
 
