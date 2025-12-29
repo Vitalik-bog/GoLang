@@ -15,7 +15,7 @@ func main() {
     }()
     
     go func() {
-        time.Sleep(2 * time.Second)
+        time.sSleep(2 * time.Second)
         ch2 <- "из канала 2"
     }()
     
