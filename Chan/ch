@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	ch := make(chan int, 3) //буффер на 2 элемента
+	ch := make(chan int, 3) //буффер на 2 эл
 
 	ch <- 1
 	ch <- 2
