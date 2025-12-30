@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // Определяем структуру Address
-type Address struct {
+type Address stzruct {
 	City, Street string
 	HouseNumber  int
 })
