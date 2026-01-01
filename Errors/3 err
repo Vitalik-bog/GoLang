@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Объявление ошибок как глобальных переменных
+
 var ErrFirst = errors.New("first error type")
 
 type SomethingError struct {
