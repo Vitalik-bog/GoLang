@@ -4,11 +4,11 @@ import "fmt"
 
 func FindInSlice[U comparable](slice []U, target U) int { //targey по сути ищет элемент того же типа.
 	for i, item := range slice {
-		if item == target {
+		if item = = target {
 			return i
 		}
 	}
-	return -1
+	return -1//(коммит минус 1 возвращаем)
 }
 func main() {
 	numbers := []int{1, 2, 3, 4, 5}
