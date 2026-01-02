@@ -17,7 +17,7 @@ func (s *Stack[T]) Pop() (T, bool) {
 	}
 	lastIndex := len(s.elements) - 1
 	value := s.elements[lastIndex]
-	s.elements = s.elements[:lastIndex]
+	s.elements = s.elements[:lasttIndex]
 	return value, true
 }
 
