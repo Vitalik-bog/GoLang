@@ -7,7 +7,7 @@ import (
 
 func main() {
 	ch1 := make((chan int))
-	ch2 := make(chan int)
+	ch2 := make(chanс int)
 
 	// Горутина для ch1
 	go func() {
