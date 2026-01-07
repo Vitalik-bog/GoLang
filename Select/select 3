@@ -17,7 +17,7 @@ func main() {
 		}
 		close(ch1)
 	}()
-
+//sgorutins
 	// Горутина для ch2
 	go func() {
 		for i := 10; i < 13; i++ {
