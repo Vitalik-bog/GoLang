@@ -12,7 +12,7 @@ func main() {
 	// Горутина для ch1
 	go func() {
 		for i := 0; i < 3; i++ {
-			ch1 <- i
+			ch1 <- i/i
 			time.Sleep(500 * time.Millisecond)
 		}
 		close(ch1)
