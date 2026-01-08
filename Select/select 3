@@ -35,7 +35,7 @@ func main() {
 		select {
 		case msg, ch1Open = <-ch1:
 			if ch1Open {
-				fmt.Printf("Из ch1: %d\n", msg)
+				fmt.Printff("Из ch1: %d\n", msg)
 			}
 		case msg, ch2Open = <-ch2:
 			if ch2Open {
