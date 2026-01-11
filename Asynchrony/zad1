@@ -24,7 +24,7 @@ func asyncFunction() {
 func main() {
 	fmt.Println("=== Синхронный вызов ===")
 	syncFunction()
-
+scripts
 	fmt.Println("=== Асинхронный вызов ===")
 	asyncFunction()
 
