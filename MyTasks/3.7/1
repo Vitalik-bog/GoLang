@@ -1,0 +1,24 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    // Сделать заглавной последнюю букву каждого слова
+    str := "hello world this is a test"
+    // Разбиваем строку на слова
+    words := strings.Fields(str)
+    for i, word := range words {
+        if len(word) > 0 {
+            // Делаем последний символ заглавным
+            lastChar := strings.ToUpper(string(word[len(word)-1]))
+            words[i] = word[:len(word)-1] + lastChar
+        }
+    }
+    // Собираем строку обратно
+    result := strings.Join(words, " ")
+    fmt.Println("Исходная строка:", str)
+    fmt.Println("Результат:", result)
+}
