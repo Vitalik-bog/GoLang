@@ -1,0 +1,26 @@
+package main
+
+import (
+    "fmt"
+    "strconv"
+    "strings"
+)
+
+func main() {
+    // Сумма чисел, разделенных запятыми
+    str := "12,34,56"
+    
+    // Разделяем строку по запятым
+    numbersStr := strings.Split(str, ",")
+    
+    // Суммируем числа
+    sum := 0
+    for _, numStr := range numbersStr {
+        num, err := strconv.Atoi(numStr)
+        if err == nil {
+            sum += num
+        }
+    }
+    
+    fmt.Printf("Сумма чисел из строки '%s': %d\n", str, sum)
+}
