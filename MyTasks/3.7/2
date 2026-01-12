@@ -1,0 +1,27 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    // Проверка, что строка состоит только из четных цифр
+    str := "24680"
+    
+    allEvenDigits := true
+    evenDigits := "02468"
+    
+    for _, ch := range str {
+        if !strings.ContainsRune(evenDigits, ch) {
+            allEvenDigits = false
+            break
+        }
+    }
+    
+    if allEvenDigits {
+        fmt.Printf("Строка '%s' состоит только из четных цифр\n", str)
+    } else {
+        fmt.Printf("Строка '%s' содержит нечетные цифры\n", str)
+    }
+}
