@@ -10,6 +10,7 @@ func main() {
     sum := 0
     for i := 1; i <= n; i++ {
         sum += i
+        //переменная +1
     }
     
     fmt.Printf("1+2+...+%d = %d\n", n, sum)
