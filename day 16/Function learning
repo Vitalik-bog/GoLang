@@ -4,6 +4,7 @@ import  "fmt"
 
 func first(){
     fmt.Println("Hello from first function")
+    fmt.Println...
 }
 
 func main(){
