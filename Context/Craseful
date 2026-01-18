@@ -18,7 +18,7 @@ func worker(ctx context.Context, id int) {
 		}
 	}
 }
-
+//main
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 
@@ -33,7 +33,7 @@ func main() {
 	// Отправляем сигнал завершения
 	fmt.Println("Отправляем сигнал отмены...")
 	cancel()
-
+//timewall
 	// Даем время на завершение
 	time.Sleep(1 * time.Second)
 	fmt.Println("Основная программа завершена")
