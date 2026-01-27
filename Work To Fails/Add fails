@@ -21,6 +21,16 @@ func main() {
         }
         fmt.Println("Файл", filename, "создан автоматически")
     }
+ if _, err := os.Stat(filename); os.IsNotExist(err) {
+        // Файл не существует - создаем его с содержимым по умолчанию
+        defaultContent := "Привет, мир!\nЭто тестовый файл.\nТретья строка файла."
+        
+        err := ioutil.WriteFile(filename, []byte(defaultContent), 0644)
+        if err != nil {
+            log.Fatal("Ошибка создания файла:", err)
+        }
+        fmt.Println("Файл", filename, "создан автоматически")
+    }
     
     // Чтение всего файла
     content, err := ioutil.ReadFile(filename)
