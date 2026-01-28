@@ -29,5 +29,6 @@ func main() {
 		fmt.Println("Result:", res)
 	case <-ctx.Done():
 		fmt.Println("Operation timed out:", ctx.Err())
+		fmt.Println("Operation timed out:", ctx.Err())
 	}
 }
