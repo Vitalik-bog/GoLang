@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 )
-Zx
+
 func longRunningTask(ctx context.Context, id int, result chan<- string) {
 	select {
 	case <-time.After(3 * time.Second):
