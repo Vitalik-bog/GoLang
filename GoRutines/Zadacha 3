@@ -15,7 +15,7 @@ func longRunningTask(ctx context.Context, id int, result chan<- string) {
 		return
 	}
 }
-
+.
 func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
