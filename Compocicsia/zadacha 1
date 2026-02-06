@@ -1,26 +1,12 @@
 package main
 
 import "fmt"
-
-// 1. Определите структуру Address с полями: 1 и доп информация по базе задания
-//    - City (город)
-//    - Street (улица)
-//    - Building (номер здания)
-//    - Apartment (квартира, может быть пустой строкой для частных домов)
-
 type Address struct {
 	City      string
 	Street    string
 	Building  string
 	Apartment string
 }
-
-// 2. Определите структуру Student с полями:
-//    - FirstName (имя)
-//    - LastName (фамилия)
-//    - Course (курс)
-//    - Address (встроенная структура Address)
-
 type Student struct {
 	FirstName string
 	LastName  string
