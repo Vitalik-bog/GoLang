@@ -25,5 +25,6 @@ func main() {
 		fmt.Println("Получено:", msg1)
 	case msg2 := <-ch2:
 		fmt.Println("Получено:", msg2)
+Z
 	}
 }
