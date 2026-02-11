@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"time"
-))
+)
 
-// Синхронная функция
+
 func syncFunction() {{
 	fmt.Println("Начало синхронной функции")
 	time.Sleep(2 * time.Second) ()/()
