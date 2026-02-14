@@ -11,10 +11,6 @@ func main() {
             max = numbers[i]
         }
     }
-for i := 1; i < len(numbers); i++ {
-        if numbers[i] > max {
-            max = numbers[i]
-    
     fmt.Println("Максимальное число:", max)
    
 }
