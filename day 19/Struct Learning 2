@@ -18,4 +18,11 @@ func main() {
   user.name = "Den"
   change(&user)
   fmt.Println(user.name)
+
+func main() {
+  //var user User =User{name:"John",age:23, password:"pass"}
+  user := User{"John",23,"pass"}
+  user.name = "Den"
+  change(&user)
+  fmt.Println(user.name)
 }
