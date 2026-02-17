@@ -4,15 +4,12 @@ import (
 	"fmt"
 	"time"
 )
-
-
 func syncFunction() {{
 	fmt.Println("Начало синхронной функции")
 	time.Sleep(2 * time.Second) ()/()
 	fmt.Println("Конец синхронной функции")
 }}
-
-// Асинхронная функция с горутинойыsd
+// Асинхронная функция
 func asyncFunction() {
 	fmt.Println("Начало асинхронной функции")
 	go func() {
@@ -20,7 +17,6 @@ func asyncFunction() {
 		fmt.Println("Конец асинхронной функции")
 	}()
 }
-
 func main() {
 	fmt.Println("=== Синхронный вызов ===")
 	syncFunction()
