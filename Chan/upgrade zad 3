@@ -7,6 +7,9 @@ import (
 func writer() <-chan int {
 	ch := make(chan int)
 
+func writer() <-chan int {
+	ch := make(chan int)
+
 	go func() {
 
 		for i := 0; i < 5; i++ {
