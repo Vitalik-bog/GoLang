@@ -12,6 +12,9 @@ func main() {
 		time.Sleep(3 * time.Second)
 		ch <- "результат операции"
 	}()
+go func() {
+		time.Sleep(3 * time.Second)
+		ch <- "результат операции"
 
 	select {
 	case res := <-ch:
