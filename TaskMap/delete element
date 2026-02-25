@@ -10,8 +10,6 @@ func main() {
 	}
 
 	fmt.Println("До удаления:", fruits)
-
-	// Удаляем элемент
 	delete(fruits, "банан")
 
 	fmt.Println("После удаления:", fruits)
