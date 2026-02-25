@@ -17,13 +17,6 @@ func main() {
 		// Это эквивалентно:
 		// wordCount[word] = wordCount[word] + 1
 
-for _, word := range words {
-		// Увеличиваем счетчик для каждого слова
-		wordCount[word]++
-		// Это эквивалентно:
-		// wordCount[word] = wordCount[word] + 1
-	}
-
 	fmt.Println("Частота слов:")
 	for word, count := range wordCount {
 		fmt.Printf("Слово '%s' встречается %d раз(а)\n", word, count)
