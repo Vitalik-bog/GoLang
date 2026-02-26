@@ -8,6 +8,7 @@ func main() {
 		"банан":    3,
 		"апельсин": 7,
 	}
+zxc
 
 	fmt.Println("До удаления:", fruits)
 	delete(fruits, "банан")
