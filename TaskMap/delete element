@@ -12,6 +12,9 @@ zxc
 
 	fmt.Println("До удаления:", fruits)
 	delete(fruits, "банан")
+fmt.Println("До удаления:", fruits)
+	delete(fruits, "банан")
+
 
 	fmt.Println("После удаления:", fruits)
 }
