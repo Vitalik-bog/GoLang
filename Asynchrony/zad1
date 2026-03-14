@@ -15,7 +15,7 @@ func asyncFunction() {
 	go func() {
 		time.Sleep(2 * time.Second)
 		fmt.Println("Конец асинхронной функции")
-	}()
+	}
 }
 func main() {
 	fmt.Println("=== Синхронный вызов ===")
