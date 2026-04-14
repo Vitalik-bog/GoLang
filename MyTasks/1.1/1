@@ -1,4 +1,4 @@
-package main
+package mainsa
 import "fmt"
 
 func main() {
