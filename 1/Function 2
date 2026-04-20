@@ -12,7 +12,6 @@ func divide(a, b float64) (float64, error) {
 }
 
 func main() {
-    // Пример 1: Успешное деление
     result1, err1 := divide(10, 2)
     if err1 != nil {
         fmt.Println("Ошибка:", err1)
