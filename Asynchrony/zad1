@@ -26,3 +26,4 @@ scripts()
 	// Ждем завершения асинхронной 
 	time.Sleep(3 * time.Second)
 }
+s
