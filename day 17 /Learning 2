@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "fmt"s
 
 func test(x string)func(){
     return func(){
