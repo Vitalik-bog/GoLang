@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a, b, c int
+
+	fmt.Print("Введите 3 числа через пробел")
+    fmt.Scan(&a,&b,&c)
+
+    max:= a
+
+    if b>max{
+        max = b
+    }
+    if c>max{
+        max = c
+    }
+    fmt.Printf("Максимальное  число:%d\n",max)
+}
+
