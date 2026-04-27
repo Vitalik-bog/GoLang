@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func main() {
+	var num int
+
+	fmt.Print("Введите пожалуйста число посмотрим четное оно или нет :")
+    fmt.Scan(&num)
+
+    if num % 2 == 0{
+    fmt.Printf("Число четное %d\n",num)
+    }else{
+        fmt.Printf("Число не четное %d\n",num)
+    }
+
+}
