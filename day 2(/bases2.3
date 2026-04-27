@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func main() {
+	var num int
+
+	fmt.Print("Введите пожалуйста оценку которую вы получили:")
+    fmt.Scan(&num)
+
+    if num >= 90{
+    fmt.Printf("Вы получили оценку 'А' %d\n",num)
+    }else if num < 0 ||  num>100 {
+        fmt.Println("Ошибка")
+    }else if num >= 80{
+        fmt.Printf("Вы получили оценку 'B' %d\n",num)
+    }else if num >=70{
+        fmt.Printf("Вы получили оценку 'C'%d\n",num)
+    }else if num >=60{
+        fmt.Printf("Вы получили оценку 'D'%d\n", num)
+    }else{
+        fmt.Printf("Вы набрали меньше 60 баллов к сожаление это F %d\n",num)
+    }
+
+}
