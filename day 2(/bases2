@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+	var num int
+
+	fmt.Print("Введите пожалуйста число  :")
+    fmt.Scan(&num)
+
+    if num > 0{
+    fmt.Printf("Число больше %d\n",num)
+    }else if num == 0{
+        fmt.Printf("Число равно нулу %d\n",num)
+    }else{
+        fmt.Printf("Число меньше %d\n",num)
+    }
+
+}
