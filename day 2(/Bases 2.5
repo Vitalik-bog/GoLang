@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a, b int
+	var op string
+
+	fmt.Print("Введите первое число пожалуйста:")
+    fmt.Scan(&a)
+
+    fmt.Print("Введите оператор (+-/*)")
+    fmt.Scan(&op)
+
+    fmt.Print("Введите второе число пожалуйста:")
+    fmt.Scan(&b)
+
+        // Логика калькулятора
+    if op == "+" {
+        fmt.Printf("%.2f + %.2f = %.2f\n", a, b, a+b)
+    } else if op == "-" {
+        fmt.Printf("%.2f - %.2f = %.2f\n", a, b, a-b)
+    } else if op == "*" {
+        fmt.Printf("%.2f * %.2f = %.2f\n", a, b, a*b)
+    } else if op == "/" {
+        // Проверка на деление на ноль
+        if b == 0 {
+            fmt.Println("Ошибка: деление на ноль!")
+        } else {
+            fmt.Printf("%.2f / %.2f = %.2f\n", a, b, a/b)
+        }
+    } else {
+        fmt.Println("Ошибка: неизвестный оператор")
+    }
+
+}
