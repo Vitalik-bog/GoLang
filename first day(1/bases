@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+	var age int
+	var name string
+
+	fmt.Print("Введите свой возраст:")
+    fmt.Scan(&age)
+
+    fmt.Print("Введите свое имя")
+    fmt.Scan(&name)
+
+    
+    futureAge := age + 5
+    
+    fmt.Printf("Привет,%s,Тебе %d лет. через 5 лет тебе будет %d",name,age, futureAge)
+    
+}
