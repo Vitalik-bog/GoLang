@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+    const Pi =3.14159
+	var radius float64
+
+    fmt.Print("Введите радиус круга:")
+    fmt.Scan(&radius)
+
+    p := radius * radius
+    dlina := 2 * Pi * radius
+
+    fmt.Printf("Площадь круга равна %2f\n",p)
+    fmt.Printf("Длина окружности равна %.2f\n",dlina)
+    
+}
+// Пользователь вводит радиус (число с плавающей точкой)
+// Программа выводит:
+// - Площадь круга (π * r²)
+// - Длину окружности (2 * π * r)
+// π = 3.14159
