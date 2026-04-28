@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func main() {
+    var player string
+    computer := "камень"  // пока фиксированно
+    
+    fmt.Print("Ваш ход (камень, ножницы, бумага): ")
+    fmt.Scan(&player)
+    
+    fmt.Printf("Компьютер выбрал: %s\n", computer)
+    
+    // Определяем победителя
+    if player == computer {
+        fmt.Println("Ничья!")
+    } else if (player == "камень" && computer == "ножницы") ||
+              (player == "ножницы" && computer == "бумага") ||
+              (player == "бумага" && computer == "камень") {
+        fmt.Println("Вы победили! 🎉")
+    } else {
+        fmt.Println("Компьютер победил! 💻")
+    }
+}
