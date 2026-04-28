@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+	var year int
+
+    fmt.Print("Введите год:")
+    fmt.Scan(&year)
+
+    if year%400 == 0{
+        fmt.Printf("%d год високосный\n",year)
+    }else if year%100 == 0{
+        fmt.Printf("%d год не високосный\n",year)
+    }else if year%4 == 0{
+        fmt.Printf("%d год - високосный\n",year)
+    }else{
+        fmt.Printf("%d год не високосный\n",year)
+    }
+}
