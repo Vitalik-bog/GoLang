@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+    var num int
+    sum := 0
+
+    fmt.Print("Введите пожалуйста число")
+    fmt.Scan(&num)
+
+    for i := 1; i <= num; i++{
+        sum = sum + i
+    }
+    fmt.Printf("Сумма от 1 до %d = %d\n", num, sum)
+}
