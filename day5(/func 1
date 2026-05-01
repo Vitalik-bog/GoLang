@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func greet(name string) {
+	fmt.Printf("Привет,%s!\n",name)
+}
+func main() {
+    var userName string
+
+    fmt.Print("Введите ваше имя:")
+    fmt.Scan(&userName)
+    greet(userName)
+
+}
