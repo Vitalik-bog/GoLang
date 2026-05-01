@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+    var num int
+
+    fmt.Print("Введите пожалуйста число  от 1 до 10")
+    fmt.Scan(&num)
+
+
+    if num < 1 || num > 10{
+        fmt.Println("число должно быть от 1 до 10")
+        return
+    }
+
+    for i := 1; i <= 10; i++{
+        fmt.Printf(" %d * %d = %d\n", num,i,num*i )
+    }
+    
+}
+ 
