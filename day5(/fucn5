@@ -1,0 +1,56 @@
+package main
+
+import "fmt"
+
+func add(a, b float64) float64 {
+    return a + b
+}
+
+func subtract(a, b float64) float64 {
+    return a - b
+}
+
+func multiply(a, b float64) float64 {
+    return a * b
+}
+
+func divide(a, b float64) (float64, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("ошибка: деление на ноль")
+    }
+    return a / b, nil
+}
+func main() {
+    var a, b float64
+    var simvol string 
+
+	fmt.Print("Введите первое число: ")
+    fmt.Scan(&a)
+
+    fmt.Print("Введите оператор (+, -, *, /):")
+    fmt.Scan(&simvol)
+
+    fmt.Print("Введите второе число: ")
+    fmt.Scan(&b)
+    
+    var result float64
+    var err error
+
+    if simvol == "+"{
+        result = add(a,b)
+    }else if simvol == "-"{
+        result = subtract(a,b)
+    }else if simvol == "*"{
+        result = multiply(a,b)
+    }else if simvol =="/"{
+        result,err = divide(a,b)
+        if err !=nil{
+            fmt.Println("ошибка:",err)
+            return
+        }
+    }else{
+        fmt.Println("Неизвестный оператор")
+        return
+    }
+    fmt.Printf("%.2f %s %.2f = %.2f\n", a, simvol, b, result)
+}
