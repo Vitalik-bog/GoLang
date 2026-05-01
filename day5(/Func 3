@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func isEven(n int) bool {
+	return n%2 == 0
+}
+func main() {
+	var num int
+	fmt.Print("Введите число:")
+    fmt.Scan(&num)
+
+    if isEven(num){
+        fmt.Print("Четное")
+    }else{
+        fmt.Print("Нечетное")
+    }
+}
