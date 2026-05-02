@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+    nums := []int{10, 20, 30}
+    
+    // Правильное изменение через индекс
+    for i := range nums {
+        nums[i] = nums[i] * 2
+    }
+    fmt.Println("После изменения через индекс:", nums) // [20,40,60]
+
+    // Вывод индексов и значений
+    for idx, val := range nums {
+        fmt.Printf("Индекс %d, значение %d\n", idx, val)
+    }
+}
