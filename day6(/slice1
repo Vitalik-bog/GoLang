@@ -1,0 +1,11 @@
+package main
+
+import "fmt"
+
+func main() {
+	sli := []string{"Go", "Python", "Java"}
+	fmt.Println("Слайс до добавления:",sli)
+
+    sli = append(sli,"Java Script")
+    fmt.Println("Поckt append", sli)
+}
