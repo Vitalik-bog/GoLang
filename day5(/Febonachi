@@ -4,7 +4,6 @@ import (
     "fmt"
     "math"
 )
-
 func main() {
     a, b := 0, 1
     maxInt := math.MaxInt64 // Максимальное значение для int
