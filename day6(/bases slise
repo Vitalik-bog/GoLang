@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    var s []int
+    fmt.Printf("Начало: len=%d cap=%d\n", len(s), cap(s))
+
+    for i := 1; i <= 10; i++ {
+        s = append(s, i)
+        fmt.Printf("После добавления %2d: len=%2d cap=%2d\n", i, len(s), cap(s))
+    }
+    fmt.Println("Итоговый срез:", s)
+}
