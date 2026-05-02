@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+    // Создаём срез с длиной 0, ёмкостью 3
+    s := make([]int, 0, 3)
+    fmt.Printf("Начало: len=%d cap=%d %v\n", len(s), cap(s), s)
+
+    for i := 1; i <= 5; i++ {
+        s = append(s, i)
+        fmt.Printf("append %d: len=%d cap=%d %v\n", i, len(s), cap(s), s)
+    }
+}
