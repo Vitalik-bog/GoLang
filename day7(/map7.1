@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	students := map[string]int{
+		"Alise":   25,
+		"Bob":     30,
+		"Charlie": 28,
+	}
+	fmt.Println("до добавления:",students)
+    students["Diana"] = 22
+
+    fmt.Println("После добавления:",students)
+
+}
