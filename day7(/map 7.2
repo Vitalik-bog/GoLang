@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+	students := map[string]int{
+		"Alise":   25,
+		"Bob":     30,
+		"Charlie": 28,
+        "Eva":25,
+	}
+	fmt.Println("до добавления:",students)
+    students["Diana"] = 22
+    fmt.Println("После добавления:",students)
+
+    if age , exists := students["Eva"];exists{
+        fmt.Println("Eva eсть, возраст:",age)
+    }else{
+        fmt.Println("Eva нет")
+    }
+}
