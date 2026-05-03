@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Print("Введите 5 чисел через пробел :")
+	var numbers []int
+	for i := 0; i < 5; i++ {
+		var num int
+		fmt.Scan(&num)
+        numbers = append(numbers, num)
+	}
+    max :=numbers[0]
+    for _, val := range numbers{
+        if val > max{
+            max=val
+        }
+    }
+    fmt.Printf("Итоговое число:-%d",max)
+}
