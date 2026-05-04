@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+type Person struct {
+		Name string
+		Age  int
+	}
+
+func main() {
+	var p1 Person
+	p1.Name = "Виталя"
+	p1.Age = 24
+
+	fmt.Printf("Имя : %s,Возраст:%d\n",p1.Name,p1.Age)
+
+}
