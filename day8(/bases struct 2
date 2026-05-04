@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+type Person struct {
+		Name string
+		Age  int
+	}
+func(p Person) Greet()string{
+    return "Привет меня зовут "+ p.Name +"!"
+}
+func main() {
+	var p1 Person
+	p1.Name = "Виталя"
+	p1.Age = 24
+
+    fmt.Println(p1.Greet())
+}
