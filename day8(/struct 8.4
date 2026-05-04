@@ -1,0 +1,34 @@
+package main
+
+import "fmt"
+
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Height * r.Width
+}
+func (r Rectangle) Perimeter() float64 {
+	return 2 * (r.Height * r.Width)
+}
+func (r *Rectangle) Scale(factor float64){
+    r.Width = r.Width * factor
+    r.Height = r.Height *factor
+}
+func main() {
+	rect := Rectangle{
+		Width:  10,
+		Height: 5,
+	}
+ fmt.Printf("До масштабирования: %.0f x %.0f\n", rect.Width, rect.Height)
+    fmt.Printf("Площадь: %.0f\n", rect.Area())
+    fmt.Printf("Периметр: %.0f\n\n", rect.Perimeter())
+
+    rect.Scale(2)
+
+    fmt.Printf("После масштабирования: %.0f x %.0f\n", rect.Width, rect.Height)
+    fmt.Printf("Площадь: %.0f\n", rect.Area())
+    fmt.Printf("Периметр: %.0f\n", rect.Perimeter())
+}
