@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+type Address struct {
+    City   string
+    Street string
+    House  int
+}
+
+type Student struct {
+    Name    string
+    Age     int
+    Address Address
+}
+
+func main() {
+    s := Student{
+        Name: "Виталя",
+        Age:  24,
+        Address: Address{
+            City:   "Penza",
+            Street: "Уфимская",
+            House:  7,
+        },
+    }
+    fmt.Printf("Студент %s живёт в городе %s\n", s.Name, s.Address.City)
+}
