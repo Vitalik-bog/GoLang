@@ -1,5 +1,5 @@
 package main
-import (s
+import (
 	"fmt"
 	"time"
 )
