@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+// Напиши функцию safePrint(p *int), которая:
+// - если p != nil, выводит "Значение: X" (где X — значение)
+// - если p == nil, выводит "Указатель пустой"
+
+func safePrint(p *int) {
+    if  p != nil{
+     fmt.Println("Значение: X ", *p )
+    }else{ 
+    fmt.Println("Указатель пустой")
+    }
+}
+
+func main() {
+    var p1 *int          // nil
+    x := 42
+    p2 := &x             // указывает на x
+    
+    safePrint(p1)  
+    safePrint(p2)  
+}
