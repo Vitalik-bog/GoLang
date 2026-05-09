@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func swap(a, b *int) {
+    temp := *a
+    *a = *b
+    *b  = temp
+}
+
+func main() {
+    a := 3
+    b := 5
+    
+    fmt.Println("До swap: a =", a, "b =", b) // 3 5
+    
+    swap(&a, &b)
+    
+    fmt.Println("После swap: a =", a, "b =", b) // 5 3
+}
