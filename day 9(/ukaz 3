@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+func double(ptr *int) {
+    *ptr = *ptr * 2 //берём значение по указателю, умножаем, кладём обратно
+}
+
+func main() {
+    x := 7
+    fmt.Println("До вызова:", x) // 7
+    
+
+    double(&x)  
+    
+    fmt.Println("После вызова:", x) 
+}
