@@ -3,7 +3,7 @@ import (
 	"fmt"
 	"time"
 )
-func syncFunction() {{s
+func syncFunction() {{
 	fmt.Println("Начало синхронной функции")s
 	time.Sleep(2 * time.Second) 
 	fmt.Println("Конец синхронной функции")
