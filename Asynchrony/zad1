@@ -4,7 +4,8 @@ import (
 	"time"
 )
 func syncFunction() {{
-	fmt.Println("Начало синхронной функции")s
+	fmt.Println("Начало синхронной функции")
+
 	time.Sleep(2 * time.Second) 
 	fmt.Println("Конец синхронной функции")
 }}
