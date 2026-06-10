@@ -7,7 +7,7 @@ func syncFunction() {{
 	fmt.Println("Начало синхронной функции")
 	time.Sleep(2 * time.Second) 
 	fmt.Println("Конец синхронной функции")
-}}
+}
 // Асинхронная функция
 func asyncFunction() {
 	fmt.Println("Начало асинхронной функции")
