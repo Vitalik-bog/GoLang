@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+const pi = 3.14159 
+func main() {
+	printCircleArea(2)
+	printCircleArea(4)
+}
+
+func printCircleArea(radius int) {
+	fmt.Printf("Радиус круга: %d см.\n", radius)
+	fmt.Println("Формула для расчёта площади круга: A = πr²")
+
+	circleArea := calculateCircleArea(radius)
+	fmt.Printf("Площадь круга: %.2f см. кв.\n", circleArea)
+}
+
+func calculateCircleArea(radius int) float32 {
+	return float32(radius) * float32(radius) * pi
+}
