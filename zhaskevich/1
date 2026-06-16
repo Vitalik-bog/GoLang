@@ -1,0 +1,36 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"math" // Импортируем пакет math
+)
+
+func main() {
+	// Проверяем с положительным радиусом
+	printCircleArea(5)
+	fmt.Println()
+
+	// Проверяем с отрицательным радиусом (для демонстрации обработки ошибок)
+	printCircleArea(-2)
+}
+
+func printCircleArea(radius int) {
+	circleArea, err := calculateCircleArea(radius)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Printf("Радиус круга: %d см.\n", radius)
+	fmt.Println("Формула для расчёта площади круга: A = πr²")
+	fmt.Printf("Площадь круга: %.2f см. кв.\n", circleArea)
+}
+
+func calculateCircleArea(radius int) (float64, error) { // Изменяем float32 на float64 для совместимости с math.Pi
+	if radius <= 0 {
+		return 0, errors.New("Радиус круга не может быть отрицательным или равным нулю!")
+	}
+	// Используем math.Pi
+	return float64(radius) * float64(radius) * math.Pi, nil
+}
