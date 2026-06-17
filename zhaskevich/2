@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+func main() {
+	// Создаём массив из 10 элементов с минимальным беззнаковым типом (uint8)
+	var workArray [10]uint8
+
+	// Читаем 10 чисел
+	for i := 0; i < 10; i++ {
+		fmt.Scan(&workArray[i])
+	}
+
+	// Читаем 3 пары индексов и меняем элементы местами
+	for i := 0; i < 3; i++ {
+		var idx1, idx2 int
+		fmt.Scan(&idx1, &idx2)
+		workArray[idx1], workArray[idx2] = workArray[idx2], workArray[idx1]
+	}
+
+	// Выводим массив через пробел
+	for i := 0; i < 10; i++ {
+		if i > 0 {
+			fmt.Print(" ")
+		}
+		fmt.Print(workArray[i])
+	}
+}
