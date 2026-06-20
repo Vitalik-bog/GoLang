@@ -1,0 +1,22 @@
+package main
+
+import "fmt"
+
+func main() {
+	var n int
+	fmt.Scan(&n)
+
+	slice := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&slice[i])
+	}
+
+	// Выводим элементы с чётными индексами через пробел
+	for i := 0; i < n; i += 2 {
+		if i > 0 {
+			fmt.Print(" ")
+		}
+		fmt.Print(slice[i])
+	}
+	fmt.Println()
+}
